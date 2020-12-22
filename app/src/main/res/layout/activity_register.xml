@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".Register">
 
     <!--horizonal_10-->
@@ -13,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.10" />
-    <!--horizonal_30-->
+    <!--horizonal_45-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_30"
         android:layout_width="match_parent"
