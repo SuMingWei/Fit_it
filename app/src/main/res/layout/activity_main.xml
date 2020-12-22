@@ -43,7 +43,6 @@
         app:layout_constraintGuide_percent="0.80" />
 
     <LinearLayout
-        android:id="@+id/title_box"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -54,20 +53,21 @@
         app:layout_constraintRight_toRightOf="@id/vertical_80">
 
         <Button
-            android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textSize="24dp"
-            android:text="確定" />
-
-        <Button
             android:id="@+id/register_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24dp"
-            android:text="註冊帳號"/>
+            android:enabled="true"
+            android:text="創建" />
+
+        <Button
+            android:id="@+id/start_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24dp"
+            android:text="開始"/>
 
     </LinearLayout>
 
