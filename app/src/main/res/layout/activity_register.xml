@@ -80,7 +80,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:textSize="24dp"
-            android:text="請輸入一個名字" />
+            android:text="請輸入英文名字" />
 
         <EditText
             android:id="@+id/name"
