@@ -30,15 +30,15 @@ public class Home extends AppCompatActivity {
         findObject();
         setUsername();
         buttonClickEvent();
-        updatePetInfo();
+        //updatePetInfo();
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
-//        updatePetInfo();
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
+        updatePetInfo();
+    }
 
     public void findObject(){
         username = findViewById(R.id.username);
