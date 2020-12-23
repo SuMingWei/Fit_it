@@ -68,7 +68,7 @@
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/test1"
+                android:drawableLeft="@drawable/upper1"
                 android:text="上肢肌力"
                 android:textSize="20dp"/>
             <Button
