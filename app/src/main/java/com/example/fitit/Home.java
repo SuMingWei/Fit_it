@@ -36,7 +36,6 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
         updatePetInfo();
     }
 
