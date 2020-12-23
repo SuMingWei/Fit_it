@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".Mission">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_20"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintGuide_percent="0.2"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/line_90"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9"/>
+    <Button
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="返回上頁"
+        android:textSize="20dp"
+        app:layout_constraintTop_toTopOf="@id/line_90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="2dp"
+        app:layout_constraintLeft_toLeftOf="2dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
