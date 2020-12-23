@@ -20,12 +20,79 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.20" />
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_25"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"/>
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_80"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9"
+        android:id="@+id/vertical_90"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1"
+        android:id="@+id/vertical_10"/>
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/scrollview_form"
+        android:scrollbars = "vertical"
+        android:scrollbarStyle="insideInset"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_10"
+        app:layout_constraintRight_toRightOf="@id/vertical_90"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="180dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="4"
+            android:gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/upperMuscle_btn1"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:drawablePadding="-50dp"
+                android:paddingLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/test1"
+                android:text="上肢肌力"
+                android:textSize="20dp"/>
+            <Button
+                android:id="@+id/lowerMuscle_btn1"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:text="下肢肌力"
+                android:textSize="20dp" />
+            <Button
+                android:id="@+id/softness_btn1"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:textSize="20dp"
+                android:text="柔軟訓練"/>
+            <Button
+                android:id="@+id/indurance_btn1"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:text="心肺訓練"
+                android:textSize="20dp"/>
 
+        </LinearLayout>
+    </ScrollView>
+    <!--Title-->
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,7 +107,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/vertical_20"
         app:layout_constraintRight_toRightOf="@id/vertical_80"/>
-
+    <!--back button-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,5 +125,30 @@
             android:text="返回"/>
 
     </LinearLayout>
+    <!--Doggy conversation-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/horizontal_10"
+        app:layout_constraintRight_toRightOf="@id/vertical_90"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_10">
+        <ImageView
+            android:id="@+id/dog_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/conversation" />
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/talk_form"
+            android:textSize="20dp"
+            android:text="一起來運動吧！"
+            android:gravity="center"/>
 
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
