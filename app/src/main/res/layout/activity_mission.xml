@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
+        app:layout_constraintGuide_percent="0.1" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_20"
         android:layout_width="match_parent"
@@ -68,27 +68,39 @@
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/test1"
-                android:text="上肢肌力"
-                android:textSize="20dp"/>
+                android:drawableLeft="@drawable/upper1"
+                android:text="上肢肌力(一)"
+                android:textSize="18dp"/>
             <Button
                 android:id="@+id/lowerMuscle_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:text="下肢肌力"
-                android:textSize="20dp" />
+                android:drawablePadding="-50dp"
+                android:paddingLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/lower1"
+                android:text="下肢肌力(一)"
+                android:textSize="18dp" />
             <Button
                 android:id="@+id/softness_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:textSize="20dp"
-                android:text="柔軟訓練"/>
+                android:drawablePadding="-50dp"
+                android:paddingLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/softness1"
+                android:textSize="18dp"
+                android:text="柔軟訓練(一)"/>
             <Button
                 android:id="@+id/indurance_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
-                android:text="心肺訓練"
-                android:textSize="20dp"/>
+                android:drawablePadding="-50dp"
+                android:paddingLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/indurance1"
+                android:text="心肺訓練(一)"
+                android:textSize="18dp"/>
 
         </LinearLayout>
     </ScrollView>
