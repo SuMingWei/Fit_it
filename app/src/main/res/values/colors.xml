@@ -20,6 +20,9 @@
     <color name="tan">#D2B48C</color><!--茶色 -->
     <color name="chocolate">#D2691E</color><!--巧可力色 -->
     <color name="peru">#CD853F</color><!--秘魯色 -->
+    <color name="saddlebrown">#8B4513</color>
+    <color name="sienna">#A0522D</color>
+    <color name="Russet">#80461B</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

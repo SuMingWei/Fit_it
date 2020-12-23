@@ -14,7 +14,14 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.10" />
-    <!--horizonal_45-->
+    <!--horizonal_15-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+    <!--horizonal_30-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_30"
         android:layout_width="match_parent"
@@ -43,6 +50,20 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
 
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:textColor="@color/black"
+        android:text="註冊"
+        android:background="@drawable/title_form"
+        android:gravity="center"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toTopOf="@id/horizontal_15"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_20"
+        app:layout_constraintRight_toRightOf="@id/vertical_80"/>
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -56,10 +77,10 @@
             android:id="@+id/enter_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:textSize="24dp"
-            android:text="請輸入一個名字"
-            android:textColor="@color/black"/>
+            android:text="請輸入一個名字" />
 
         <EditText
             android:id="@+id/name"
@@ -77,8 +98,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textSize="24dp"
-            android:text="請輸入一組密碼"
-            android:textColor="@color/black"/>
+            android:text="請輸入一組密碼" />
 
         <EditText
             android:id="@+id/password"

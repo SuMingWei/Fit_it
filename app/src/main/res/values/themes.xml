@@ -3,11 +3,11 @@
     <style name="Theme.Fitit" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/tan</item>
-        <item name="colorPrimaryVariant">@color/wheat</item>
+        <item name="colorPrimaryVariant">@color/tan</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/tan</item>
-        <item name="colorSecondaryVariant">@color/wheat</item>
+        <item name="colorSecondaryVariant">@color/tan</item>
         <item name="colorOnSecondary">@color/peru</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
