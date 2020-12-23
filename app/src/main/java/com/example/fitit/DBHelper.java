@@ -16,6 +16,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private final String name = "Name";
     private final String password = "Password";
 
+    private final String uid = "ID";
+    private final String experience = "Experience";
 //    private final String date = "date";
 //    private final String upperlimb = "Upperlimb";
 //    private final String lowerlimb = "Lowerlimb";
@@ -31,6 +33,14 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ( " + this.name + " VARCHAR(255)," + this.password + " VARCHAR(255) ) ;";
 
     private final String deleteAccountTableSQL = "DROP TABLE IF EXISTS " + this.AccountTableName + ";";
+    // pet info
+    private final String PetTableName = "PetInfo";
+    private final String createPetTableSQL = "CREATE TABLE IF NOT EXISTS " + this.PetTableName
+            + " ( " + this.uid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + this.experience + " INTEGER ) ;";
+
+    private final String deletePetTableSQL = "DROP TABLE IF EXISTS " + this.AccountTableName + ";";
+
+
 
     public DBHelper(Context context){
         super(context,databaseName,null,databaseVersion);
@@ -41,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(this.createAccountTableSQL);
+            db.execSQL(this.createPetTableSQL);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -50,6 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
             db.execSQL(this.deleteAccountTableSQL);
+            db.execSQL(this.deletePetTableSQL);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -86,6 +98,53 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         return accountList;
+    }
+
+    public void insertToPet(int experience){
+        SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(this.experience,experience);
+
+        long nowID = myLocalDB.insert(this.PetTableName,null,contentValues);
+
+        Toast.makeText(this.nowContext,"new pet",Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateToPet(int id,int new_experience){
+        SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(this.experience,new_experience);
+
+        String[] argu = {String.valueOf(id)};
+        int affectRow = myLocalDB.update(this.PetTableName,contentValues,this.uid + " = ? ",argu);
+
+        if(affectRow == 0){
+            Toast.makeText(this.nowContext,"更新寵物失敗，請重新再試", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this.nowContext,"更新寵物成功", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public ArrayList<PetInfo> getPetInfo(){
+        ArrayList<PetInfo> petList = new ArrayList<>();
+
+        SQLiteDatabase myLocalDB = this.getReadableDatabase();
+        String[] myColumn = {this.experience};
+
+        Cursor myCursor = myLocalDB.query(this.PetTableName,myColumn,null,null,null,null,null);
+
+        while(myCursor.moveToNext()){
+            int experience = myCursor.getInt(myCursor.getColumnIndex(this.experience));
+
+            PetInfo petInfo = new PetInfo();
+            petInfo.init(experience);
+            petList.add(petInfo);
+        }
+
+        return petList;
     }
 
 

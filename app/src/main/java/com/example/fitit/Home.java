@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
     private TextView username,level,progress;
@@ -16,6 +19,8 @@ public class Home extends AppCompatActivity {
     private ImageView pet;
     private Button mission_btn,diary_btn,mail_btn;
 
+    private DBHelper myDBHelper = new DBHelper(Home.this);
+    private ArrayList<PetInfo> petInfo = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +30,15 @@ public class Home extends AppCompatActivity {
         findObject();
         setUsername();
         buttonClickEvent();
-        setLevel(180);
+        updatePetInfo();
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        Toast.makeText(this,"onResume",Toast.LENGTH_SHORT).show();
+//        updatePetInfo();
+//    }
 
     public void findObject(){
         username = findViewById(R.id.username);
@@ -35,7 +47,7 @@ public class Home extends AppCompatActivity {
         progress = findViewById(R.id.progress);
         pet = findViewById(R.id.pet);
         mission_btn = findViewById(R.id.mission_btn);
-        diary_btn = findViewById(R.id.mission_btn);
+        diary_btn = findViewById(R.id.diary_btn);
         mail_btn = findViewById(R.id.mail_btn);
     }
 
@@ -48,6 +60,17 @@ public class Home extends AppCompatActivity {
         level.setText("Lv." + String.valueOf(experience / 100 + 1));
         level_bar.setProgress(experience % 100);
         progress.setText(String.valueOf(experience % 100) + "/100");
+    }
+
+    public void updatePetInfo(){
+        petInfo = myDBHelper.getPetInfo();
+        if(petInfo.size() == 0){
+            myDBHelper.insertToPet(0);
+            setLevel(0);
+        }else{
+            setLevel(petInfo.get(0).getExperience());
+        }
+
     }
 
     public void buttonClickEvent(){
