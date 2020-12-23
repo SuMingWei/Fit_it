@@ -17,12 +17,12 @@ public class DBHelper extends SQLiteOpenHelper {
     private final String password = "Password";
 
     private final String uid = "ID";
-    private final String experience = "Experience";
-//    private final String date = "date";
-//    private final String upperlimb = "Upperlimb";
-//    private final String lowerlimb = "Lowerlimb";
-//    private final String softness = "Softness";
-//    private final String endurance = "Endurance";
+    private final String upperlimb = "Upperlimb";
+    private final String lowerlimb = "Lowerlimb";
+    private final String softness = "Softness";
+    private final String endurance = "Endurance";
+
+    //    private final String date = "date";
 
     private static final String databaseName = "LocalDB";
     private static final int databaseVersion = 1;
@@ -36,7 +36,11 @@ public class DBHelper extends SQLiteOpenHelper {
     // pet info
     private final String PetTableName = "PetInfo";
     private final String createPetTableSQL = "CREATE TABLE IF NOT EXISTS " + this.PetTableName
-            + " ( " + this.uid + " INTEGER PRIMARY KEY AUTOINCREMENT, " + this.experience + " INTEGER ) ;";
+            + " ( " + this.uid + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + this.upperlimb + " INTEGER,"
+            + this.lowerlimb + " INTEGER,"
+            + this.softness + " INTEGER,"
+            + this.endurance + " INTEGER ) ;";
 
     private final String deletePetTableSQL = "DROP TABLE IF EXISTS " + this.AccountTableName + ";";
 
@@ -100,22 +104,28 @@ public class DBHelper extends SQLiteOpenHelper {
         return accountList;
     }
 
-    public void insertToPet(int experience){
+    public void insertToPet(int upperlimb,int lowerlimb,int softness,int endurance){
         SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(this.experience,experience);
+        contentValues.put(this.upperlimb,upperlimb);
+        contentValues.put(this.lowerlimb,lowerlimb);
+        contentValues.put(this.softness,softness);
+        contentValues.put(this.endurance,endurance);
 
         long nowID = myLocalDB.insert(this.PetTableName,null,contentValues);
 
         Toast.makeText(this.nowContext,"new pet",Toast.LENGTH_SHORT).show();
     }
 
-    public void updateToPet(int id,int new_experience){
+    public void updateToPet(int id,int new_upperlimb,int new_lowerlimb,int new_softness,int new_endurance){
         SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(this.experience,new_experience);
+        contentValues.put(this.upperlimb,new_upperlimb);
+        contentValues.put(this.lowerlimb,new_lowerlimb);
+        contentValues.put(this.softness,new_softness);
+        contentValues.put(this.endurance,new_endurance);
 
         String[] argu = {String.valueOf(id)};
         int affectRow = myLocalDB.update(this.PetTableName,contentValues,this.uid + " = ? ",argu);
@@ -132,15 +142,18 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<PetInfo> petList = new ArrayList<>();
 
         SQLiteDatabase myLocalDB = this.getReadableDatabase();
-        String[] myColumn = {this.experience};
+        String[] myColumn = {this.upperlimb,this.lowerlimb,this.softness,this.endurance};
 
         Cursor myCursor = myLocalDB.query(this.PetTableName,myColumn,null,null,null,null,null);
 
         while(myCursor.moveToNext()){
-            int experience = myCursor.getInt(myCursor.getColumnIndex(this.experience));
+            int upperlimb = myCursor.getInt(myCursor.getColumnIndex(this.upperlimb));
+            int lowerlimb = myCursor.getInt(myCursor.getColumnIndex(this.lowerlimb));
+            int softness = myCursor.getInt(myCursor.getColumnIndex(this.softness));
+            int endurance = myCursor.getInt(myCursor.getColumnIndex(this.endurance));
 
             PetInfo petInfo = new PetInfo();
-            petInfo.init(experience);
+            petInfo.init(upperlimb,lowerlimb,softness,endurance);
             petList.add(petInfo);
         }
 
