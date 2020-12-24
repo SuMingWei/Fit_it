@@ -53,6 +53,18 @@ public class Diary extends AppCompatActivity {
         myDBHelper.insertToDiary("20201222",1,1,1,1);
         myDBHelper.insertToDiary("20201223",2,0,1,1);
         myDBHelper.insertToDiary("20201224",3,1,2,1);
+        myDBHelper.insertToDiary("20201225",1,3,2,1);
+        myDBHelper.insertToDiary("20201226",1,1,1,1);
+        myDBHelper.insertToDiary("20201227",2,0,1,1);
+        myDBHelper.insertToDiary("20201228",3,1,2,1);
+        myDBHelper.insertToDiary("20201229",1,3,2,1);
+        myDBHelper.insertToDiary("20201230",1,1,1,1);
+        myDBHelper.insertToDiary("20201231",2,0,1,1);
+        myDBHelper.insertToDiary("20210101",3,1,2,1);
+        myDBHelper.insertToDiary("20210102",1,3,2,1);
+        myDBHelper.insertToDiary("20210103",1,1,1,1);
+        myDBHelper.insertToDiary("20210104",2,0,1,1);
+        myDBHelper.insertToDiary("20210205",3,1,2,1);
     }
 
     public void setInit(){
@@ -61,6 +73,7 @@ public class Diary extends AppCompatActivity {
 
         if(diaryList.size() == 0){
             Toast.makeText(Diary.this,"尚未有紀錄",Toast.LENGTH_SHORT).show();
+            // for test
             insert();
         }else{
             this.spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,dateList);
@@ -114,10 +127,10 @@ public class Diary extends AppCompatActivity {
     public void generateDiary(String date,int upperlimb,int lowerlimb,int softness,int endurance){
         content.setText("\n今天是" + getDateFormat(date) + "\n"
                         + "我總共完成了\n"
-                        + "上肢肌力：" + String.valueOf(upperlimb * 5) + " 分鐘\n"
-                        + "下肢肌力：" + String.valueOf(lowerlimb * 5) + " 分鐘\n"
-                        + "柔軟訓練：" + String.valueOf(softness * 5) + " 分鐘\n"
-                        + "心肺訓練：" + String.valueOf(endurance * 5) + " 分鐘\n");
+                        + "上肢肌力：" + String.valueOf(upperlimb * 3) + " 分鐘\n"
+                        + "下肢肌力：" + String.valueOf(lowerlimb * 3) + " 分鐘\n"
+                        + "柔軟訓練：" + String.valueOf(softness * 3) + " 分鐘\n"
+                        + "心肺訓練：" + String.valueOf(endurance * 3) + " 分鐘\n");
     }
 
 }
