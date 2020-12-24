@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitit">
-        <activity android:name=".Upper1_exercise"></activity>
+        <activity android:name=".Endurance_exercise"></activity>
+        <activity android:name=".Softness_exercise" />
+        <activity android:name=".Lower_exercise" />
+        <activity android:name=".Upper1_exercise" />
         <activity android:name=".Mail" />
         <activity android:name=".Diary" />
         <activity android:name=".Mission" />

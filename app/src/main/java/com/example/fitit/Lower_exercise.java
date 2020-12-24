@@ -10,26 +10,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
-public class Upper1_exercise extends AppCompatActivity {
+public class Lower_exercise extends AppCompatActivity {
     private Button back_btn, start_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
-    private int sec = 60, min = 4, num=0;
-    private int[] Img = { R.drawable.exercise_upper1, R.drawable.exercise_upper2,
-                                R.drawable.exercise_upper3,R.drawable.exercise_upper4,
-                                R.drawable.exercise_upper3, R.drawable.exercise_upper5 };
+    private int min = 3, sec = 60, num = 0;
+    private int[] Img = {};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upper1_exercise);
+        setContentView(R.layout.activity_lower_exercise);
         findObject();
         clickBtnEvent();
     }
     public void findObject(){
-        exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
         start_btn = findViewById(R.id.start_btn);
         clock_txt = findViewById(R.id.clock_txt);
@@ -38,7 +34,7 @@ public class Upper1_exercise extends AppCompatActivity {
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { finish(); }
+            public void onClick(View v) {finish(); }
         });
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override

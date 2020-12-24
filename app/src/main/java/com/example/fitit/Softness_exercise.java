@@ -10,21 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Timer;
-import java.util.TimerTask;
 
-public class Upper1_exercise extends AppCompatActivity {
+public class Softness_exercise extends AppCompatActivity {
     private Button back_btn, start_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int sec = 60, min = 4, num=0;
-    private int[] Img = { R.drawable.exercise_upper1, R.drawable.exercise_upper2,
-                                R.drawable.exercise_upper3,R.drawable.exercise_upper4,
-                                R.drawable.exercise_upper3, R.drawable.exercise_upper5 };
+    private int[] Img = { };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upper1_exercise);
+        setContentView(R.layout.activity_softness_exercise);
         findObject();
         clickBtnEvent();
     }
@@ -78,19 +75,19 @@ public class Upper1_exercise extends AppCompatActivity {
     public void changePicture(){
 
         if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("擺動雙臂");
+            exercise_txt.setText("轉腰");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 2) {  num = 0; }
         }
         else if(min == 1 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("手臂外舉");
+            exercise_txt.setText("轉肩膀");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 4) {  num = 2; }
         }
         else{
-            exercise_txt.setText("手臂上舉");
+            exercise_txt.setText("起身弓箭步");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 6) {  num = 4; }

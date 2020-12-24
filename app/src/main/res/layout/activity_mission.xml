@@ -80,8 +80,9 @@
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/talk_form"
-            android:textSize="20dp"
-            android:text="一起來運動吧！"
+            android:textSize="17dp"
+            android:text="一起來運動吧！！
+            建議每項運動各做三次！"
             android:gravity="center"/>
 
     </LinearLayout>
