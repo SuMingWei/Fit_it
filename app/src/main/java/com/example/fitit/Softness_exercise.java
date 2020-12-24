@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Timer;
 
 public class Softness_exercise extends AppCompatActivity {
@@ -17,7 +19,13 @@ public class Softness_exercise extends AppCompatActivity {
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int sec = 60, min = 4, num=0;
-    private int[] Img = { };
+    private int[] Img = {R.drawable.exercise_softness1, R.drawable.exercise_softness2,
+                        R.drawable.exercise_softness3, R.drawable.exercise_softness4,
+                        R.drawable.exercise_softness5, R.drawable.exercise_softness6};
+    private DBHelper myDBHelper = new DBHelper(Softness_exercise.this);
+    private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
+    private ArrayList<PetInfo> petInfo = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +53,48 @@ public class Softness_exercise extends AppCompatActivity {
             }
         });
     }
+
+    public void getPetInfo(){
+        petInfo = myDBHelper.getPetInfo();
+        if(petInfo.size() == 0){
+            myDBHelper.insertToPet(0,0,0,0);
+            petInfo = myDBHelper.getPetInfo();
+        }
+    }
+
+    public void getDiaryList(){
+        diaryList = myDBHelper.getDiaryInfo();
+        if(diaryList.size() == 0){
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            diaryList = myDBHelper.getDiaryInfo();
+        }
+    }
+
+    public String getCurrentDate(){
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH)+1;
+        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        return String.valueOf(year) + String.valueOf(month) + String.valueOf(day);
+    }
+
+    public void updatePetInfo(){
+        getPetInfo();
+        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb(),
+                petInfo.get(0).getSoftness()+1,petInfo.get(0).getEndurance());
+    }
+
+    public void updateDiaryInfo(){
+        getDiaryList();
+        for(int i=0;i<diaryList.size();i++){
+            if(diaryList.get(i).getDate().equals(getCurrentDate())){
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb(),
+                        petInfo.get(0).getSoftness()+1,petInfo.get(0).getEndurance());
+                return;
+            }
+        }
+        myDBHelper.insertToDiary(getCurrentDate(),0,0,1,0);
+    }
     public void countDown(){
         new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -69,13 +119,16 @@ public class Softness_exercise extends AppCompatActivity {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
 
+                updatePetInfo();
+                updateDiaryInfo();
+
             }
         }.start();
     }
     public void changePicture(){
 
         if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("轉腰");
+            exercise_txt.setText("起身弓箭步");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 2) {  num = 0; }
@@ -87,7 +140,7 @@ public class Softness_exercise extends AppCompatActivity {
             if(num == 4) {  num = 2; }
         }
         else{
-            exercise_txt.setText("起身弓箭步");
+            exercise_txt.setText("轉腰");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 6) {  num = 4; }

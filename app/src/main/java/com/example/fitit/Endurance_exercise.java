@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Timer;
 
 public class Endurance_exercise extends AppCompatActivity {
@@ -17,7 +19,11 @@ public class Endurance_exercise extends AppCompatActivity {
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int sec = 60, min = 4, num=0;
-    private int[] Img = {};
+    private int[] Img = {R.drawable.exercise_endurance1, R.drawable.exercise_endurance2};
+
+    private DBHelper myDBHelper = new DBHelper(Endurance_exercise.this);
+    private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
+    private ArrayList<PetInfo> petInfo = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,48 @@ public class Endurance_exercise extends AppCompatActivity {
             }
         });
     }
+    public void getPetInfo(){
+        petInfo = myDBHelper.getPetInfo();
+        if(petInfo.size() == 0){
+            myDBHelper.insertToPet(0,0,0,0);
+            petInfo = myDBHelper.getPetInfo();
+        }
+    }
+
+    public void getDiaryList(){
+        diaryList = myDBHelper.getDiaryInfo();
+        if(diaryList.size() == 0){
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            diaryList = myDBHelper.getDiaryInfo();
+        }
+    }
+
+    public String getCurrentDate(){
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH)+1;
+        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        return String.valueOf(year) + String.valueOf(month) + String.valueOf(day);
+    }
+
+    public void updatePetInfo(){
+        getPetInfo();
+        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb(),
+                petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance()+1);
+    }
+
+    public void updateDiaryInfo(){
+        getDiaryList();
+        for(int i=0;i<diaryList.size();i++){
+            if(diaryList.get(i).getDate().equals(getCurrentDate())){
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb(),
+                        petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance()+1);
+                return;
+            }
+        }
+        myDBHelper.insertToDiary(getCurrentDate(),0,0,0,1);
+    }
+
     public void countDown(){
         new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -61,6 +109,8 @@ public class Endurance_exercise extends AppCompatActivity {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
 
+                updatePetInfo();
+                updateDiaryInfo();
             }
         }.start();
     }

@@ -65,7 +65,7 @@
             android:id="@+id/exercise_pic"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/dog_default" />
+            android:src="@drawable/exercise_endurance1" />
         <TextView
             android:id="@+id/exercise_txt"
             android:layout_marginTop="20dp"
