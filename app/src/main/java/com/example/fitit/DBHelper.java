@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private final String softness = "Softness";
     private final String endurance = "Endurance";
 
-    //    private final String date = "date";
+    private final String date = "date";
 
     private static final String databaseName = "LocalDB";
     private static final int databaseVersion = 1;
@@ -42,8 +42,17 @@ public class DBHelper extends SQLiteOpenHelper {
             + this.softness + " INTEGER,"
             + this.endurance + " INTEGER ) ;";
 
-    private final String deletePetTableSQL = "DROP TABLE IF EXISTS " + this.AccountTableName + ";";
+    private final String deletePetTableSQL = "DROP TABLE IF EXISTS " + this.PetTableName + ";";
+    // diary info
+    private final String DiaryTableName = "DiaryInfo";
+    private final String createDiaryTableSQL = "CREATE TABLE IF NOT EXISTS " + this.DiaryTableName
+            + " ( " + this.date + " VARCHAR(255),"
+            + this.upperlimb + " INTEGER,"
+            + this.lowerlimb + " INTEGER,"
+            + this.softness + " INTEGER,"
+            + this.endurance + " INTEGER ) ;";
 
+    private final String deleteDiaryTableSQL = "DROP TABLE IF EXISTS " + this.DiaryTableName + ";";
 
 
     public DBHelper(Context context){
@@ -56,6 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(this.createAccountTableSQL);
             db.execSQL(this.createPetTableSQL);
+            db.execSQL(this.createDiaryTableSQL);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -66,6 +76,7 @@ public class DBHelper extends SQLiteOpenHelper {
         try {
             db.execSQL(this.deleteAccountTableSQL);
             db.execSQL(this.deletePetTableSQL);
+            db.execSQL(this.deleteDiaryTableSQL);
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -159,6 +170,67 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return petList;
     }
+
+    public void insertToDiary(String date,int upperlimb,int lowerlimb,int softness,int endurance){
+        SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(this.date,date);
+        contentValues.put(this.upperlimb,upperlimb);
+        contentValues.put(this.lowerlimb,lowerlimb);
+        contentValues.put(this.softness,softness);
+        contentValues.put(this.endurance,endurance);
+
+        long nowID = myLocalDB.insert(this.DiaryTableName,null,contentValues);
+
+        Toast.makeText(this.nowContext,"新增日誌",Toast.LENGTH_SHORT).show();
+    }
+
+    public void updateToDiary(String date,int new_upperlimb,int new_lowerlimb,int new_softness,int new_endurance){
+        SQLiteDatabase myLocalDB = this.getReadableDatabase() ;
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(this.date,date);
+        contentValues.put(this.upperlimb,new_upperlimb);
+        contentValues.put(this.lowerlimb,new_lowerlimb);
+        contentValues.put(this.softness,new_softness);
+        contentValues.put(this.endurance,new_endurance);
+
+        String[] argu = {String.valueOf(date)};
+        int affectRow = myLocalDB.update(this.DiaryTableName,contentValues,this.date + " = ? ",argu);
+
+        if(affectRow == 0){
+            Toast.makeText(this.nowContext,"更新日誌失敗，請重新再試", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(this.nowContext,"更新日誌成功", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public ArrayList<DiaryInfo> getDiaryInfo(){
+        ArrayList<DiaryInfo> DiaryList = new ArrayList<>();
+
+        SQLiteDatabase myLocalDB = this.getReadableDatabase();
+        String[] myColumn = {this.date,this.upperlimb,this.lowerlimb,this.softness,this.endurance};
+
+        Cursor myCursor = myLocalDB.query(this.DiaryTableName,myColumn,null,null,null,null,null);
+
+        while(myCursor.moveToNext()){
+            String date = myCursor.getString(myCursor.getColumnIndex(this.date));
+            int upperlimb = myCursor.getInt(myCursor.getColumnIndex(this.upperlimb));
+            int lowerlimb = myCursor.getInt(myCursor.getColumnIndex(this.lowerlimb));
+            int softness = myCursor.getInt(myCursor.getColumnIndex(this.softness));
+            int endurance = myCursor.getInt(myCursor.getColumnIndex(this.endurance));
+
+            DiaryInfo diaryInfo = new DiaryInfo();
+            diaryInfo.init(date,upperlimb,lowerlimb,softness,endurance);
+            DiaryList.add(diaryInfo);
+        }
+
+        return DiaryList;
+    }
+
+
 
 
 }
