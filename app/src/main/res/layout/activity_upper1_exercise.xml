@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:textColor="@color/black"
-        android:text="上肢運動(一)"
+        android:text="上肢運動"
         android:background="@drawable/title_form"
         android:gravity="center"
         android:layout_marginLeft="15dp"
@@ -77,13 +77,12 @@
             android:id="@+id/clock_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5:00"
+            android:text="3:00"
             android:textSize="40dp"/>
         <Button
             android:id="@+id/start_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="開始"
             android:textSize="30dp"/>
     </LinearLayout>

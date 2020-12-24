@@ -105,24 +105,24 @@
             android:gravity="center"
             android:orientation="vertical">
             <Button
-                android:id="@+id/upperMuscle_btn1"
+                android:id="@+id/upperlimb_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/upper1"
-                android:text="上肢肌力(一)"
+                android:text="上肢肌力"
                 android:textSize="18dp"/>
             <Button
-                android:id="@+id/lowerMuscle_btn1"
+                android:id="@+id/lowerlimb_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/lower1"
-                android:text="下肢肌力(一)"
+                android:text="下肢肌力"
                 android:textSize="18dp" />
             <Button
                 android:id="@+id/softness_btn1"
@@ -133,16 +133,16 @@
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/softness1"
                 android:textSize="18dp"
-                android:text="柔軟訓練(一)"/>
+                android:text="柔軟訓練"/>
             <Button
-                android:id="@+id/indurance_btn1"
+                android:id="@+id/endurance_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/indurance1"
-                android:text="心肺訓練(一)"
+                android:text="心肺訓練"
                 android:textSize="18dp"/>
 
         </LinearLayout>
