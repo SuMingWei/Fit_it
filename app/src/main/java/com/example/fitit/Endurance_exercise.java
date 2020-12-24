@@ -28,6 +28,8 @@ public class Endurance_exercise extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_endurance_exercise);
+        findObject();
+        clickBtnEvent();
     }
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);

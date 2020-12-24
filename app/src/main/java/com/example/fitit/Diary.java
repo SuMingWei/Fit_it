@@ -69,6 +69,7 @@ public class Diary extends AppCompatActivity {
         myDBHelper.insertToDiary("20201222",1,1,1,1);
         myDBHelper.insertToDiary("20201223",2,0,1,1);
         myDBHelper.insertToDiary("20201224",3,1,2,1);
+        myDBHelper.updateToPet(1,35,25,30,20);
     }
 
     public void setInit(){
