@@ -49,14 +49,14 @@ public class Upper1_exercise extends AppCompatActivity {
         });
     }
     public void countDown(){
-        new CountDownTimer(121000, 1000) {
+        new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
                 min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
-                if(min == 1 && sec == 60){
+                if(min == 2 && sec == 00){
                     num = 2;
                 }
-                if(min == 0 && sec == 60){
+                if(min == 1 && sec == 00){
                     num = 4;
                 }
                 changePicture();

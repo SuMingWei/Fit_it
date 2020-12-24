@@ -17,7 +17,9 @@ public class Lower_exercise extends AppCompatActivity {
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int min = 3, sec = 60, num = 0;
-    private int[] Img = {};
+    private int[] Img = {R.drawable.exercise_lower1, R.drawable.exercise_lower2, R.drawable.exercise_lower1, R.drawable.exercise_lower3,
+                        R.drawable.exercise_lower4, R.drawable.exercise_lower5, R.drawable.exercise_lower6, R.drawable.exercise_lower7,
+                        R.drawable.exercise_lower8, R.drawable.exercise_lower9};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class Lower_exercise extends AppCompatActivity {
         clickBtnEvent();
     }
     public void findObject(){
+        exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
         start_btn = findViewById(R.id.start_btn);
         clock_txt = findViewById(R.id.clock_txt);
@@ -45,15 +48,15 @@ public class Lower_exercise extends AppCompatActivity {
         });
     }
     public void countDown(){
-        new CountDownTimer(121000, 1000) {
+        new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
                 min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
-                if(min == 1 && sec == 60){
-                    num = 2;
-                }
-                if(min == 0 && sec == 60){
+                if(min == 2 && sec == 00){
                     num = 4;
+                }
+                if(min == 1 && sec == 00){
+                    num = 6;
                 }
                 changePicture();
                 if(sec>=0 && sec<10) {
@@ -74,22 +77,22 @@ public class Lower_exercise extends AppCompatActivity {
     public void changePicture(){
 
         if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("擺動雙臂");
+            exercise_txt.setText("抬起左右腿");
             exercise_pic.setImageResource(Img[num]);
             num++;
-            if(num == 2) {  num = 0; }
+            if(num == 4) {  num = 0; }
         }
         else if(min == 1 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("手臂外舉");
+            exercise_txt.setText("左右腿上舉");
             exercise_pic.setImageResource(Img[num]);
             num++;
-            if(num == 4) {  num = 2; }
+            if(num == 8) {  num = 4; }
         }
         else{
-            exercise_txt.setText("手臂上舉");
+            exercise_txt.setText("踮起腳尖");
             exercise_pic.setImageResource(Img[num]);
             num++;
-            if(num == 6) {  num = 4; }
+            if(num == 10) {  num = 8; }
         }
     }
 }

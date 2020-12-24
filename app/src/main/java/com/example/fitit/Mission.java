@@ -31,6 +31,30 @@ public class Mission extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        lowerlimb_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, Lower_exercise.class);
+                startActivity(intent);
+            }
+        });
+        softness_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, Softness_exercise.class);
+                startActivity(intent);
+            }
+        });
+        endurance_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, Endurance_exercise.class);
+                startActivity(intent);
+            }
+        });
     }
     public void findObject(){
         back_btn = findViewById(R.id.back_btn);
