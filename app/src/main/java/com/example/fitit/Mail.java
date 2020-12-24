@@ -130,7 +130,7 @@ public class Mail extends AppCompatActivity {
 
         for(int i=0;i<this.weekList.size();i++){
             WeekInfo weekInfo = this.weekList.get(i);
-            String mailInfo = weekInfo.getDateStart() + "週活動量分析";
+            String mailInfo = weekInfo.getDateStart() + "週分析";
             totalMailData.add(mailInfo);
         }
         return totalMailData;

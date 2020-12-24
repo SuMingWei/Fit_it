@@ -8,17 +8,29 @@
     tools:context=".Home">
 
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_35"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_50"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.50" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vertical_30"
+        android:id="@+id/vertical_20"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.30" />
+        app:layout_constraintGuide_percent="0.20" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_35"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -172,7 +184,17 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="@id/horizontal_50"
-        app:layout_constraintLeft_toLeftOf="@id/vertical_30"/>
+        app:layout_constraintLeft_toLeftOf="@id/vertical_20"/>
+
+    <TextView
+        android:id="@+id/dialog"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text=""
+        android:background="@drawable/talk_form"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_50"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_35"/>
 
     <LinearLayout
         android:layout_width="match_parent"
