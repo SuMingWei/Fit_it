@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -21,6 +25,11 @@ public class Upper1_exercise extends AppCompatActivity {
     private int[] Img = { R.drawable.exercise_upper1, R.drawable.exercise_upper2,
                                 R.drawable.exercise_upper3,R.drawable.exercise_upper4,
                                 R.drawable.exercise_upper3, R.drawable.exercise_upper5 };
+
+    private DBHelper myDBHelper = new DBHelper(Upper1_exercise.this);
+    private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
+    private ArrayList<PetInfo> petInfo = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +37,7 @@ public class Upper1_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
+
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -35,6 +45,49 @@ public class Upper1_exercise extends AppCompatActivity {
         clock_txt = findViewById(R.id.clock_txt);
         exercise_txt = findViewById(R.id.exercise_txt);
     }
+
+    public void getPetInfo(){
+        petInfo = myDBHelper.getPetInfo();
+        if(petInfo.size() == 0){
+            myDBHelper.insertToPet(0,0,0,0);
+            petInfo = myDBHelper.getPetInfo();
+        }
+    }
+
+    public void getDiaryList(){
+        diaryList = myDBHelper.getDiaryInfo();
+        if(diaryList.size() == 0){
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            diaryList = myDBHelper.getDiaryInfo();
+        }
+    }
+
+    public String getCurrentDate(){
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH)+1;
+        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        return String.valueOf(year) + String.valueOf(month) + String.valueOf(day);
+    }
+
+    public void updatePetInfo(){
+        getPetInfo();
+        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb()+1,petInfo.get(0).getLowerlimb(),
+                petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance());
+    }
+
+    public void updateDiaryInfo(){
+        getDiaryList();
+        for(int i=0;i<diaryList.size();i++){
+            if(diaryList.get(i).getDate().equals(getCurrentDate())){
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb()+1,petInfo.get(0).getLowerlimb(),
+                        petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance());
+                return;
+            }
+        }
+        myDBHelper.insertToDiary(getCurrentDate(),1,0,0,0);
+    }
+
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +125,8 @@ public class Upper1_exercise extends AppCompatActivity {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
 
+                updatePetInfo();
+                updateDiaryInfo();
             }
         }.start();
     }

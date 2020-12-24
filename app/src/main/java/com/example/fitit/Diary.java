@@ -49,22 +49,26 @@ public class Diary extends AppCompatActivity {
     }
 
     public void insert(){
+        myDBHelper.insertToDiary("20201205",1,3,2,1);
+        myDBHelper.insertToDiary("20201206",1,1,1,1);
+        myDBHelper.insertToDiary("20201207",2,0,1,1);
+        myDBHelper.insertToDiary("20201208",3,1,2,1);
+        myDBHelper.insertToDiary("20201209",1,3,2,1);
+        myDBHelper.insertToDiary("20201210",1,1,1,1);
+        myDBHelper.insertToDiary("20201211",2,0,1,1);
+        myDBHelper.insertToDiary("20201212",3,1,2,1);
+        myDBHelper.insertToDiary("20201213",1,3,2,1);
+        myDBHelper.insertToDiary("20201214",1,1,1,1);
+        myDBHelper.insertToDiary("20201215",2,0,1,1);
+        myDBHelper.insertToDiary("20201216",3,1,2,1);
+        myDBHelper.insertToDiary("20201217",1,3,2,1);
+        myDBHelper.insertToDiary("20201218",1,1,1,1);
+        myDBHelper.insertToDiary("20201219",2,0,1,1);
+        myDBHelper.insertToDiary("20201220",3,1,2,1);
         myDBHelper.insertToDiary("20201221",1,3,2,1);
         myDBHelper.insertToDiary("20201222",1,1,1,1);
         myDBHelper.insertToDiary("20201223",2,0,1,1);
         myDBHelper.insertToDiary("20201224",3,1,2,1);
-        myDBHelper.insertToDiary("20201225",1,3,2,1);
-        myDBHelper.insertToDiary("20201226",1,1,1,1);
-        myDBHelper.insertToDiary("20201227",2,0,1,1);
-        myDBHelper.insertToDiary("20201228",3,1,2,1);
-        myDBHelper.insertToDiary("20201229",1,3,2,1);
-        myDBHelper.insertToDiary("20201230",1,1,1,1);
-        myDBHelper.insertToDiary("20201231",2,0,1,1);
-        myDBHelper.insertToDiary("20210101",3,1,2,1);
-        myDBHelper.insertToDiary("20210102",1,3,2,1);
-        myDBHelper.insertToDiary("20210103",1,1,1,1);
-        myDBHelper.insertToDiary("20210104",2,0,1,1);
-        myDBHelper.insertToDiary("20210205",3,1,2,1);
     }
 
     public void setInit(){
