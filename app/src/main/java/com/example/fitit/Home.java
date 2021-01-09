@@ -12,15 +12,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Random;
 
 public class Home extends AppCompatActivity {
-    private TextView username,upperlimb_tv,lowerlimb_tv,softness_tv,endurance_tv,dialog_tv;
-    private ImageView pet;
+    private TextView username,level,level_value,dialog_tv;
+    private ImageView pet,pet_front,appearance1,appearance2,appearance3;
+    private ProgressBar level_bar;
     private Button mission_btn,diary_btn,mail_btn;
 
     private DBHelper myDBHelper = new DBHelper(Home.this);
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
+    private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class Home extends AppCompatActivity {
 
         findObject();
         setUsername();
+        updatePetInfo();
+        newDiaryInfo();
         buttonClickEvent();
     }
 
@@ -40,10 +45,10 @@ public class Home extends AppCompatActivity {
 
     public void findObject(){
         username = findViewById(R.id.username);
-        upperlimb_tv = findViewById(R.id.upperlimb);
-        lowerlimb_tv = findViewById(R.id.lowerlimb);
-        softness_tv = findViewById(R.id.softness);
-        endurance_tv = findViewById(R.id.endurance);
+        level = findViewById(R.id.level);
+        level_value = findViewById(R.id.value);
+        level_bar = findViewById(R.id.level_bar);
+        pet_front = findViewById(R.id.pet_front);
         pet = findViewById(R.id.pet);
         dialog_tv = findViewById(R.id.dialog);
         mission_btn = findViewById(R.id.mission_btn);
@@ -65,12 +70,24 @@ public class Home extends AppCompatActivity {
         int num = (int)(Math.random()*3);
         dialog_tv.setText(dialog[num]);
     }
+    public void changeImage(int level){
+        if(level < 5){
+            pet.setImageDrawable(getResources().getDrawable(R.drawable.dog_walk1));
+        }else if(level >=5 && level <10){
+            pet.setImageDrawable(getResources().getDrawable(R.drawable.doggypron));
+        }else{
+            pet.setImageDrawable(getResources().getDrawable(R.drawable.doggypronpron));
+        }
+    }
 
-    public void setValue(int upperlimb,int lowerlimb,int softness,int endurance){
-        upperlimb_tv.setText(String.valueOf(upperlimb));
-        lowerlimb_tv.setText(String.valueOf(lowerlimb));
-        softness_tv.setText(String.valueOf(softness));
-        endurance_tv.setText(String.valueOf(endurance));
+    public void setLevel(int upperlimb,int lowerlimb,int softness,int endurance){
+        int total = upperlimb + lowerlimb + softness + endurance;
+        int lv = 1 + (total/150);
+        int exp = total % 150;
+        level.setText("Lv." + String.valueOf(lv));
+        level_value.setText(String.valueOf(exp) + "/150");
+        level_bar.setProgress(exp);
+        changeImage(lv);
     }
 
     public void updatePetInfo(){
@@ -79,14 +96,54 @@ public class Home extends AppCompatActivity {
         petInfo = myDBHelper.getPetInfo();
         if(petInfo.size() == 0){
             myDBHelper.insertToPet(0,0,0,0);
-            setValue(0,0,0,0);
+            setLevel(0,0,0,0);
         }else{
-            setValue(petInfo.get(0).getUpperlimb()*3,petInfo.get(0).getLowerlimb()*3,
+            setLevel(petInfo.get(0).getUpperlimb()*3,petInfo.get(0).getLowerlimb()*3,
                     petInfo.get(0).getSoftness()*3,petInfo.get(0).getEndurance()*3);
         }
     }
 
+    public String getCurrentDate(){
+        Calendar calendar = Calendar.getInstance();
+        int year=calendar.get(Calendar.YEAR);
+        int month=calendar.get(Calendar.MONTH)+1;
+        int day=calendar.get(Calendar.DAY_OF_MONTH);
+        String monthstr = String.valueOf(month);
+        if(month < 10){
+            monthstr = "0"+monthstr;
+        }
+        String daystr = String.valueOf(day);
+        if(day < 10){
+            daystr = "0"+daystr;
+        }
+        return String.valueOf(year) + monthstr + daystr;
+    }
+
+    public void getDiaryList(){
+        diaryList = myDBHelper.getDiaryInfo();
+        if(diaryList.size() == 0){
+            insert();
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            diaryList = myDBHelper.getDiaryInfo();
+        }
+    }
+
+    public void newDiaryInfo(){
+        getDiaryList();
+        if(!diaryList.get(diaryList.size()-1).getDate().equals(getCurrentDate())){
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+        }
+    }
+
     public void buttonClickEvent(){
+        pet_front.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Home.this,Attribute.class);
+                startActivity(intent);
+            }
+        });
         mission_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +170,30 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void insert(){
+        myDBHelper.insertToDiary("20201205",1,3,2,1);
+        myDBHelper.insertToDiary("20201206",1,1,1,1);
+        myDBHelper.insertToDiary("20201207",2,0,1,1);
+        myDBHelper.insertToDiary("20201208",3,1,2,1);
+        myDBHelper.insertToDiary("20201209",1,3,2,1);
+        myDBHelper.insertToDiary("20201210",1,1,1,1);
+        myDBHelper.insertToDiary("20201211",2,0,1,1);
+        myDBHelper.insertToDiary("20201212",3,1,2,1);
+        myDBHelper.insertToDiary("20201213",1,3,2,1);
+        myDBHelper.insertToDiary("20201214",1,1,1,1);
+        myDBHelper.insertToDiary("20201215",2,0,1,1);
+        myDBHelper.insertToDiary("20201216",3,1,2,1);
+        myDBHelper.insertToDiary("20201217",1,3,2,1);
+        myDBHelper.insertToDiary("20201218",1,1,1,1);
+        myDBHelper.insertToDiary("20201219",2,0,1,1);
+        myDBHelper.insertToDiary("20201220",3,1,2,1);
+        myDBHelper.insertToDiary("20201221",1,3,2,1);
+        myDBHelper.insertToDiary("20201222",1,1,1,1);
+        myDBHelper.insertToDiary("20201223",2,0,1,1);
+        myDBHelper.insertToDiary("20201224",3,1,2,1);
+        myDBHelper.updateToPet(1,35,25,30,20);
     }
 
 
