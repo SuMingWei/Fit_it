@@ -88,8 +88,8 @@ public class Upper1_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb()+1,petInfo.get(0).getLowerlimb(),
-                        petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance());
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb()+1,diaryList.get(0).getLowerlimb(),
+                        diaryList.get(0).getSoftness(),diaryList.get(0).getEndurance());
                 return;
             }
         }
