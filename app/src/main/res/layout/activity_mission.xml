@@ -152,7 +152,7 @@
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/indurance1"
+                android:drawableLeft="@drawable/upper3"
                 android:text="彈力繩\n上肢訓練"
                 android:textSize="18dp"/>
             <Button
@@ -162,7 +162,7 @@
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/indurance1"
+                android:drawableLeft="@drawable/lower2"
                 android:text="彈力繩\n下肢運動"
                 android:textSize="18dp"/>
 

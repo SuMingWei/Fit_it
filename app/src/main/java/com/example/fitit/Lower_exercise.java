@@ -104,7 +104,7 @@ public class Lower_exercise extends AppCompatActivity {
         myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0);
     }
     public void countDown(){
-        new CountDownTimer(121000, 1000) {
+        new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
                 min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
