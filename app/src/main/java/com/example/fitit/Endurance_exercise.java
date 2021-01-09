@@ -93,8 +93,8 @@ public class Endurance_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb(),diaryList.get(0).getLowerlimb(),
-                        diaryList.get(0).getSoftness(),diaryList.get(0).getEndurance()+1);
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb(),
+                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance()+1);
                 return;
             }
         }

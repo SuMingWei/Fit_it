@@ -96,8 +96,8 @@ public class Lower_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(0).getUpperlimb(),diaryList.get(0).getLowerlimb()+1,
-                        diaryList.get(0).getSoftness(),diaryList.get(0).getEndurance());
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb()+1,
+                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance());
                 return;
             }
         }
