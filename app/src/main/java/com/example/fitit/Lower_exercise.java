@@ -75,7 +75,15 @@ public class Lower_exercise extends AppCompatActivity {
         int year=calendar.get(Calendar.YEAR);
         int month=calendar.get(Calendar.MONTH)+1;
         int day=calendar.get(Calendar.DAY_OF_MONTH);
-        return String.valueOf(year) + String.valueOf(month) + String.valueOf(day);
+        String monthstr = String.valueOf(month);
+        if(month < 10){
+            monthstr = "0"+monthstr;
+        }
+        String daystr = String.valueOf(day);
+        if(day < 10){
+            daystr = "0"+daystr;
+        }
+        return String.valueOf(year) + monthstr + daystr;
     }
 
     public void updatePetInfo(){
