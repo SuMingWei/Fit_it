@@ -11,6 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
@@ -123,7 +125,6 @@ public class Home extends AppCompatActivity {
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
             insert();
-            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }
@@ -131,8 +132,71 @@ public class Home extends AppCompatActivity {
     public void newDiaryInfo(){
         getDiaryList();
         if(!diaryList.get(diaryList.size()-1).getDate().equals(getCurrentDate())){
-            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            fillEmptyDiary();
         }
+    }
+
+    public void fillEmptyDiary(){
+        int last_date = Integer.parseInt(diaryList.get(diaryList.size()-1).getDate());
+
+        long days = 0;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        try {
+            long time1 = simpleDateFormat.parse(diaryList.get(diaryList.size()-1).getDate()).getTime();
+            long time2 = simpleDateFormat.parse(getCurrentDate()).getTime();
+            days = (int) ((time2 - time1) / (24 * 60 * 60 * 1000));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Toast.makeText(this,String.valueOf(days),Toast.LENGTH_SHORT).show();
+
+        for(int i=0;i<days;i++){
+            int date = last_date + 1;
+            int year = date / 10000;
+            int month_day = (date % 10000);
+            String new_date = "";
+            if(month_day == 1232){
+                year += 1;
+                new_date = "0101";
+            }else{
+                if(month_day < 1000){
+                    new_date = check_last("0" + String.valueOf(month_day),year);
+                }else {
+                    new_date = check_last(String.valueOf(month_day), year);
+                }
+            }
+            new_date = String.valueOf(year) + new_date;
+            last_date = Integer.parseInt(new_date);
+            myDBHelper.insertToDiary(new_date,0,0,0,0);
+        }
+    }
+
+    public String check_last(String mmdd, int yyyy){
+        boolean special_year = false;
+        if((yyyy % 4 == 0) && (yyyy % 100 != 0)){
+            special_year = true;
+        }
+        if(special_year == true){
+            if(mmdd.equals("0230")){
+                return "0301";
+            }
+        }else{
+            if(mmdd.equals("0229")){
+                return "0301";
+            }
+        }
+        if(mmdd.equals("0132"))return "0201";
+        if(mmdd.equals("0332"))return "0401";
+        if(mmdd.equals("0431"))return "0501";
+        if(mmdd.equals("0532"))return "0601";
+        if(mmdd.equals("0631"))return "0701";
+        if(mmdd.equals("0732"))return "0801";
+        if(mmdd.equals("0832"))return "0901";
+        if(mmdd.equals("0931"))return "1001";
+        if(mmdd.equals("1032"))return "1101";
+        if(mmdd.equals("1131"))return "1201";
+
+        return mmdd;
     }
 
     public void buttonClickEvent(){

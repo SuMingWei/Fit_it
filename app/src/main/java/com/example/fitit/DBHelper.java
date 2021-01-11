@@ -126,7 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         long nowID = myLocalDB.insert(this.PetTableName,null,contentValues);
 
-        Toast.makeText(this.nowContext,"new pet",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.nowContext,"新寵物",Toast.LENGTH_SHORT).show();
     }
 
     public void updateToPet(int id,int new_upperlimb,int new_lowerlimb,int new_softness,int new_endurance){
@@ -183,7 +183,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         long nowID = myLocalDB.insert(this.DiaryTableName,null,contentValues);
 
-        Toast.makeText(this.nowContext,"新增日誌",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this.nowContext,"新增日誌",Toast.LENGTH_SHORT).show();
     }
 
     public void updateToDiary(String date,int new_upperlimb,int new_lowerlimb,int new_softness,int new_endurance){
