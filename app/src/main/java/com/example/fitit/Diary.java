@@ -48,38 +48,12 @@ public class Diary extends AppCompatActivity {
         });
     }
 
-    public void insert(){
-        myDBHelper.insertToDiary("20201205",1,3,2,1);
-        myDBHelper.insertToDiary("20201206",1,1,1,1);
-        myDBHelper.insertToDiary("20201207",2,0,1,1);
-        myDBHelper.insertToDiary("20201208",3,1,2,1);
-        myDBHelper.insertToDiary("20201209",1,3,2,1);
-        myDBHelper.insertToDiary("20201210",1,1,1,1);
-        myDBHelper.insertToDiary("20201211",2,0,1,1);
-        myDBHelper.insertToDiary("20201212",3,1,2,1);
-        myDBHelper.insertToDiary("20201213",1,3,2,1);
-        myDBHelper.insertToDiary("20201214",1,1,1,1);
-        myDBHelper.insertToDiary("20201215",2,0,1,1);
-        myDBHelper.insertToDiary("20201216",3,1,2,1);
-        myDBHelper.insertToDiary("20201217",1,3,2,1);
-        myDBHelper.insertToDiary("20201218",1,1,1,1);
-        myDBHelper.insertToDiary("20201219",2,0,1,1);
-        myDBHelper.insertToDiary("20201220",3,1,2,1);
-        myDBHelper.insertToDiary("20201221",1,3,2,1);
-        myDBHelper.insertToDiary("20201222",1,1,1,1);
-        myDBHelper.insertToDiary("20201223",2,0,1,1);
-        myDBHelper.insertToDiary("20201224",3,1,2,1);
-        myDBHelper.updateToPet(1,35,25,30,20);
-    }
-
     public void setInit(){
         diaryList = myDBHelper.getDiaryInfo();
         dateList = this.getDateList();
 
         if(diaryList.size() == 0){
             Toast.makeText(Diary.this,"尚未有紀錄",Toast.LENGTH_SHORT).show();
-            // for test
-            insert();
         }else{
             this.spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,dateList);
             date_spinner.setAdapter(spinnerAdapter);
