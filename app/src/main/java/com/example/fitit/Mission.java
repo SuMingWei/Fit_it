@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Mission extends AppCompatActivity {
-    private Button upperlimb_btn1, lowerlimb_btn1, softness_btn1, endurance_btn1, back_btn;
+    private Button upperlimb_btn1, lowerlimb_btn1, softness_btn1, endurance_btn1, back_btn, ropeExe1_btn, ropeExe2_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +55,22 @@ public class Mission extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        ropeExe1_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, UpperRope_exercise.class);
+                startActivity(intent);
+            }
+        });
+        ropeExe2_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, LowerRope_exercise.class);
+                startActivity(intent);
+            }
+        });
     }
     public void findObject(){
         back_btn = findViewById(R.id.back_btn);
@@ -62,5 +78,7 @@ public class Mission extends AppCompatActivity {
         lowerlimb_btn1 = findViewById(R.id.lowerlimb_btn1);
         softness_btn1 = findViewById(R.id.softness_btn1);
         endurance_btn1 = findViewById(R.id.endurance_btn1);
+        ropeExe1_btn = findViewById(R.id.ropeExe1_btn);
+        ropeExe2_btn = findViewById(R.id.ropeExe2_btn);
     }
 }

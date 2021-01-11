@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 
-public class UpperRope_exercise extends AppCompatActivity {
+public class LowerRope_exercise extends AppCompatActivity {
     private Button back_btn, start_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int sec = 60, min = 4, num=0;
-    private int[] Img = {R.drawable.upper_rope1, R.drawable.upper_rope2,
-                        R.drawable.upper_rope1, R.drawable.upper_rope5,
-                        R.drawable.upper_rope3, R.drawable.upper_rope4};
+    private int[] Img = {R.drawable.lower_rope1, R.drawable.lower_rope2,
+            R.drawable.lower_rope1, R.drawable.lower_rope3,
+            R.drawable.lower_rope4, R.drawable.lower_rope5};
 
-    private DBHelper myDBHelper = new DBHelper(UpperRope_exercise.this);
+    private DBHelper myDBHelper = new DBHelper(LowerRope_exercise.this);
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     @Override
@@ -87,7 +87,7 @@ public class UpperRope_exercise extends AppCompatActivity {
 
     public void updatePetInfo(){
         getPetInfo();
-        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb()+1,petInfo.get(0).getLowerlimb(),
+        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb()+1,
                 petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance());
     }
 
@@ -95,12 +95,12 @@ public class UpperRope_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb()+1,diaryList.get(i).getLowerlimb(),
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb()+1,
                         diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance());
                 return;
             }
         }
-        myDBHelper.insertToDiary(getCurrentDate(),1,0,0,0);
+        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0);
     }
 
     public void countDown(){
@@ -129,19 +129,19 @@ public class UpperRope_exercise extends AppCompatActivity {
     public void changePicture(){
 
         if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("腳踩彈力繩外拉");
+            exercise_txt.setText("向後伸展彈力繩");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 2) {  num = 0; }
         }
         else if(min == 1 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("腳踩彈力繩上拉");
+            exercise_txt.setText("腳勾伸展彈力繩");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 4) {  num = 2; }
         }
         else{
-            exercise_txt.setText("彈力繩前拉");
+            exercise_txt.setText("外側伸展彈力繩");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 6) {  num = 4; }

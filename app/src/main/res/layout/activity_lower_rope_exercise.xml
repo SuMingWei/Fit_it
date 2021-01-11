@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:textColor="@color/black"
-        android:text="彈力繩上肢運動"
+        android:text="彈力繩下肢運動"
         android:background="@drawable/title_form"
         android:gravity="center"
         android:layout_marginLeft="15dp"
