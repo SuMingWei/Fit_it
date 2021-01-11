@@ -59,7 +59,7 @@ public class Mission extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Mission.this, UpperRope_exercise.class);
+                intent.setClass(Mission.this, upperRope_exercise.class);
                 startActivity(intent);
             }
         });
@@ -67,7 +67,7 @@ public class Mission extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(Mission.this, LowerRope_exercise.class);
+                intent.setClass(Mission.this, lowerRope_exercise.class);
                 startActivity(intent);
             }
         });

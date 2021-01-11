@@ -13,26 +13,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 
-public class LowerRope_exercise extends AppCompatActivity {
+public class lowerRope_exercise extends AppCompatActivity {
     private Button back_btn, start_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
     private int sec = 60, min = 4, num=0;
-    private int[] Img = {R.drawable.lower_rope1, R.drawable.lower_rope2,
-            R.drawable.lower_rope1, R.drawable.lower_rope3,
-            R.drawable.lower_rope4, R.drawable.lower_rope5};
+    private int[] Img = { R.drawable.lower_rope1, R.drawable.lower_rope2,
+            R.drawable.lower_rope1,R.drawable.lower_rope3,
+            R.drawable.lower_rope4, R.drawable.lower_rope5 };
 
-    private DBHelper myDBHelper = new DBHelper(LowerRope_exercise.this);
+    private DBHelper myDBHelper = new DBHelper(lowerRope_exercise.this);
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lower_rope_exercise);
+        setContentView(R.layout.activity_lower_rope_exercise2);
         findObject();
         clickBtnEvent();
     }
+
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -40,19 +42,7 @@ public class LowerRope_exercise extends AppCompatActivity {
         clock_txt = findViewById(R.id.clock_txt);
         exercise_txt = findViewById(R.id.exercise_txt);
     }
-    public void clickBtnEvent(){
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { finish(); }
-        });
-        start_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                start_btn.setVisibility(View.INVISIBLE);
-                countDown();
-            }
-        });
-    }
+
     public void getPetInfo(){
         petInfo = myDBHelper.getPetInfo();
         if(petInfo.size() == 0){
@@ -87,7 +77,7 @@ public class LowerRope_exercise extends AppCompatActivity {
 
     public void updatePetInfo(){
         getPetInfo();
-        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb(),petInfo.get(0).getLowerlimb()+1,
+        myDBHelper.updateToPet(1,petInfo.get(0).getUpperlimb()+1,petInfo.get(0).getLowerlimb(),
                 petInfo.get(0).getSoftness(),petInfo.get(0).getEndurance());
     }
 
@@ -95,19 +85,38 @@ public class LowerRope_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb()+1,
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb()+1,diaryList.get(i).getLowerlimb(),
                         diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance());
                 return;
             }
         }
-        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0);
+        myDBHelper.insertToDiary(getCurrentDate(),1,0,0,0);
     }
 
+    public void clickBtnEvent(){
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { finish(); }
+        });
+        start_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_btn.setVisibility(View.INVISIBLE);
+                countDown();
+            }
+        });
+    }
     public void countDown(){
         new CountDownTimer(180000, 1000) {
             public void onTick(long millisUntilFinished) {
                 min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
+                if(min == 2 && sec == 00){
+                    num = 2;
+                }
+                if(min == 1 && sec == 00){
+                    num = 4;
+                }
                 changePicture();
                 if(sec>=0 && sec<10) {
                     clock_txt.setText( String.valueOf(min)+":0"+String.valueOf(sec)); }
@@ -129,22 +138,23 @@ public class LowerRope_exercise extends AppCompatActivity {
     public void changePicture(){
 
         if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("向後伸展彈力繩");
+            exercise_txt.setText("彈力繩向後拉開");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 2) {  num = 0; }
         }
         else if(min == 1 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("腳勾伸展彈力繩");
+            exercise_txt.setText("彈力繩向後勾起");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 4) {  num = 2; }
         }
         else{
-            exercise_txt.setText("外側伸展彈力繩");
+            exercise_txt.setText("彈力繩外側拉開");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 6) {  num = 4; }
         }
     }
+
 }
