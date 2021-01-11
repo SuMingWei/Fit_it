@@ -18,8 +18,8 @@ import java.util.Calendar;
 import java.util.Random;
 
 public class Home extends AppCompatActivity {
-    private TextView username,level,level_value,dialog_tv;
-    private ImageView pet,pet_front,appearance1,appearance2,appearance3;
+    private TextView username,level,level_value,dialog_tv,closeness_tv;
+    private ImageView pet,pet_front;
     private ProgressBar level_bar;
     private Button mission_btn,diary_btn,mail_btn;
 
@@ -36,6 +36,7 @@ public class Home extends AppCompatActivity {
         setUsername();
         updatePetInfo();
         newDiaryInfo();
+        setCloseness();
         buttonClickEvent();
     }
 
@@ -43,6 +44,8 @@ public class Home extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         updatePetInfo();
+        newDiaryInfo();
+        setCloseness();
     }
 
     public void findObject(){
@@ -50,6 +53,7 @@ public class Home extends AppCompatActivity {
         level = findViewById(R.id.level);
         level_value = findViewById(R.id.value);
         level_bar = findViewById(R.id.level_bar);
+        closeness_tv = findViewById(R.id.closeness);
         pet_front = findViewById(R.id.pet_front);
         pet = findViewById(R.id.pet);
         dialog_tv = findViewById(R.id.dialog);
@@ -67,9 +71,10 @@ public class Home extends AppCompatActivity {
         String dialog[] = {
                 "\n肌力訓練：\n可以強化骨頭和肌肉，\n防止因跌倒而骨折。\n",
                 "\n柔軟訓練：\n可以訓練平衡，預防跌倒，\n也可以防止肌肉僵化。\n",
-                "\n心肺訓練：\n可以提升心血管健康，\n增加全身代謝量\n"};
+                "\n心肺訓練：\n可以提升心血管健康，\n增加全身代謝量\n",
+                "\n每日運動可增加寵物好感度\n"};
 
-        int num = (int)(Math.random()*3);
+        int num = (int)(Math.random()*4);
         dialog_tv.setText(dialog[num]);
     }
     public void changeImage(int level){
@@ -105,6 +110,25 @@ public class Home extends AppCompatActivity {
         }
     }
 
+    public void setCloseness(){
+        if(diaryList.size() < 2){
+            closeness_tv.setText("好感度： 普通");
+            return;
+        }
+        DiaryInfo yesInfo = diaryList.get(diaryList.size()-2);
+        DiaryInfo todayInfo = diaryList.get(diaryList.size()-1);
+        int yesExe = yesInfo.getUpperlimb()+yesInfo.getLowerlimb()+yesInfo.getSoftness()+yesInfo.getEndurance();
+        int todayExe = todayInfo.getUpperlimb()+todayInfo.getLowerlimb()+todayInfo.getSoftness()+todayInfo.getEndurance();
+
+        if(yesExe == 0 && todayExe == 0){
+            closeness_tv.setText("好感度： 陌生");
+        }else if((yesExe > 0 && todayExe == 0) || (yesExe == 0 && todayExe > 0)){
+            closeness_tv.setText("好感度： 普通");
+        }else {
+            closeness_tv.setText("好感度： 親密");
+        }
+    }
+
     public String getCurrentDate(){
         Calendar calendar = Calendar.getInstance();
         int year=calendar.get(Calendar.YEAR);
@@ -125,6 +149,7 @@ public class Home extends AppCompatActivity {
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
             insert();
+            //myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }
@@ -148,7 +173,7 @@ public class Home extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Toast.makeText(this,String.valueOf(days),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,String.valueOf(days),Toast.LENGTH_SHORT).show();
 
         for(int i=0;i<days;i++){
             int date = last_date + 1;
@@ -257,7 +282,11 @@ public class Home extends AppCompatActivity {
         myDBHelper.insertToDiary("20201222",1,1,1,1);
         myDBHelper.insertToDiary("20201223",2,0,1,1);
         myDBHelper.insertToDiary("20201224",3,1,2,1);
-        myDBHelper.updateToPet(1,35,25,30,20);
+        myDBHelper.insertToDiary("20201225",3,3,2,3);
+        myDBHelper.insertToDiary("20201226",3,3,3,3);
+        myDBHelper.insertToDiary("20201227",12,13,11,13);
+        myDBHelper.insertToDiary("20201228",13,13,12,13);
+        myDBHelper.updateToPet(1,66,57,58,52);
     }
 
 
