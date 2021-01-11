@@ -106,6 +106,16 @@
             android:gravity="center"
             android:orientation="vertical">
             <Button
+                android:id="@+id/Demo_btn"
+                android:layout_width="250dp"
+                android:layout_height="100dp"
+                android:drawablePadding="-50dp"
+                android:paddingLeft="8dp"
+                android:gravity="left|center_vertical"
+                android:drawableLeft="@drawable/upper1"
+                android:text="Demo"
+                android:textSize="18dp"/>
+            <Button
                 android:id="@+id/upperlimb_btn1"
                 android:layout_width="250dp"
                 android:layout_height="100dp"

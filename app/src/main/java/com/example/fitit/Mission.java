@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class Mission extends AppCompatActivity {
-    private Button upperlimb_btn1, lowerlimb_btn1, softness_btn1, endurance_btn1, back_btn, ropeExe1_btn, ropeExe2_btn;
+    private Button upperlimb_btn1, lowerlimb_btn1, softness_btn1, endurance_btn1, back_btn, ropeExe1_btn, ropeExe2_btn, Demo_btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +71,14 @@ public class Mission extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Demo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(Mission.this, Demo_exercise.class);
+                startActivity(intent);
+            }
+        });
     }
     public void findObject(){
         back_btn = findViewById(R.id.back_btn);
@@ -80,5 +88,6 @@ public class Mission extends AppCompatActivity {
         endurance_btn1 = findViewById(R.id.endurance_btn1);
         ropeExe1_btn = findViewById(R.id.ropeExe1_btn);
         ropeExe2_btn = findViewById(R.id.ropeExe2_btn);
+        Demo_btn = findViewById(R.id.Demo_btn);
     }
 }

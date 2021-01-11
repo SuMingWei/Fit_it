@@ -13,26 +13,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 
-public class UpperRope_exercise extends AppCompatActivity {
+public class Demo_exercise extends AppCompatActivity {
     private Button back_btn, start_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
-    private int sec = 60, min = 4, num=0;
-    private int[] Img = {R.drawable.upper_rope1, R.drawable.upper_rope2,
-                        R.drawable.upper_rope1, R.drawable.upper_rope5,
-                        R.drawable.upper_rope3, R.drawable.upper_rope4};
+    private int sec = 30, min = 0, num=0;
+    private int[] Img = { R.drawable.exercise_upper1, R.drawable.exercise_upper2,
+            R.drawable.exercise_upper3,R.drawable.exercise_upper4,
+            R.drawable.exercise_upper3, R.drawable.exercise_upper5 };
 
-    private DBHelper myDBHelper = new DBHelper(UpperRope_exercise.this);
+    private DBHelper myDBHelper = new DBHelper(Demo_exercise.this);
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upper_rope_exercise);
+        setContentView(R.layout.activity_demo_exercise);
         findObject();
         clickBtnEvent();
     }
+
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -40,19 +42,7 @@ public class UpperRope_exercise extends AppCompatActivity {
         clock_txt = findViewById(R.id.clock_txt);
         exercise_txt = findViewById(R.id.exercise_txt);
     }
-    public void clickBtnEvent(){
-        back_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { finish(); }
-        });
-        start_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                start_btn.setVisibility(View.INVISIBLE);
-                countDown();
-            }
-        });
-    }
+
     public void getPetInfo(){
         petInfo = myDBHelper.getPetInfo();
         if(petInfo.size() == 0){
@@ -103,11 +93,29 @@ public class UpperRope_exercise extends AppCompatActivity {
         myDBHelper.insertToDiary(getCurrentDate(),1,0,0,0);
     }
 
+    public void clickBtnEvent(){
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { finish(); }
+        });
+        start_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                start_btn.setVisibility(View.INVISIBLE);
+                countDown();
+            }
+        });
+    }
     public void countDown(){
-        new CountDownTimer(180000, 1000) {
+        new CountDownTimer(30000, 1000) {
             public void onTick(long millisUntilFinished) {
-                min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
+                if(sec == 20){
+                    num = 2;
+                }
+                if(sec == 10){
+                    num = 4;
+                }
                 changePicture();
                 if(sec>=0 && sec<10) {
                     clock_txt.setText( String.valueOf(min)+":0"+String.valueOf(sec)); }
@@ -128,20 +136,20 @@ public class UpperRope_exercise extends AppCompatActivity {
     }
     public void changePicture(){
 
-        if(min == 2 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("腳踩彈力繩外拉");
+        if(sec >= 20 && sec <= 30){
+            exercise_txt.setText("擺動雙臂");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 2) {  num = 0; }
         }
-        else if(min == 1 && sec >= 0 && sec <= 60){
-            exercise_txt.setText("腳踩彈力繩上拉");
+        else if(sec >= 10 && sec <= 20){
+            exercise_txt.setText("手臂外舉");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 4) {  num = 2; }
         }
         else{
-            exercise_txt.setText("彈力繩前拉");
+            exercise_txt.setText("手臂上舉");
             exercise_pic.setImageResource(Img[num]);
             num++;
             if(num == 6) {  num = 4; }

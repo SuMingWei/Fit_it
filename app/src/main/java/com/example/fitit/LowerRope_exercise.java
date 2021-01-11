@@ -29,7 +29,7 @@ public class LowerRope_exercise extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_endurance_exercise);
+        setContentView(R.layout.activity_lower_rope_exercise);
         findObject();
         clickBtnEvent();
     }
