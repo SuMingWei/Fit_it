@@ -34,6 +34,7 @@ public class upperRope_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
+    
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
