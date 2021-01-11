@@ -27,6 +27,7 @@ public class lowerRope_exercise extends AppCompatActivity {
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
