@@ -26,6 +26,9 @@ public class Demo_exercise extends AppCompatActivity {
     private DBHelper myDBHelper = new DBHelper(Demo_exercise.this);
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
+    private CountDownTimer cdt; //for countdown
+    private boolean pause = false;  //for countdown
+    private long milliLeft, timeLengthMilli= 30000;// for countdown
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,19 +99,54 @@ public class Demo_exercise extends AppCompatActivity {
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { finish(); }
+            public void onClick(View v) {
+                if(cdt != null){
+                    cdt.cancel();
+                }
+                finish();
+            }
         });
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start_btn.setVisibility(View.INVISIBLE);
-                countDown();
+                if(start_btn.getText().equals("開始")){
+                    pause = false;
+                    timeLengthMilli = 30000;
+                    countDown(30000);
+                    start_btn.setText("暫停");
+                }
+                else if(start_btn.getText().equals("重新開始")){
+                    pause = false;
+                    cdt.cancel();
+                    num = 0;
+                    timeLengthMilli = 30000;
+                    countDown(30000);
+                    start_btn.setText("暫停");
+                }
+                else {
+                    if (!pause) {
+                        start_btn.setText("繼續");
+                        timerPause();
+                        pause = true;
+                    } else {
+                        pause = false;
+                        timerResume();
+                        start_btn.setText("暫停");
+                    }
+                }
             }
         });
+    }public void timerPause() {
+        cdt.cancel();
     }
-    public void countDown(){
-        new CountDownTimer(30000, 1000) {
+    private void timerResume() {
+        countDown(milliLeft);
+    }
+    public void countDown(long timeLengthMilli){
+        cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
+                milliLeft=millisUntilFinished;
+                min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
                 if(sec == 20){
                     num = 2;
@@ -128,7 +166,7 @@ public class Demo_exercise extends AppCompatActivity {
             public void onFinish() {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
-
+                start_btn.setText("重新開始");
                 updatePetInfo();
                 updateDiaryInfo();
             }

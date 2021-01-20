@@ -18,9 +18,11 @@ public class Endurance_exercise extends AppCompatActivity {
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
+    private boolean pause=false;
     private int sec = 60, min = 4, num=0;
+    private long milliLeft, timeLengthMilli= 180000;// for countdown
     private int[] Img = {R.drawable.exercise_endurance1, R.drawable.exercise_endurance2};
-
+    private CountDownTimer cdt; //for countdown
     private DBHelper myDBHelper = new DBHelper(Endurance_exercise.this);
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
@@ -41,13 +43,40 @@ public class Endurance_exercise extends AppCompatActivity {
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { finish(); }
+            public void onClick(View v) {
+                if(cdt != null){
+                    cdt.cancel();
+                }
+                finish();
+            }
         });
         start_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start_btn.setVisibility(View.INVISIBLE);
-                countDown();
+                if(start_btn.getText().equals("開始")){
+                    pause = false;
+                    countDown(timeLengthMilli);
+                    start_btn.setText("暫停");
+                }
+                else if(start_btn.getText().equals("重新開始")){
+                    pause = false;
+                    cdt.cancel();
+                    num = 0;
+                    timeLengthMilli = 180000;
+                    countDown(180000);
+                    start_btn.setText("暫停");
+                }
+                else {
+                    if (!pause) {
+                        start_btn.setText("繼續");
+                        timerPause();
+                        pause = true;
+                    } else {
+                        pause = false;
+                        timerResume();
+                        start_btn.setText("暫停");
+                    }
+                }
             }
         });
     }
@@ -101,9 +130,16 @@ public class Endurance_exercise extends AppCompatActivity {
         myDBHelper.insertToDiary(getCurrentDate(),0,0,0,1);
     }
 
-    public void countDown(){
-        new CountDownTimer(180000, 1000) {
+    public void timerPause() {
+        cdt.cancel();
+    }
+    private void timerResume() {
+        countDown(milliLeft);
+    }
+    public void countDown(long timeLengthMilli){
+        cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
+                milliLeft=millisUntilFinished;
                 min = (int) (millisUntilFinished/60000);
                 sec = (int)(millisUntilFinished%60000)/1000;
                 changePicture();
@@ -114,11 +150,10 @@ public class Endurance_exercise extends AppCompatActivity {
                 }
 
             }
-
             public void onFinish() {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
-
+                start_btn.setText("重新開始");
                 updatePetInfo();
                 updateDiaryInfo();
             }
