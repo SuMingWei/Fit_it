@@ -14,17 +14,29 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.10" />
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_15"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_20"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.20" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_25"
+        android:id="@+id/horizontal_30"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.30"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_35"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -64,7 +76,7 @@
         android:layout_marginRight="30dp"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_10"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_20"
         app:layout_constraintRight_toRightOf="@id/vertical_80"/>
     <!--Doggy conversation-->
@@ -72,8 +84,8 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/horizontal_10"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_25"
+        app:layout_constraintTop_toTopOf="@id/horizontal_15"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_30"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10">
         <ImageView
@@ -106,7 +118,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
-        app:layout_constraintTop_toTopOf="@id/horizontal_25"
+        app:layout_constraintTop_toTopOf="@id/horizontal_35"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_90">
 <!--        android:layout_marginBottom="100dp"-->
 <!--        android:layout_marginTop="220dp">-->
@@ -202,7 +214,7 @@
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:textSize="30dp"
             android:text="返回"/>
 

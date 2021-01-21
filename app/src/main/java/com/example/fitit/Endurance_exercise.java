@@ -58,7 +58,7 @@ public class Endurance_exercise extends AppCompatActivity {
                     countDown(timeLengthMilli);
                     start_btn.setText("暫停");
                 }
-                else if(start_btn.getText().equals("重新開始")){
+                else if(start_btn.getText().equals("再挑戰")){
                     pause = false;
                     cdt.cancel();
                     num = 0;
@@ -153,7 +153,7 @@ public class Endurance_exercise extends AppCompatActivity {
             public void onFinish() {
                 exercise_txt.setText("完成！");
                 clock_txt.setText("00:00");
-                start_btn.setText("重新開始");
+                start_btn.setText("再挑戰");
                 updatePetInfo();
                 updateDiaryInfo();
             }
