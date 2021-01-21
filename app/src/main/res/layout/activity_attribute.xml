@@ -92,14 +92,16 @@
     <TextView
         android:id="@+id/attribute"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_20"
         app:layout_constraintRight_toRightOf="@id/vertical_80"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_40"
         android:background="@drawable/talk_form"
+        android:layout_marginBottom="5dp"
         android:textSize="18dp"
-        android:gravity="center_horizontal"
-        android:text="\n型態：\n上肢肌力：\n下肢肌力：\n柔軟度：\n心肺耐力：\n"/>
+        android:gravity="center"
+        android:text="型態：\n上肢肌力：\n下肢肌力：\n柔軟度：\n心肺耐力：\n"/>
 
     <ImageView
         android:id="@+id/dog1"

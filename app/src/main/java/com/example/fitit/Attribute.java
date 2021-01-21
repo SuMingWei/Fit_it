@@ -47,7 +47,7 @@ public class Attribute extends AppCompatActivity {
             dog3.setImageDrawable(getResources().getDrawable(R.drawable.doggypronpron));
             status = "型態三";
         }
-        attribute.setText("\n型態：" + status +
+        attribute.setText("型態：" + status +
                         "\n上肢肌力：" + upperlimb +
                         "\n下肢肌力：" + lowerlimb +
                         "\n柔軟度： " + softness +
