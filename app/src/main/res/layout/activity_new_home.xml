@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewHome">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_90"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/navigation_form"
+        app:layout_constraintTop_toTopOf="@id/horizontal_90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorHeight="5dp"
+        app:tabIndicatorColor="@color/tablayout_brown"
+        app:tabSelectedTextColor="@color/tablayout_brown"/>
+
+
+
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

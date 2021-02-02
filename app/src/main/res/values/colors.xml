@@ -5,6 +5,8 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="green_txt">#558166</color>
+    <color name="brown_text">#626c53</color>
     <color name="milk_tea_light">#F3E3D0</color>
     <color name="mintcream">#F5FFFA</color><!--薄荷色 -->
     <color name="whitesmoke">#F5F5F5</color><!--煙白色 -->
@@ -25,4 +27,5 @@
     <color name="Russet">#80461B</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="tablayout_brown">#a9856b</color>
 </resources>

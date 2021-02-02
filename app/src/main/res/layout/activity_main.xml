@@ -70,7 +70,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:textSize="24dp"
-            android:text="創建" />
+            android:text="創建帳號" />
 
         <Button
             android:id="@+id/start_btn"
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24dp"
-            android:text="開始"/>
+            android:text="進入遊戲"/>
 
     </LinearLayout>
 

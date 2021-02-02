@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         if(accountName != "" && accountPassword != ""){
             Intent intent = new Intent();
             intent.putExtra("user_name",accountName);
-            intent.setClass(MainActivity.this,Home.class);
+            intent.setClass(MainActivity.this,NewHome.class);
             startActivity(intent);
         }else{
             Toast.makeText(MainActivity.this,"尚未建立帳號",Toast.LENGTH_SHORT).show();

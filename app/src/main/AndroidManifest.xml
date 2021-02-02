@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitit">
-        <activity android:name=".upperRope_exercise"></activity>
+        <activity android:name=".NewHome"></activity>
+        <activity android:name=".upperRope_exercise" />
         <activity android:name=".lowerRope_exercise" />
         <activity android:name=".Demo_exercise" />
         <activity android:name=".Attribute" />

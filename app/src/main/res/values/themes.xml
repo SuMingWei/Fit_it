@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Fitit" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Fitit" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/tan</item>
         <item name="colorPrimaryVariant">@color/tan</item>
