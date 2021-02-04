@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -19,6 +20,8 @@ public class NewHome extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
 
+    String AccountName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +30,13 @@ public class NewHome extends AppCompatActivity {
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
 
+        getAccountName();
         prepareViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    public void getAccountName(){
+        AccountName = getIntent().getStringExtra("user_name");
     }
 
     private void prepareViewPager(ViewPager viewPager) {
@@ -42,6 +50,11 @@ public class NewHome extends AppCompatActivity {
         adapter.addFragment(petFragment,"寵物");
         adapter.addFragment(exerciseFragment,"運動");
         adapter.addFragment(reportFragment,"週報");
+
+        // pass value to fragment
+        Bundle bundle = new Bundle();
+        bundle.putString("account_name",AccountName);
+        petFragment.setArguments(bundle);
 
         viewPager.setAdapter(adapter);
     }

@@ -81,12 +81,12 @@
                     android:textSize="24dp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:background="@drawable/talk_form"
+                    android:background="@drawable/name_form"
                     android:text="的小狗"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:gravity="center">
                     <TextView
@@ -121,27 +121,37 @@
                 android:id="@+id/closeness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:text="好感度："/>
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/pet"
-        android:src="@drawable/dog_walk1"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintTop_toTopOf="@id/horizontal_50"
-        app:layout_constraintLeft_toLeftOf="@id/vertical_20"/>
+    <LinearLayout
+        android:layout_width="240dp"
+        android:layout_height="300dp"
+        app:layout_constraintTop_toTopOf="@id/horizontal_35"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_20"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/dialog"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text=""
-        android:background="@drawable/talk_form"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_50"
-        app:layout_constraintLeft_toLeftOf="@id/vertical_35"/>
+        <TextView
+            android:id="@+id/dialog"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:gravity="center_horizontal"
+            android:textSize="18dp"
+            android:text=""
+            android:background="@drawable/bubble"
+            android:layout_gravity="right"/>
+
+        <ImageView
+            android:id="@+id/pet"
+            android:src="@drawable/dog_walk1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toTopOf="@id/horizontal_50"
+            app:layout_constraintLeft_toLeftOf="@id/vertical_20"/>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
