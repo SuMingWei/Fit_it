@@ -95,7 +95,7 @@ public class Lower_exercise extends AppCompatActivity {
     public void getDiaryList(){
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
-            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }
@@ -127,11 +127,12 @@ public class Lower_exercise extends AppCompatActivity {
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
                 myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb()+1,
-                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance());
+                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance(),
+                        diaryList.get(i).getUpperrope(),diaryList.get(i).getLowerrope());
                 return;
             }
         }
-        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0);
+        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0,0,0);
     }
     public void timerPause() {
         cdt.cancel();

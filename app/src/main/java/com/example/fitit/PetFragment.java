@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -128,8 +129,8 @@ public class PetFragment extends Fragment {
         }
         DiaryInfo yesInfo = diaryList.get(diaryList.size()-2);
         DiaryInfo todayInfo = diaryList.get(diaryList.size()-1);
-        int yesExe = yesInfo.getUpperlimb()+yesInfo.getLowerlimb()+yesInfo.getSoftness()+yesInfo.getEndurance();
-        int todayExe = todayInfo.getUpperlimb()+todayInfo.getLowerlimb()+todayInfo.getSoftness()+todayInfo.getEndurance();
+        int yesExe = yesInfo.getUpperlimb()+yesInfo.getLowerlimb()+yesInfo.getSoftness()+yesInfo.getEndurance()+yesInfo.getUpperrope()+yesInfo.getLowerrope();
+        int todayExe = todayInfo.getUpperlimb()+todayInfo.getLowerlimb()+todayInfo.getSoftness()+todayInfo.getEndurance()+todayInfo.getUpperrope()+todayInfo.getLowerrope();
 
         if(yesExe == 0 && todayExe == 0){
             closeness_tv.setText("好感度： 陌生");
@@ -160,7 +161,7 @@ public class PetFragment extends Fragment {
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
             insert();
-            //myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            //myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }
@@ -203,7 +204,7 @@ public class PetFragment extends Fragment {
             }
             new_date = String.valueOf(year) + new_date;
             last_date = Integer.parseInt(new_date);
-            myDBHelper.insertToDiary(new_date,0,0,0,0);
+            myDBHelper.insertToDiary(new_date,0,0,0,0,0,0);
         }
     }
 
@@ -248,30 +249,30 @@ public class PetFragment extends Fragment {
     }
 
     public void insert(){
-        myDBHelper.insertToDiary("20201205",1,3,2,1);
-        myDBHelper.insertToDiary("20201206",1,1,1,1);
-        myDBHelper.insertToDiary("20201207",2,0,1,1);
-        myDBHelper.insertToDiary("20201208",3,1,2,1);
-        myDBHelper.insertToDiary("20201209",1,3,2,1);
-        myDBHelper.insertToDiary("20201210",1,1,1,1);
-        myDBHelper.insertToDiary("20201211",2,0,1,1);
-        myDBHelper.insertToDiary("20201212",3,1,2,1);
-        myDBHelper.insertToDiary("20201213",1,3,2,1);
-        myDBHelper.insertToDiary("20201214",1,1,1,1);
-        myDBHelper.insertToDiary("20201215",2,0,1,1);
-        myDBHelper.insertToDiary("20201216",3,1,2,1);
-        myDBHelper.insertToDiary("20201217",1,3,2,1);
-        myDBHelper.insertToDiary("20201218",1,1,1,1);
-        myDBHelper.insertToDiary("20201219",2,0,1,1);
-        myDBHelper.insertToDiary("20201220",3,1,2,1);
-        myDBHelper.insertToDiary("20201221",1,3,2,1);
-        myDBHelper.insertToDiary("20201222",1,1,1,1);
-        myDBHelper.insertToDiary("20201223",2,0,1,1);
-        myDBHelper.insertToDiary("20201224",3,1,2,1);
-        myDBHelper.insertToDiary("20201225",3,3,2,3);
-        myDBHelper.insertToDiary("20201226",3,3,3,3);
-        myDBHelper.insertToDiary("20201227",12,13,11,13);
-        myDBHelper.insertToDiary("20201228",13,13,12,13);
+        myDBHelper.insertToDiary("20201205",1,3,2,1,0,0);
+        myDBHelper.insertToDiary("20201206",1,1,1,1,0,0);
+        myDBHelper.insertToDiary("20201207",2,0,1,1,0,0);
+        myDBHelper.insertToDiary("20201208",3,1,2,1,0,0);
+        myDBHelper.insertToDiary("20201209",1,3,2,1,0,0);
+        myDBHelper.insertToDiary("20201210",1,1,1,1,0,0);
+        myDBHelper.insertToDiary("20201211",2,0,1,1,0,0);
+        myDBHelper.insertToDiary("20201212",3,1,2,1,0,0);
+        myDBHelper.insertToDiary("20201213",1,3,2,1,0,0);
+        myDBHelper.insertToDiary("20201214",1,1,1,1,0,0);
+        myDBHelper.insertToDiary("20201215",2,0,1,1,0,0);
+        myDBHelper.insertToDiary("20201216",3,1,2,1,0,0);
+        myDBHelper.insertToDiary("20201217",1,3,2,1,0,0);
+        myDBHelper.insertToDiary("20201218",1,1,1,1,0,0);
+        myDBHelper.insertToDiary("20201219",2,0,1,1,0,0);
+        myDBHelper.insertToDiary("20201220",3,1,2,1,0,0);
+        myDBHelper.insertToDiary("20201221",1,3,2,1,0,0);
+        myDBHelper.insertToDiary("20201222",1,1,1,1,0,0);
+        myDBHelper.insertToDiary("20201223",2,0,1,1,0,0);
+        myDBHelper.insertToDiary("20201224",3,1,2,1,0,0);
+        myDBHelper.insertToDiary("20201225",3,3,2,3,0,0);
+        myDBHelper.insertToDiary("20201226",3,3,3,3,0,0);
+        myDBHelper.insertToDiary("20201227",12,13,11,13,0,0);
+        myDBHelper.insertToDiary("20201228",13,13,12,13,0,0);
         myDBHelper.updateToPet(1,66,57,58,52);
     }
 

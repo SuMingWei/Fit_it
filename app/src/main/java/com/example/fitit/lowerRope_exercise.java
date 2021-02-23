@@ -57,7 +57,7 @@ public class lowerRope_exercise extends AppCompatActivity {
     public void getDiaryList(){
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
-            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0);
+            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }
@@ -88,12 +88,13 @@ public class lowerRope_exercise extends AppCompatActivity {
         getDiaryList();
         for(int i=0;i<diaryList.size();i++){
             if(diaryList.get(i).getDate().equals(getCurrentDate())){
-                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb()+1,
-                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance());
+                myDBHelper.updateToDiary(getCurrentDate(),diaryList.get(i).getUpperlimb(),diaryList.get(i).getLowerlimb(),
+                        diaryList.get(i).getSoftness(),diaryList.get(i).getEndurance(),
+                        diaryList.get(i).getUpperrope(),diaryList.get(i).getLowerrope()+1);
                 return;
             }
         }
-        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0);
+        myDBHelper.insertToDiary(getCurrentDate(),0,1,0,0,0,1);
     }
 
     public void clickBtnEvent(){

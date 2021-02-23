@@ -53,23 +53,17 @@ public class Attribute extends AppCompatActivity {
             choose_type = 1;
             dog_img.setImageDrawable(getResources().getDrawable(R.drawable.dog_walk1));
             dog_info.setText("型態一");
-            left_btn.setEnabled(false);
-            right_btn.setEnabled(true);
         }
         else if(lv >= 5 && lv < 10){
             choose_type = 2;
             dog_img.setImageDrawable(getResources().getDrawable(R.drawable.doggypron));
             dog_info.setText("型態二");
-            left_btn.setEnabled(true);
-            right_btn.setEnabled(true);
             status = "型態：型態二";
         }
         else if(lv >= 10){
             choose_type = 3;
             dog_img.setImageDrawable(getResources().getDrawable(R.drawable.doggypronpron));
             dog_info.setText("型態三");
-            left_btn.setEnabled(true);
-            right_btn.setEnabled(false);
             status = "型態：型態三";
         }
 
