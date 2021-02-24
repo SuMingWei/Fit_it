@@ -16,11 +16,12 @@
     <color name="sandybrown">#F4A460</color><!--沙褐色 -->
     <color name="papayawhip">#FFEFD5</color><!--番木色 -->
     <color name="blanchedalmond">#FFEBCD</color><!--白杏色 -->
-    <color name="mistyrose">#FFE4E1</color><!--淺玫瑰色 -->
+    <color name="red">#D81F0B</color><!--淺玫瑰色 -->
     <color name="bisque">#FFE4C4</color><!--桔黄色 -->
     <color name="moccasin">#FFE4B5</color><!--鹿皮色 -->
     <color name="tan">#D2B48C</color><!--茶色 -->
     <color name="chocolate">#D2691E</color><!--巧可力色 -->
+    <color name="yellow">#EDC603</color>
     <color name="peru">#CD853F</color><!--秘魯色 -->
     <color name="saddlebrown">#8B4513</color>
     <color name="sienna">#A0522D</color>

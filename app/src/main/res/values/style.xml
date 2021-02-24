@@ -3,4 +3,8 @@
     <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">24dp</item>
     </style>
+    <style name="StartBtn" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundColor">#F5F5F5</item>
+        <item name="android:textColor">#558166</item>
+    </style>
 </resources>
