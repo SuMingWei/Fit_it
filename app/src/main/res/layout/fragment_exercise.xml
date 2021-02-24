@@ -42,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:id="@+id/horizontal_90"
-        app:layout_constraintGuide_percent="0.9"/>
+        android:id="@+id/horizontal_85"
+        app:layout_constraintGuide_percent="0.85"/>
     <!--    vertical_line-->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_80"
@@ -102,9 +102,8 @@
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/talk_form"
-            android:textSize="17dp"
-            android:text="一起來運動吧！！
-                建議每項運動各做三次！"
+            android:textSize="20dp"
+            android:text="下滑看更多運動唷！"
             android:gravity="center"/>
 
     </LinearLayout>
@@ -115,35 +114,39 @@
         android:layout_height="0dp"
         android:background="@drawable/scrollview_form"
         android:scrollbars = "vertical"
-        android:scrollbarStyle="insideInset"
+        android:scrollbarSize="8dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
         app:layout_constraintTop_toTopOf="@id/horizontal_35"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_90">
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_85">
         <!--        android:layout_marginBottom="100dp"-->
         <!--        android:layout_marginTop="220dp">-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="4"
             android:gravity="center"
             android:orientation="vertical">
             <Button
                 android:id="@+id/Demo_btn"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/upper1"
                 android:text="Demo"
                 android:textSize="18dp"/>
             <Button
                 android:id="@+id/upperlimb_btn1"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:background="@drawable/title_form"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/upper1"
@@ -151,29 +154,35 @@
                 android:textSize="18dp"/>
             <Button
                 android:id="@+id/lowerlimb_btn1"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/lower1"
                 android:text="下肢肌力"
                 android:textSize="18dp" />
             <Button
                 android:id="@+id/softness_btn1"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/softness1"
                 android:textSize="18dp"
                 android:text="柔軟訓練"/>
             <Button
                 android:id="@+id/endurance_btn1"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/indurance1"
@@ -181,9 +190,11 @@
                 android:textSize="18dp"/>
             <Button
                 android:id="@+id/ropeExe1_btn"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/upper3"
@@ -191,9 +202,11 @@
                 android:textSize="18dp"/>
             <Button
                 android:id="@+id/ropeExe2_btn"
-                android:layout_width="250dp"
+                android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:drawablePadding="-50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/title_form"
+                android:textColor="@color/whitesmoke"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
                 android:drawableLeft="@drawable/lower2"
