@@ -28,4 +28,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="tablayout_brown">#a9856b</color>
+    <color name="dark_tan">#9E8669</color>
 </resources>
