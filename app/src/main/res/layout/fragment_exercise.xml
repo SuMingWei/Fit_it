@@ -127,91 +127,237 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-            <Button
-                android:id="@+id/Demo_btn"
+            <LinearLayout
+                android:id="@+id/testbtn"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/upper1"
-                android:text="Demo"
-                android:textSize="18dp"/>
-            <Button
-                android:id="@+id/upperlimb_btn1"
+                android:weightSum="5"
+                android:background="@drawable/title_form"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/upper1"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="Demo"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:layout_weight="2"
+                    android:gravity="end"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginRight="20dp"
+                    android:text="3/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upperlimb_btn"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="5"
                 android:background="@drawable/title_form"
-                android:layout_marginBottom="10dp"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/upper1"
-                android:text="上肢肌力"
-                android:textSize="18dp"/>
-            <Button
-                android:id="@+id/lowerlimb_btn1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/upper1"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_weight="3"
+                    android:textColor="@color/whitesmoke"
+                    android:text="上肢肌力"/>
+                <TextView
+                    android:id="@+id/upperlimbNum_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:layout_marginRight="20dp"
+                    android:gravity="end"
+                    android:layout_weight="2"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginLeft="10dp"
+                    android:text="13/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lowerlimb_btn"
+                android:weightSum="5"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:layout_marginBottom="10dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/lower1"
-                android:text="下肢肌力"
-                android:textSize="18dp" />
-            <Button
-                android:id="@+id/softness_btn1"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/lower1"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="下肢肌力"/>
+                <TextView
+                    android:id="@+id/lowerlimbNum_tv"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:gravity="end"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="3/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/softness_btn"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:paddingLeft="8dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/softness1"
-                android:textSize="18dp"
-                android:text="柔軟訓練"/>
-            <Button
-                android:id="@+id/endurance_btn1"
+                android:weightSum="5"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/softness1"/>
+                <TextView
+                    android:layout_weight="3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="柔軟訓練"/>
+                <TextView
+                    android:layout_weight="2"
+                    android:id="@+id/softnessNum_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textSize="30dp"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginRight="20dp"
+                    android:text="3/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/endurance_btn"
+                android:weightSum="5"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/indurance1"
-                android:text="心肺訓練"
-                android:textSize="18dp"/>
-            <Button
-                android:id="@+id/ropeExe1_btn"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/indurance1"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="心肺訓練"/>
+                <TextView
+                    android:id="@+id/enduranceNum_tv"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:gravity="end"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginRight="20dp"
+                    android:text="3/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upperRope_btn"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="5"
                 android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/upper3"
-                android:text="彈力繩\n上肢訓練"
-                android:textSize="18dp"/>
-            <Button
-                android:id="@+id/ropeExe2_btn"
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/upper3"/>
+                <TextView
+                    android:layout_weight="3"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="彈力繩\n上肢訓練"/>
+                <TextView
+                    android:id="@+id/upperRopeNum_tv"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:gravity="end"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginRight="20dp"
+                    android:text="3/3"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lowerRope_btn"
+                android:weightSum="5"
                 android:layout_width="280dp"
                 android:layout_height="100dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/title_form"
-                android:textColor="@color/whitesmoke"
-                android:paddingLeft="8dp"
-                android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/lower2"
-                android:text="彈力繩\n下肢運動"
-                android:textSize="18dp"/>
+                android:gravity="center"
+                android:orientation="horizontal" >
+                <ImageView
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:src="@drawable/lower2"/>
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/whitesmoke"
+                    android:text="彈力繩\n下肢訓練"/>
+                <TextView
+                    android:id="@+id/lowerRopeNum_tv"
+                    android:layout_weight="2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:textColor="@color/whitesmoke"
+                    android:layout_marginRight="20dp"
+                    android:gravity="end"
+                    android:text="3/3"/>
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
