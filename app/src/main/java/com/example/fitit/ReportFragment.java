@@ -73,7 +73,6 @@ public class ReportFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Toast.makeText(getContext(),String.valueOf(currentWeek),Toast.LENGTH_SHORT).show();
         setInit();
     }
 
