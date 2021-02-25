@@ -26,11 +26,11 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.35" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_70"
+        android:id="@+id/horizontal_65"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.65" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_85"
         android:layout_width="match_parent"
@@ -192,9 +192,8 @@
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"/>
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
 
     </LinearLayout>
 
@@ -207,7 +206,7 @@
         android:scrollbarSize="5dp"
         app:layout_constraintLeft_toLeftOf="@id/vertical_5"
         app:layout_constraintRight_toRightOf="@id/vertical_95"
-        app:layout_constraintTop_toTopOf="@id/horizontal_70"
+        app:layout_constraintTop_toTopOf="@id/horizontal_65"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_85">
 
         <LinearLayout

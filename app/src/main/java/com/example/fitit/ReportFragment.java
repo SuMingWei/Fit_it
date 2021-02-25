@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +68,7 @@ public class ReportFragment extends Fragment {
         return view;
     }
 
-    
+
 
     @Override
     public void onResume() {
@@ -323,18 +324,22 @@ public class ReportFragment extends Fragment {
         barChart.setData(getBarData());
         barChart.setDrawGridBackground(false);
         barChart.setTouchEnabled(false);
+        barChart.setGridBackgroundColor(getResources().getColor(R.color.dark_tan));
 
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
+        xAxis.setTextSize(12);
         xAxis.setTextColor(getResources().getColor(R.color.dark_tan));
         xAxis.setValueFormatter(new IndexAxisValueFormatter(getLabels()));
 
         leftAxis.setGranularity(30);
         leftAxis.setAxisMinimum(0);
         leftAxis.setAxisMaximum(140);
+        leftAxis.setTextSize(12);
         leftAxis.setTextColor(getResources().getColor(R.color.dark_tan));
-        leftAxis.setLabelCount(4, false);
+        leftAxis.setLabelCount(5, false);
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
+        leftAxis.setValueFormatter(new YLabelFormat());
 
         rightAxis.setEnabled(false);
         description.setEnabled(false);
@@ -347,6 +352,8 @@ public class ReportFragment extends Fragment {
         dataSet.setColor(getResources().getColor(R.color.green_txt));
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.4f);
+        barData.setValueFormatter(new DataValueFormat());
+        barData.setValueTextSize(12);
         barData.setValueTextColor(getResources().getColor(R.color.green_txt));
 
         return barData;
@@ -418,5 +425,18 @@ public class ReportFragment extends Fragment {
         return  chartLabels;
     }
 
+    class YLabelFormat extends IndexAxisValueFormatter{
+        @Override
+        public String getFormattedValue(float value) {
+            return (int)value + "分鐘";
+        }
+    }
+
+    class DataValueFormat extends IndexAxisValueFormatter{
+        @Override
+        public String getFormattedValue(float value) {
+            return (int)value + "";
+        }
+    }
 
 }
