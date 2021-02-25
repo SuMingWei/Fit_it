@@ -58,6 +58,12 @@ public class ReportFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setInit();
+    }
+
     public void findObject(View view){
         left_btn = view.findViewById(R.id.left_btn);
         right_btn = view.findViewById(R.id.right_btn);
@@ -94,7 +100,11 @@ public class ReportFragment extends Fragment {
 
     public ArrayList<WeekInfo> getWeekList() {
         ArrayList<WeekInfo> totalWeekData = new ArrayList<>();
-        weekNum = (this.diaryList.size() / 7) + 1;
+        if(this.diaryList.size() % 7 == 0){
+            weekNum = (this.diaryList.size() / 7);
+        }else{
+            weekNum = (this.diaryList.size() / 7) + 1;
+        }
         String dateStart="";
         String dateEnd="";
         int totalUpperlimb = 0;
