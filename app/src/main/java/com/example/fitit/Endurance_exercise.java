@@ -40,6 +40,7 @@ public class Endurance_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
+
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -98,7 +99,17 @@ public class Endurance_exercise extends AppCompatActivity {
         View view = LayoutInflater.from(this).inflate(R.layout.endurance_popup1, null, false);
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popWindow.setFocusable(true);
+        popWindow.setOutsideTouchable(false);
         popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                countDown(5100);
+                clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
+                clock_txt.setPadding(0,0,0,0);
+            }
+        });
         Button exe1_btn = (Button) view.findViewById(R.id.exe1_btn);
         next_btn = (Button) view.findViewById(R.id.next_btn);
 

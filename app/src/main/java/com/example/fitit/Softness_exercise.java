@@ -100,6 +100,14 @@ public class Softness_exercise extends AppCompatActivity {
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                countDown(5100);
+                clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
+                clock_txt.setPadding(0,0,0,0);
+            }
+        });
         Button exe1_btn = (Button) view.findViewById(R.id.exe1_btn);
         Button exe2_btn = (Button) view.findViewById(R.id.exe2_btn);
         Button exe3_btn = (Button) view.findViewById(R.id.exe3_btn);
@@ -279,11 +287,18 @@ public class Softness_exercise extends AppCompatActivity {
             }
 
             public void onFinish() {
-                exercise_txt.setText("完成！");
-                clock_txt.setText("00:00");
-                start_btn.setText("再挑戰");
-                updatePetInfo();
-                updateDiaryInfo();
+                if(start_btn.getText().equals("倒數中")){
+                    start_btn.setText("暫停");
+                    cdt.cancel();
+                    countDown(180000);
+                }
+                else {
+                    exercise_txt.setText("完成！");
+                    clock_txt.setText("00:00");
+                    start_btn.setText("再挑戰");
+                    updatePetInfo();
+                    updateDiaryInfo();
+                }
 
             }
         }.start();

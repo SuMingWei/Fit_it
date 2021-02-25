@@ -77,7 +77,7 @@ public class ExerciseFragment extends Fragment {
 
     private void changeColor(LinearLayout btn, int num){
         if(num >= 3){
-            btn.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            btn.setBackground(getResources().getDrawable(R.drawable.complete_exercise_background));
         }
         else{
             btn.setBackground(getResources().getDrawable(R.drawable.title_form));
