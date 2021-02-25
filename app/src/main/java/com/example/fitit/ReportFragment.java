@@ -12,11 +12,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.DefaultAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ReportFragment extends Fragment {
@@ -27,8 +38,6 @@ public class ReportFragment extends Fragment {
     private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img;
 
     private BarChart barChart;
-    private ArrayList<BarEntry> barEntryArrayList;
-    private ArrayList<String> labelName;
 
     private DBHelper myDBHelper;
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
@@ -58,9 +67,12 @@ public class ReportFragment extends Fragment {
         return view;
     }
 
+    
+
     @Override
     public void onResume() {
         super.onResume();
+        Toast.makeText(getContext(),String.valueOf(currentWeek),Toast.LENGTH_SHORT).show();
         setInit();
     }
 
@@ -179,6 +191,13 @@ public class ReportFragment extends Fragment {
         return String.valueOf(year) + "/" + String.valueOf(month) + "/" + String.valueOf(day);
     }
 
+    public String getDateLabel(String date){
+        int date_num = Integer.parseInt(date);
+        int day = date_num % 100;
+
+        return String.valueOf(day) + "日";
+    }
+
     public void buttonClickEvent(){
         left_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,7 +223,8 @@ public class ReportFragment extends Fragment {
     public void generateReport(){
         choose_date_tv.setText(reportDateList.get(currentWeek-1));
         setReportCard(currentWeek);
-        setBarChart(currentWeek);
+        barChart.clear();
+        setBarChart();
     }
 
     public void setReportCard(int choseWeek) {
@@ -214,6 +234,10 @@ public class ReportFragment extends Fragment {
         int lowerlimb = weekInfo.getLowerlimb()*3;
         int softness = weekInfo.getSoftness()*3;
         int endurance = weekInfo.getEndurance()*3;
+
+        // total time
+        int totalTime = upperlimb + lowerlimb + softness + endurance;
+        total_time_tv.setText(totalTime + " 分鐘");
 
         //upperlimb
         if(upperlimb < 20){
@@ -289,18 +313,110 @@ public class ReportFragment extends Fragment {
 
     }
 
-    public void setBarChart(int choseWeek){
-        WeekInfo weekInfo = weekList.get(choseWeek-1);
+    public void setBarChart(){
+        YAxis leftAxis = barChart.getAxisLeft();
+        YAxis rightAxis = barChart.getAxisRight();
+        XAxis xAxis = barChart.getXAxis();
+        Legend legend = barChart.getLegend();
+        Description description = barChart.getDescription();
 
-        String dateStart = weekInfo.getDateStart();
-        String dateEnd = weekInfo.getDateEnd();
-        int upperlimb = weekInfo.getUpperlimb()*3;
-        int lowerlimb = weekInfo.getLowerlimb()*3;
-        int softness = weekInfo.getSoftness()*3;
-        int endurance = weekInfo.getEndurance()*3;
+        barChart.setData(getBarData());
+        barChart.setDrawGridBackground(false);
+        barChart.setTouchEnabled(false);
 
-        // total time
-        int totalTime = upperlimb + lowerlimb + softness + endurance;
-        total_time_tv.setText(totalTime + " 分鐘");
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setTextColor(getResources().getColor(R.color.dark_tan));
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(getLabels()));
+
+        leftAxis.setGranularity(30);
+        leftAxis.setAxisMinimum(0);
+        leftAxis.setAxisMaximum(140);
+        leftAxis.setTextColor(getResources().getColor(R.color.dark_tan));
+        leftAxis.setLabelCount(4, false);
+        leftAxis.enableGridDashedLine(10f, 10f, 0f);
+
+        rightAxis.setEnabled(false);
+        description.setEnabled(false);
+        legend.setEnabled(false);
+
     }
+
+    public BarData getBarData(){
+        BarDataSet dataSet = new BarDataSet(getChartData(),"時數");
+        dataSet.setColor(getResources().getColor(R.color.green_txt));
+        BarData barData = new BarData(dataSet);
+        barData.setBarWidth(0.4f);
+        barData.setValueTextColor(getResources().getColor(R.color.green_txt));
+
+        return barData;
+    }
+
+    public ArrayList<BarEntry> getChartData(){
+        ArrayList<BarEntry> chartData = new ArrayList<>();
+
+        if(currentWeek < weekNum){
+            for(int i=0;i<7;i++){
+                DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                int exerciseTime = (diaryInfo.getUpperlimb()+diaryInfo.getLowerlimb()
+                                    +diaryInfo.getSoftness()+diaryInfo.getEndurance()
+                                    +diaryInfo.getUpperrope()+diaryInfo.getLowerrope())*3;
+                chartData.add(new BarEntry(i,exerciseTime));
+            }
+        }else{
+            if(this.diaryList.size()%7 == 0){
+                for(int i=0;i<7;i++){
+                    DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                    int exerciseTime = (diaryInfo.getUpperlimb()+diaryInfo.getLowerlimb()
+                            +diaryInfo.getSoftness()+diaryInfo.getEndurance()
+                            +diaryInfo.getUpperrope()+diaryInfo.getLowerrope())*3;
+                    chartData.add(new BarEntry(i,exerciseTime));
+                }
+            }else{
+                for(int i=0;i<this.diaryList.size()%7;i++){
+                    DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                    int exerciseTime = (diaryInfo.getUpperlimb()+diaryInfo.getLowerlimb()
+                            +diaryInfo.getSoftness()+diaryInfo.getEndurance()
+                            +diaryInfo.getUpperrope()+diaryInfo.getLowerrope())*3;
+                    chartData.add(new BarEntry(i,exerciseTime));
+                }
+                for(int i=this.diaryList.size()%7;i<7;i++){
+                    chartData.add(new BarEntry(i,0));
+                }
+            }
+        }
+
+        return chartData;
+    }
+
+    public ArrayList getLabels(){
+        ArrayList<String> chartLabels = new ArrayList<>();
+        if(currentWeek < weekNum){
+            for(int i=0;i<7;i++){
+                DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                String date = getDateLabel(diaryInfo.getDate());
+                chartLabels.add(date);
+            }
+        }else{
+            if(this.diaryList.size()%7 == 0){
+                for(int i=0;i<7;i++){
+                    DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                    String date = getDateLabel(diaryInfo.getDate());
+                    chartLabels.add(date);
+                }
+            }else{
+                for(int i=0;i<this.diaryList.size()%7;i++){
+                    DiaryInfo diaryInfo = this.diaryList.get((currentWeek-1)*7+i);
+                    String date = getDateLabel(diaryInfo.getDate());
+                    chartLabels.add(date);
+                }
+                for(int i=this.diaryList.size()%7;i<7;i++){
+                    chartLabels.add("");
+                }
+            }
+        }
+        return  chartLabels;
+    }
+
+
 }

@@ -26,11 +26,11 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.35" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_60"
+        android:id="@+id/horizontal_70"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.60" />
+        app:layout_constraintGuide_percent="0.70" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_85"
         android:layout_width="match_parent"
@@ -191,7 +191,7 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="260dp"
+            android:layout_height="230dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"/>
 
@@ -207,7 +207,7 @@
         android:scrollbarSize="5dp"
         app:layout_constraintLeft_toLeftOf="@id/vertical_5"
         app:layout_constraintRight_toRightOf="@id/vertical_95"
-        app:layout_constraintTop_toTopOf="@id/horizontal_60"
+        app:layout_constraintTop_toTopOf="@id/horizontal_70"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_85">
 
         <LinearLayout
