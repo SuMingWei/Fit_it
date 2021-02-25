@@ -4,9 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +23,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Upper1_exercise extends AppCompatActivity {
-    private Button back_btn, start_btn;
+    private Button back_btn, start_btn, next_btn;
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
@@ -99,6 +105,109 @@ public class Upper1_exercise extends AppCompatActivity {
         myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,1,0);
     }
 
+    private void showPopUpWindow(View v){
+        View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup1, null, false);
+        final PopupWindow popWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                countDown(5100);
+                clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
+                clock_txt.setPadding(0,0,0,0);
+            }
+        });
+        Button exe1_btn = (Button) view.findViewById(R.id.exe1_btn);
+        Button exe2_btn = (Button) view.findViewById(R.id.exe2_btn);
+        Button exe3_btn = (Button) view.findViewById(R.id.exe3_btn);
+        next_btn = (Button) view.findViewById(R.id.next_btn);
+
+        //set exe1btn listener
+        exe1_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundAlpha(0.4f);
+                showExe1Popup();
+            }
+        });
+
+        exe2_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundAlpha(0.4f);
+                showExe2Popup();
+            }
+        });
+
+        exe3_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backgroundAlpha(0.4f);
+                showExe3Popup();
+            }
+        });
+
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popWindow.dismiss();
+                countDown(5100);
+                clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
+                clock_txt.setPadding(0,0,0,0);
+            }
+        });
+    }
+    private void showExe1Popup(){
+        View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup2, null, false);
+        PopupWindow tmpWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        tmpWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        Button next_btn = (Button) view.findViewById(R.id.next_btn);
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tmpWindow.dismiss();
+                backgroundAlpha(1);
+            }
+        });
+    }
+    private void showExe2Popup(){
+        View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup3, null, false);
+        PopupWindow tmpWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        tmpWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        Button next_btn = (Button) view.findViewById(R.id.next_btn);
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tmpWindow.dismiss();
+                backgroundAlpha(1);
+            }
+        });
+    }
+    private void showExe3Popup(){
+        View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup4, null, false);
+        PopupWindow tmpWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        tmpWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        Button next_btn = (Button) view.findViewById(R.id.next_btn);
+        next_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tmpWindow.dismiss();
+                backgroundAlpha(1);
+            }
+        });
+    }
+
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+        lp.alpha = bgAlpha; // 0.0~1.0
+        this.getWindow().setAttributes(lp); //act 是上下文context
+
+    }
+
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,9 +222,13 @@ public class Upper1_exercise extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(start_btn.getText().equals("開始")){
+                    showPopUpWindow(v);
                     pause = false;
-                    countDown(timeLengthMilli);
-                    start_btn.setText("暫停");
+                    start_btn.setText("倒數中");
+                    clock_txt.setText("5");
+                    exercise_txt.setText("即將開始運動！");
+                }
+                else if(start_btn.getText().equals("倒數中")){
                 }
                 else if(start_btn.getText().equals("再挑戰")){
                     pause = false;
@@ -125,6 +238,7 @@ public class Upper1_exercise extends AppCompatActivity {
                     countDown(timeLengthMilli);
                     start_btn.setText("暫停");
                 }
+
                 else {
                     if (!pause) {
                         start_btn.setText("繼續");
@@ -149,29 +263,48 @@ public class Upper1_exercise extends AppCompatActivity {
         cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
                 milliLeft=millisUntilFinished;
-                min = (int) (millisUntilFinished/60000);
-                sec = (int)(millisUntilFinished%60000)/1000;
-                if(min == 2 && sec == 00){
-                    num = 2;
+                if(start_btn.getText().equals("倒數中")){
+                    sec = (int) (millisUntilFinished % 60000) / 1000;
+                    if(sec == 0){
+                        clock_txt.setText("GO");
+                    }
+                    else {
+                        clock_txt.setText(String.valueOf(sec));
+                    }
                 }
-                if(min == 1 && sec == 00){
-                    num = 4;
+                else{
+                    min = (int) (millisUntilFinished/60000);
+                    sec = (int)(millisUntilFinished%60000)/1000;
+                    if(min == 2 && sec == 00){
+                        num = 2;
+                    }
+                    if(min == 1 && sec == 00){
+                        num = 4;
+                    }
+                    changePicture();
+                    if(sec>=0 && sec<10) {
+                        clock_txt.setText( String.valueOf(min)+":0"+String.valueOf(sec)); }
+                    else {
+                        clock_txt.setText( String.valueOf(min)+":"+String.valueOf(sec));
+                    }
                 }
-                changePicture();
-                if(sec>=0 && sec<10) {
-                    clock_txt.setText( String.valueOf(min)+":0"+String.valueOf(sec)); }
-                else {
-                    clock_txt.setText( String.valueOf(min)+":"+String.valueOf(sec));
-                }
+
 
             }
 
             public void onFinish() {
-                exercise_txt.setText("完成！");
-                clock_txt.setText("00:00");
-                start_btn.setText("再挑戰");
-                updatePetInfo();
-                updateDiaryInfo();
+                if(start_btn.getText().equals("倒數中")){
+                    start_btn.setText("暫停");
+                    cdt.cancel();
+                    countDown(180000);
+                }
+                else {
+                    exercise_txt.setText("完成！");
+                    clock_txt.setText("00:00");
+                    start_btn.setText("再挑戰");
+                    updatePetInfo();
+                    updateDiaryInfo();
+                }
             }
         }.start();
     }

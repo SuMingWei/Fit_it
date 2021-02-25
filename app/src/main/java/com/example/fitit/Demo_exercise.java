@@ -226,6 +226,8 @@ public class Demo_exercise extends AppCompatActivity {
                     countDown(30000);
                     start_btn.setText("暫停");
                 }
+                else if(start_btn.getText().equals("倒數中")){
+                }
                 else {
                     if (!pause) {
                         start_btn.setText("繼續");
