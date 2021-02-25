@@ -272,17 +272,17 @@ public class ReportFragment extends Fragment {
         // endurance
         if(endurance < 20){
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.miss_standand));
-            endurance_info.setText("您的上肢訓練可能不足，可以多加強此項！");
+            endurance_info.setText("您的耐力訓練可能不足，可以多加強此項！");
             endurance_time.setText(endurance + " 分鐘");
-            upperlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            endurance_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
         }else if(endurance >= 20 && endurance < 45){
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.hit_standard));
-            endurance_info.setText("就快達到上肢肌力訓練量，請繼續加油！");
+            endurance_info.setText("就快達到耐力訓練訓練量，請繼續加油！");
             endurance_time.setText(endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }else{
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.over_standand));
-            endurance_info.setText("已達到上肢肌力訓練量，很厲害喔！");
+            endurance_info.setText("已達到耐力訓練訓練量，很厲害喔！");
             endurance_time.setText(endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }
