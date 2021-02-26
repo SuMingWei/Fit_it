@@ -106,6 +106,7 @@ public class Softness_exercise extends AppCompatActivity {
                 countDown(5100);
                 clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
                 clock_txt.setPadding(0,0,0,0);
+                backgroundAlpha(1);
             }
         });
         Button exe1_btn = (Button) view.findViewById(R.id.exe1_btn);

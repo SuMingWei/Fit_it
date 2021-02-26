@@ -116,6 +116,7 @@ public class Upper1_exercise extends AppCompatActivity {
                 countDown(5100);
                 clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
                 clock_txt.setPadding(0,0,0,0);
+                backgroundAlpha(1);
             }
         });
         Button exe1_btn = (Button) view.findViewById(R.id.exe1_btn);
@@ -212,6 +213,7 @@ public class Upper1_exercise extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timerPause();
                 if(cdt != null){
                     cdt.cancel();
                 }
