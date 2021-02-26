@@ -36,7 +36,7 @@ public class Upper1_exercise extends AppCompatActivity {
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     private CountDownTimer cdt; //for countdown
-    private boolean pause = false;  //for countdown
+    private boolean pause = false, counting = false;  //for countdown
     private long milliLeft, timeLengthMilli= 180000;// for countdown
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,17 @@ public class Upper1_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
-
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            if(counting){
+                timerPause();
+                cdt.cancel();
+            }
+        } else {
+            // I'll be back
+        }
+    }
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -213,8 +223,8 @@ public class Upper1_exercise extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timerPause();
-                if(cdt != null){
+                if(counting){
+                    timerPause();
                     cdt.cancel();
                 }
                 finish();
@@ -257,6 +267,7 @@ public class Upper1_exercise extends AppCompatActivity {
     }
     public void timerPause() {
         cdt.cancel();
+        counting = false;
     }
     private void timerResume() {
         countDown(milliLeft);
@@ -264,6 +275,7 @@ public class Upper1_exercise extends AppCompatActivity {
     public void countDown(long timeLengthMilli){
         cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
+                counting = true;
                 milliLeft=millisUntilFinished;
                 if(start_btn.getText().equals("倒數中")){
                     sec = (int) (millisUntilFinished % 60000) / 1000;
@@ -301,6 +313,7 @@ public class Upper1_exercise extends AppCompatActivity {
                     countDown(180000);
                 }
                 else {
+                    counting = false;
                     exercise_txt.setText("完成！");
                     clock_txt.setText("00:00");
                     start_btn.setText("再挑戰");

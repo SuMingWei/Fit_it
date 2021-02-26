@@ -35,7 +35,7 @@ public class Demo_exercise extends AppCompatActivity {
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     private CountDownTimer cdt; //for countdown
-    private boolean pause = false;  //for countdown
+    private boolean pause = false, counting = false;  //for countdown
     private long milliLeft, timeLengthMilli= 30000;// for countdown
 
     @Override
@@ -44,6 +44,18 @@ public class Demo_exercise extends AppCompatActivity {
         setContentView(R.layout.activity_demo_exercise);
         findObject();
         clickBtnEvent();
+    }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            if(counting){
+                timerPause();
+                cdt.cancel();
+            }
+        } else {
+            // I'll be back
+        }
     }
 
     public void findObject(){
@@ -241,8 +253,10 @@ public class Demo_exercise extends AppCompatActivity {
                 }
             }
         });
-    }public void timerPause() {
+    }
+    public void timerPause() {
         cdt.cancel();
+        counting = false;
     }
     private void timerResume() {
         countDown(milliLeft);
@@ -251,6 +265,7 @@ public class Demo_exercise extends AppCompatActivity {
         cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
                 milliLeft=millisUntilFinished;
+                counting = true;
                 if(start_btn.getText().equals("倒數中")){
                     sec = (int) (millisUntilFinished % 60000) / 1000;
                     if(sec == 0){
@@ -285,6 +300,7 @@ public class Demo_exercise extends AppCompatActivity {
                     countDown(30000);
                 }
                 else {
+                    counting = false;
                     exercise_txt.setText("完成！");
                     clock_txt.setText("00:00");
                     start_btn.setText("再挑戰");

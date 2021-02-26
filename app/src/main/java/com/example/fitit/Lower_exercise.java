@@ -33,7 +33,7 @@ public class Lower_exercise extends AppCompatActivity {
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     private CountDownTimer cdt; //for countdown
-    private boolean pause = false;  //for countdown
+    private boolean pause = false, counting = false;  //for countdown
     private long milliLeft, timeLengthMilli= 180000;// for countdown
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,19 @@ public class Lower_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            if(counting){
+                timerPause();
+                cdt.cancel();
+            }
+        } else {
+            // I'll be back
+        }
+    }
+
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
         back_btn = findViewById(R.id.back_btn);
@@ -49,6 +62,7 @@ public class Lower_exercise extends AppCompatActivity {
         clock_txt = findViewById(R.id.clock_txt);
         exercise_txt = findViewById(R.id.exercise_txt);
     }
+
     public void clickBtnEvent(){
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,6 +272,7 @@ public class Lower_exercise extends AppCompatActivity {
         cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
                 milliLeft=millisUntilFinished;
+                counting = true;
                 if(start_btn.getText().equals("倒數中")){
                     sec = (int) (millisUntilFinished % 60000) / 1000;
                     if(sec == 0){
@@ -292,6 +307,7 @@ public class Lower_exercise extends AppCompatActivity {
                     countDown(180000);
                 }
                 else {
+                    counting = false;
                     exercise_txt.setText("完成！");
                     clock_txt.setText("00:00");
                     start_btn.setText("再挑戰");

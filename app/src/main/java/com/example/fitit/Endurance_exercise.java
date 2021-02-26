@@ -25,7 +25,7 @@ public class Endurance_exercise extends AppCompatActivity {
     private ImageView exercise_pic;
     private TextView clock_txt, exercise_txt;
     private Timer timer;
-    private boolean pause=false;
+    private boolean pause=false, counting = true;
     private int sec = 60, min = 4, num=0;
     private long milliLeft, timeLengthMilli= 180000;// for countdown
     private int[] Img = {R.drawable.exercise_endurance1, R.drawable.exercise_endurance2};
@@ -40,6 +40,18 @@ public class Endurance_exercise extends AppCompatActivity {
         findObject();
         clickBtnEvent();
     }
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isFinishing()) {
+            if(counting){
+                timerPause();
+                cdt.cancel();
+            }
+        } else {
+            // I'll be back
+        }
+    }
+
 
     public void findObject(){
         exercise_pic = findViewById(R.id.exercise_pic);
@@ -207,6 +219,7 @@ public class Endurance_exercise extends AppCompatActivity {
     }
 
     public void timerPause() {
+        counting = false;
         cdt.cancel();
     }
     private void timerResume() {
@@ -216,6 +229,7 @@ public class Endurance_exercise extends AppCompatActivity {
         cdt = new CountDownTimer(timeLengthMilli, 1000) {
             public void onTick(long millisUntilFinished) {
                 milliLeft=millisUntilFinished;
+                counting = true;
                 if(start_btn.getText().equals("倒數中")){
                     sec = (int) (millisUntilFinished % 60000) / 1000;
                     if(sec == 0){
@@ -245,6 +259,7 @@ public class Endurance_exercise extends AppCompatActivity {
                     countDown(180000);
                 }
                 else {
+                    counting = false;
                     exercise_txt.setText("完成！");
                     clock_txt.setText("00:00");
                     start_btn.setText("再挑戰");

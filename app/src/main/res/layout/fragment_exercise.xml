@@ -129,9 +129,11 @@
             android:orientation="vertical">
             <LinearLayout
                 android:id="@+id/testbtn"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:weightSum="5"
                 android:background="@drawable/title_form"
                 android:gravity="center"
@@ -161,9 +163,11 @@
 
             <LinearLayout
                 android:id="@+id/upperlimb_btn"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:weightSum="5"
                 android:background="@drawable/title_form"
                 android:gravity="center"
@@ -196,8 +200,10 @@
             <LinearLayout
                 android:id="@+id/lowerlimb_btn"
                 android:weightSum="5"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
                 android:gravity="center"
@@ -229,8 +235,10 @@
             <LinearLayout
                 android:id="@+id/softness_btn"
                 android:weightSum="5"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
                 android:gravity="center"
@@ -263,8 +271,10 @@
             <LinearLayout
                 android:id="@+id/endurance_btn"
                 android:weightSum="5"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/title_form"
                 android:gravity="center"
@@ -295,8 +305,10 @@
 
             <LinearLayout
                 android:id="@+id/upperRope_btn"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:weightSum="5"
                 android:background="@drawable/title_form"
@@ -329,8 +341,10 @@
             <LinearLayout
                 android:id="@+id/lowerRope_btn"
                 android:weightSum="5"
-                android:layout_width="280dp"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/title_form"
