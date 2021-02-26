@@ -26,11 +26,11 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.35" />
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal_65"
+        android:id="@+id/horizontal_60"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.65" />
+        app:layout_constraintGuide_percent="0.60" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_85"
         android:layout_width="match_parent"
@@ -206,7 +206,7 @@
         android:scrollbarSize="5dp"
         app:layout_constraintLeft_toLeftOf="@id/vertical_5"
         app:layout_constraintRight_toRightOf="@id/vertical_95"
-        app:layout_constraintTop_toTopOf="@id/horizontal_65"
+        app:layout_constraintTop_toTopOf="@id/horizontal_60"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_85">
 
         <LinearLayout
