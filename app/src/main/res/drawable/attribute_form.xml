@@ -3,7 +3,7 @@
     <item>
         <shape>
             <stroke android:width="5dp" android:color="@color/wheat" /><!--边框颜色-->
-            <solid android:color="@color/tan" /><!--填充色-->
+            <solid android:color="@color/info_box" /><!--填充色-->
             <corners android:radius="10dp" />
             <padding android:top="5dp"/>
             <padding android:bottom="10dp"/>

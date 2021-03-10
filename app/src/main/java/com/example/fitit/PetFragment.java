@@ -246,8 +246,16 @@ public class PetFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        dialog_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(),Attribute.class);
+                startActivity(intent);
+            }
+        });
     }
-
+    // test data
     public void insert(){
         myDBHelper.insertToDiary("20201205",1,3,2,1,0,0);
         myDBHelper.insertToDiary("20201206",1,1,1,1,0,0);

@@ -28,8 +28,8 @@
         app:tabTextAppearance="@style/TabLayoutTextStyle"
         app:tabTextColor="@color/white"
         app:tabIndicatorHeight="5dp"
-        app:tabIndicatorColor="@color/tablayout_brown"
-        app:tabSelectedTextColor="@color/tablayout_brown"/>
+        app:tabIndicatorColor="@color/tablayout_dark"
+        app:tabSelectedTextColor="@color/tablayout_dark"/>
 
 
 

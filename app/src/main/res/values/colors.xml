@@ -30,4 +30,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tablayout_brown">#a9856b</color>
     <color name="dark_tan">#9E8669</color>
+    <color name="info_box">#f2d29f</color>
+    <color name="tablayout_dark">#78664b</color>
+    <color name="transparent_tan">#ddd2b48c</color>
 </resources>

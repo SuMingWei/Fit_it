@@ -34,7 +34,7 @@ import java.util.List;
 public class ReportFragment extends Fragment {
     private Button left_btn, right_btn;
     private TextView choose_date_tv,total_time_tv;
-    private TextView upperlimb_info,upperlimb_time,lowerlimb_info,lowerlimb_time,softness_info,softness_time,endurance_info,endurance_time;
+    private TextView upperlimb_time,lowerlimb_time,softness_time,endurance_time;
     private LinearLayout upperlimb_background,lowerlimb_background,softness_background,endurance_background;
     private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img;
 
@@ -68,8 +68,6 @@ public class ReportFragment extends Fragment {
         return view;
     }
 
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -81,19 +79,15 @@ public class ReportFragment extends Fragment {
         right_btn = view.findViewById(R.id.right_btn);
         choose_date_tv = view.findViewById(R.id.choose_date_tv);
         total_time_tv = view.findViewById(R.id.total_time_tv);
-        upperlimb_info = view.findViewById(R.id.upperlimb_info);
         upperlimb_img = view.findViewById(R.id.upperlimb_img);
         upperlimb_time = view.findViewById(R.id.upperlimb_time);
         upperlimb_background = view.findViewById(R.id.upperlimb_background);
-        lowerlimb_info = view.findViewById(R.id.lowerlimb_info);
         lowerlimb_img = view.findViewById(R.id.lowerlimb_img);
         lowerlimb_time = view.findViewById(R.id.lowerlimb_time);
         lowerlimb_background = view.findViewById(R.id.lowerlimb_background);
-        softness_info = view.findViewById(R.id.softness_info);
         softness_img = view.findViewById(R.id.softness_img);
         softness_time = view.findViewById(R.id.softness_time);
         softness_background = view.findViewById(R.id.softness_background);
-        endurance_info = view.findViewById(R.id.endurance_info);
         endurance_img = view.findViewById(R.id.endurance_img);
         endurance_time = view.findViewById(R.id.endurance_time);
         endurance_background = view.findViewById(R.id.endurance_background);
@@ -241,73 +235,61 @@ public class ReportFragment extends Fragment {
 
         //upperlimb
         if(upperlimb < 20){
-            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.miss_standand));
-            upperlimb_info.setText("您的上肢訓練可能不足，可以多加強此項！");
-            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
+            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
         }else if(upperlimb >= 20 && upperlimb < 45){
-            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.hit_standard));
-            upperlimb_info.setText("就快達到上肢肌力訓練量，請繼續加油！");
-            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
+            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }else{
-            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.over_standand));
-            upperlimb_info.setText("已達到上肢肌力訓練量，很厲害喔！");
-            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
+            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }
 
         // lowerlimb
         if(lowerlimb < 20){
-            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.miss_standand));
-            lowerlimb_info.setText("您的下肢訓練可能不足，可以多加強此項！");
-            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
+            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
         }else if(lowerlimb >= 20 && lowerlimb < 45){
-            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.hit_standard));
-            lowerlimb_info.setText("就快達到下肢肌力訓練量，請繼續加油！");
-            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
+            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }else{
-            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.over_standand));
-            lowerlimb_info.setText("已達到下肢肌力訓練量，很厲害喔！");
-            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
+            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }
 
         // softness
         if(softness < 20){
-            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.miss_standand));
-            softness_info.setText("您的柔軟訓練可能不足，可以多加強此項！");
-            softness_time.setText(softness + " 分鐘");
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
+            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
         }else if(softness >= 20 && softness < 45){
-            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.hit_standard));
-            softness_info.setText("就快達到柔軟訓練訓練量，請繼續加油！");
-            softness_time.setText(softness + " 分鐘");
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
+            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }else{
-            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.over_standand));
-            softness_info.setText("已達到柔軟訓練訓練量，很厲害喔！");
-            softness_time.setText(softness + " 分鐘");
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
+            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }
 
         // endurance
         if(endurance < 20){
-            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.miss_standand));
-            endurance_info.setText("您的耐力訓練可能不足，可以多加強此項！");
-            endurance_time.setText(endurance + " 分鐘");
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
+            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
         }else if(endurance >= 20 && endurance < 45){
-            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.hit_standard));
-            endurance_info.setText("就快達到耐力訓練訓練量，請繼續加油！");
-            endurance_time.setText(endurance + " 分鐘");
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
+            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }else{
-            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.over_standand));
-            endurance_info.setText("已達到耐力訓練訓練量，很厲害喔！");
-            endurance_time.setText(endurance + " 分鐘");
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
+            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
         }
 
@@ -350,10 +332,11 @@ public class ReportFragment extends Fragment {
         BarDataSet dataSet = new BarDataSet(getChartData(),"時數");
         dataSet.setColor(getResources().getColor(R.color.green_txt));
         BarData barData = new BarData(dataSet);
-        barData.setBarWidth(0.4f);
-        barData.setValueFormatter(new DataValueFormat());
-        barData.setValueTextSize(12);
-        barData.setValueTextColor(getResources().getColor(R.color.green_txt));
+        barData.setBarWidth(0.3f);
+        barData.setDrawValues(false);
+//        barData.setValueFormatter(new DataValueFormat());
+//        barData.setValueTextSize(12);
+//        barData.setValueTextColor(getResources().getColor(R.color.green_txt));
 
         return barData;
     }

@@ -44,6 +44,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.90" />
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_95"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical_5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -191,7 +197,7 @@
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="200dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"/>
 
@@ -207,7 +213,7 @@
         app:layout_constraintLeft_toLeftOf="@id/vertical_5"
         app:layout_constraintRight_toRightOf="@id/vertical_95"
         app:layout_constraintTop_toTopOf="@id/horizontal_60"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_85">
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_95">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -215,239 +221,149 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <!-- upper limb -->
             <LinearLayout
-                android:id="@+id/upperlimb_background"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:weightSum="5"
+                android:layout_height="110dp"
+                android:weightSum="4"
                 android:gravity="center"
-                android:background="@drawable/complete_card_form"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/upperlimb_img"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/hit_standard"/>
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:id="@+id/upperlimb_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:background="@drawable/complete_card_form"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/upperlimb_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/facial_smile"/>
                     <TextView
+                        android:id="@+id/upperlimb_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="16dp"
+                        android:textSize="20dp"
                         android:textColor="@color/white"
-                        android:text="上肢肌力"/>
+                        android:text="上肢肌力\n30 分鐘"/>
 
-                    <TextView
-                        android:id="@+id/upperlimb_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:text="快達到上肢肌力訓練量，加油！"/>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/upperlimb_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:id="@+id/lowerlimb_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:layout_weight="2"
-                    android:gravity="right"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:text="30 分鐘"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/complete_card_form"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/lowerlimb_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/facial_laugh"/>
+                    <TextView
+                        android:id="@+id/lowerlimb_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="下肢肌力\n120 分鐘"/>
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- lower limb -->
             <LinearLayout
-                android:id="@+id/lowerlimb_background"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:weightSum="5"
+                android:layout_height="110dp"
+                android:weightSum="4"
                 android:gravity="center"
-                android:background="@drawable/complete_card_form"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/lowerlimb_img"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/over_standand"/>
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:id="@+id/softness_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_weight="2"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:background="@drawable/failed_card_form"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/softness_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/facial_none"/>
                     <TextView
+                        android:id="@+id/softness_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="16dp"
+                        android:textSize="20dp"
                         android:textColor="@color/white"
-                        android:text="下肢肌力"/>
+                        android:text="柔軟訓練\n15 分鐘"/>
 
-                    <TextView
-                        android:id="@+id/lowerlimb_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:text="已達到下肢肌力訓練量，讚！"/>
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/lowerlimb_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                <LinearLayout
+                    android:id="@+id/endurance_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
                     android:layout_weight="2"
-                    android:gravity="right"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:text="120 分鐘"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:background="@drawable/failed_card_form"
+                    android:orientation="horizontal">
 
+                    <ImageView
+                        android:id="@+id/endurance_img"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/facial_none"/>
+                    <TextView
+                        android:id="@+id/endurance_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:text="耐力訓練\n0 分鐘"/>
+                </LinearLayout>
             </LinearLayout>
 
-            <!-- softness -->
             <LinearLayout
-                android:id="@+id/softness_background"
-                android:layout_marginTop="10dp"
+                android:id="@+id/null_box"
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:weightSum="5"
-                android:gravity="center"
-                android:background="@drawable/failed_card_form"
+                android:layout_height="30dp"
                 android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/softness_img"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/miss_standand"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        android:textColor="@color/white"
-                        android:text="柔軟訓練"/>
-
-                    <TextView
-                        android:id="@+id/softness_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:text="您的柔軟訓練可能不足，可以多加強這項"/>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/softness_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="right"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:text="15 分鐘"/>
-
-            </LinearLayout>
-
-            <!-- endurance -->
-            <LinearLayout
-                android:id="@+id/endurance_background"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:weightSum="5"
-                android:gravity="center"
-                android:background="@drawable/failed_card_form"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/endurance_img"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/miss_standand"/>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:textSize="16dp"
-                        android:textColor="@color/white"
-                        android:text="耐力訓練"/>
-
-                    <TextView
-                        android:id="@+id/endurance_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:text="您的耐力訓練可能不足，可以多加強這項"/>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/endurance_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="right"
-                    android:textColor="@color/white"
-                    android:textSize="18dp"
-                    android:text="0 分鐘"/>
-
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textSize="14dp"
-        android:text="▼下滑查看更多..."
-        app:layout_constraintLeft_toLeftOf="@id/vertical_5"
-        app:layout_constraintRight_toRightOf="@id/vertical_95"
-        app:layout_constraintTop_toTopOf="@id/horizontal_85"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_90"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textAlignment="center"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="14dp"-->
+<!--        android:text="▼下滑查看更多..."-->
+<!--        app:layout_constraintLeft_toLeftOf="@id/vertical_5"-->
+<!--        app:layout_constraintRight_toRightOf="@id/vertical_95"-->
+<!--        app:layout_constraintTop_toTopOf="@id/horizontal_85"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/horizontal_90"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
