@@ -1,16 +1,20 @@
 package com.example.fitit;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.text.format.Formatter;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +51,7 @@ public class ReportFragment extends Fragment {
 
     private int weekNum = 0;
     private int currentWeek = 0;
+    private String upperlimb_info = "",lowerlimb_info = "",softness_info = "",endurance_info = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,6 +69,7 @@ public class ReportFragment extends Fragment {
         findObject(view);
         setInit();
         buttonClickEvent();
+        popupWindow();
 
         return view;
     }
@@ -238,14 +244,17 @@ public class ReportFragment extends Fragment {
             upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
             upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            upperlimb_info = "您的上肢肌力訓練有些不足，可以多加強這項！";
         }else if(upperlimb >= 20 && upperlimb < 45){
             upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
             upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            upperlimb_info = "快達到上肢肌力訓練量，加油！";
         }else{
             upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
             upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
             upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            upperlimb_info = "已達到上肢肌力訓練量，讚！";
         }
 
         // lowerlimb
@@ -253,14 +262,17 @@ public class ReportFragment extends Fragment {
             lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
             lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            lowerlimb_info = "您的下肢肌力訓練有些不足，可以多加強這項！";
         }else if(lowerlimb >= 20 && lowerlimb < 45){
             lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
             lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            lowerlimb_info = "快達到下肢肌力訓練量，加油！";
         }else{
             lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
             lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
             lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            lowerlimb_info = "已達到下肢肌力訓練量，讚！";
         }
 
         // softness
@@ -268,14 +280,17 @@ public class ReportFragment extends Fragment {
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
             softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            softness_info = "您的柔軟訓練有些不足，可以多加強這項！";
         }else if(softness >= 20 && softness < 45){
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
             softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            softness_info = "快達到柔軟訓練量，加油！";
         }else{
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
             softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
             softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+           softness_info = "已達到柔軟訓練量，讚！";
         }
 
         // endurance
@@ -283,14 +298,17 @@ public class ReportFragment extends Fragment {
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
             endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            endurance_info = "您的耐力訓練有些不足，可以多加強這項！";
         }else if(endurance >= 20 && endurance < 45){
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
             endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            endurance_info = "快達到耐力訓練量，加油！";
         }else{
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
             endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
             endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            endurance_info = "已達到耐力訓練量，讚！";
         }
 
     }
@@ -419,6 +437,90 @@ public class ReportFragment extends Fragment {
         public String getFormattedValue(float value) {
             return (int)value + "";
         }
+    }
+
+    public void popupWindow(){
+        upperlimb_background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popInfo(v,1);
+                backgroundAlpha(0.3f);
+            }
+        });
+
+        lowerlimb_background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popInfo(v,2);
+                backgroundAlpha(0.3f);
+            }
+        });
+
+        softness_background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popInfo(v,3);
+                backgroundAlpha(0.3f);
+            }
+        });
+
+        endurance_background.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popInfo(v,4);
+                backgroundAlpha(0.3f);
+            }
+        });
+    }
+
+    public void popInfo(View v,int index){
+        View view = LayoutInflater.from(this.getContext()).inflate(R.layout.report_popup, null, false);
+        final PopupWindow popWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+
+        LinearLayout report_info_background = (LinearLayout)view.findViewById(R.id.report_info_background);
+        ImageView report_info_img = (ImageView)view.findViewById(R.id.report_info_img);
+        TextView report_info_time = (TextView)view.findViewById(R.id.report_info_time);
+        TextView report_info_tv = (TextView)view.findViewById(R.id.report_info_tv);
+        Button close_btn = (Button)view.findViewById(R.id.close_btn);
+
+        if(index == 1){
+            report_info_background.setBackground(upperlimb_background.getBackground());
+            report_info_img.setImageDrawable(upperlimb_img.getDrawable());
+            report_info_time.setText(upperlimb_time.getText());
+            report_info_tv.setText(upperlimb_info);
+        }else if(index == 2){
+            report_info_background.setBackground(lowerlimb_background.getBackground());
+            report_info_img.setImageDrawable(lowerlimb_img.getDrawable());
+            report_info_time.setText(lowerlimb_time.getText());
+            report_info_tv.setText(lowerlimb_info);
+        }else if(index == 3){
+            report_info_background.setBackground(softness_background.getBackground());
+            report_info_img.setImageDrawable(softness_img.getDrawable());
+            report_info_time.setText(softness_time.getText());
+            report_info_tv.setText(softness_info);
+        }else if(index == 4){
+            report_info_background.setBackground(endurance_background.getBackground());
+            report_info_img.setImageDrawable(endurance_img.getDrawable());
+            report_info_time.setText(endurance_time.getText());
+            report_info_tv.setText(endurance_info);
+        }
+
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popWindow.dismiss();
+                backgroundAlpha(1);
+            }
+        });
+
+    }
+
+    public void backgroundAlpha(float bgAlpha) {
+        WindowManager.LayoutParams lp = this.getActivity().getWindow().getAttributes();
+        lp.alpha = bgAlpha; // 0.0~1.0
+        this.getActivity().getWindow().setAttributes(lp); //act 是上下文context
     }
 
 }

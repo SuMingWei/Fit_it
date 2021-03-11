@@ -209,7 +209,6 @@ public class Lower_exercise extends AppCompatActivity {
         WindowManager.LayoutParams lp = this.getWindow().getAttributes();
         lp.alpha = bgAlpha; // 0.0~1.0
         this.getWindow().setAttributes(lp); //act 是上下文context
-
     }
 
     public void getPetInfo(){

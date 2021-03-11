@@ -120,7 +120,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:background="@drawable/title_form"
                 android:textSize="24dp"
+                android:textColor="@color/white"
                 android:text="確定" />
 
             <Button
@@ -128,8 +130,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:background="@drawable/title_form"
                 android:textSize="24dp"
+                android:textColor="@color/white"
                 android:text="返回登入"/>
 
         </LinearLayout>
