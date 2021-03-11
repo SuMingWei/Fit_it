@@ -40,7 +40,7 @@ public class lowerRope_exercise extends AppCompatActivity {
     private ImageView intro_title_iv, intro_iv1, intro_iv2, intro_iv3;
     private boolean intro1 = false;
     private PopupWindow IntroExe1;
-    private int countNumber=10;
+    private int countNumber=10, step;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,6 +201,26 @@ public class lowerRope_exercise extends AppCompatActivity {
         IntroExe1 = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         IntroExe1.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        IntroExe1.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1);
+                timerPause();
+                if(step == 0){
+                    milliLeft = 200500;
+                }
+                else if(step == 1){
+                    milliLeft = 130500;
+                    num = 2;
+                }
+                else if(step == 2){
+                    num = 4;
+                    milliLeft = 60500;
+                }
+                timerResume();
+                intro1 = false;
+            }
+        });
         counter = (TextView) view.findViewById(R.id.counter);
         intro_iv1 = (ImageView) view.findViewById(R.id.intro_iv1);
         intro_iv2 = (ImageView) view.findViewById(R.id.intro_iv2);
@@ -247,6 +267,7 @@ public class lowerRope_exercise extends AppCompatActivity {
 
     private void countDownEvent(){
         if(milliLeft >= 200500 && milliLeft <= 210000){
+            step = 0;
             //show the exe intr
             if(!intro1) {
                 showPopUp_IntroExe1();
@@ -260,10 +281,6 @@ public class lowerRope_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
-                        backgroundAlpha(1);
-                        timerPause();
-                        milliLeft = 200000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -274,12 +291,12 @@ public class lowerRope_exercise extends AppCompatActivity {
             //close the exe intr and start to countdown
             if(intro1){
                 backgroundAlpha(1);
-                num = 0;
                 intro1 = false;
                 IntroExe1.dismiss();
             }
         }
         else if(milliLeft >= 130500 && milliLeft <= 140000 ){
+            step = 1;
             if(!intro1) {
                 showPopUp_IntroExe1();
                 countNumber = 10;
@@ -292,13 +309,7 @@ public class lowerRope_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
-                        backgroundAlpha(1);
-                        num = 2;
-                        sec = 120;
                         clock_txt.setText("2:00");
-                        timerPause();
-                        milliLeft = 130000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -310,12 +321,13 @@ public class lowerRope_exercise extends AppCompatActivity {
                 IntroExe1.dismiss();
                 backgroundAlpha(1);
                 num = 2;
-                sec = 120;
+                //sec = 120;
                 clock_txt.setText("2:00");
                 intro1 = false;
             }
         }
         else if(milliLeft >= 60500 && milliLeft <= 70000){
+            step = 2;
             if(!intro1) {
                 intro1 = true;
                 countNumber = 10;
@@ -329,11 +341,7 @@ public class lowerRope_exercise extends AppCompatActivity {
                     public void onClick(View v) {
                         IntroExe1.dismiss();
                         backgroundAlpha(1);
-                        sec = 60;
                         clock_txt.setText("1:00");
-                        timerPause();
-                        milliLeft = 60000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -344,13 +352,11 @@ public class lowerRope_exercise extends AppCompatActivity {
             if(intro1){
                 IntroExe1.dismiss();
                 backgroundAlpha(1);
-                sec = 60;
-                num = 4;
                 clock_txt.setText("1:00");
             }
         }
         else{
-            sec-=1;
+            computeSec();
             //set Clock Text and check if need to hint
             String minStr = String.valueOf(sec/60);
             String secStr = String.valueOf(sec%60);
@@ -365,6 +371,18 @@ public class lowerRope_exercise extends AppCompatActivity {
             clock_txt.setText(clockText);
             //change pic
             changePicture();
+        }
+    }
+
+    private void computeSec(){
+        if(step == 0){
+            sec = (int) (milliLeft/1000 - 20);
+        }
+        else if(step == 1){
+            sec = (int) (milliLeft/1000 - 10);
+        }
+        else {
+            sec = (int)(milliLeft/1000);
         }
     }
 

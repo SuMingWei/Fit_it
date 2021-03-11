@@ -204,17 +204,15 @@ public class Lower_exercise extends AppCompatActivity {
                 backgroundAlpha(1);
                 timerPause();
                 if(step == 0){
-                    milliLeft = 200000;
+                    milliLeft = 200500;
                 }
                 else if(step == 1){
-                    milliLeft = 130000;
-                    num = 2;
-                    sec = 120;
+                    milliLeft = 130500;
+                    num = 4;
                 }
                 else if(step == 2){
-                    num = 4;
-                    sec = 60;
-                    milliLeft = 60000;
+                    num = 10;
+                    milliLeft = 60500;
                 }
                 timerResume();
                 intro1 = false;
@@ -280,9 +278,6 @@ public class Lower_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
-                        timerPause();
-                        milliLeft = 200000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -292,8 +287,6 @@ public class Lower_exercise extends AppCompatActivity {
         else if(milliLeft >=199500  && milliLeft < 200500){
             //close the exe intr and start to countdown
             if(intro1){
-                num = 0;
-                intro1 = false;
                 IntroExe1.dismiss();
             }
         }
@@ -311,12 +304,7 @@ public class Lower_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
-                        num = 4;
-                        //sec = 120;
                         clock_txt.setText("2:00");
-                        timerPause();
-                        milliLeft = 130000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -326,8 +314,6 @@ public class Lower_exercise extends AppCompatActivity {
         else if(milliLeft >= 129500 && milliLeft < 130500){
             if(intro1){
                 IntroExe1.dismiss();
-                num = 2;
-                //sec = 120;
                 clock_txt.setText("2:00");
                 intro1 = false;
             }
@@ -346,11 +332,7 @@ public class Lower_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
-                        //sec = 60;
                         clock_txt.setText("1:00");
-                        timerPause();
-                        milliLeft = 60000;
-                        timerResume();
                         intro1 = false;
                     }
                 });
@@ -360,7 +342,6 @@ public class Lower_exercise extends AppCompatActivity {
         else if(milliLeft >= 59500 && milliLeft < 60500){
             if(intro1){
                 IntroExe1.dismiss();
-                //sec = 60;
                 num = 10;
                 clock_txt.setText("1:00");
             }
@@ -392,7 +373,7 @@ public class Lower_exercise extends AppCompatActivity {
             sec = (int) (milliLeft/1000 - 10);
         }
         else {
-            sec = (int)milliLeft;
+            sec = (int)(milliLeft/1000);
         }
     }
 

@@ -38,7 +38,7 @@ public class Endurance_exercise extends AppCompatActivity {
     private ImageView intro_title_iv, intro_iv1, intro_iv2, intro_iv3;
     private boolean intro1 = false;
     private PopupWindow IntroExe1;
-    private int countNumber=10;
+    private int countNumber=10, step = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,7 +144,7 @@ public class Endurance_exercise extends AppCompatActivity {
                     //reset value
                     countNumber = 10;
                     num = 0;
-                    sec = 180;
+                    //sec = 180;
                     timeLengthMilli = 190000;
                     exercise_txt.setText("即將開始運動");
                     clock_txt.setText("3:00");
@@ -195,6 +195,18 @@ public class Endurance_exercise extends AppCompatActivity {
         IntroExe1 = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         IntroExe1.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+        IntroExe1.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1);
+                timerPause();
+                if(step == 0){
+                    milliLeft = 180500;
+                }
+                timerResume();
+                intro1 = false;
+            }
+        });
         counter = (TextView) view.findViewById(R.id.counter);
         intro_iv1 = (ImageView) view.findViewById(R.id.intro_iv1);
         intro_iv2 = (ImageView) view.findViewById(R.id.intro_iv2);
@@ -240,6 +252,7 @@ public class Endurance_exercise extends AppCompatActivity {
 
     private void countDownEvent(){
         if(milliLeft >= 180500 && milliLeft <= 190000){
+            step = 0;
             //show the exe intr
             if(!intro1) {
                 showPopUp_IntroExe1();
@@ -251,7 +264,7 @@ public class Endurance_exercise extends AppCompatActivity {
                         IntroExe1.dismiss();
                         backgroundAlpha(1);
                         timerPause();
-                        milliLeft = 180000;
+                        milliLeft = 180500;
                         timerResume();
                         intro1 = false;
                     }
@@ -269,7 +282,7 @@ public class Endurance_exercise extends AppCompatActivity {
             }
         }
         else{
-            sec-=1;
+            computeSec();
             //set Clock Text and check if need to hint
             String minStr = String.valueOf(sec/60);
             String secStr = String.valueOf(sec%60);
@@ -284,6 +297,18 @@ public class Endurance_exercise extends AppCompatActivity {
             clock_txt.setText(clockText);
             //change pic
             changePicture();
+        }
+    }
+
+    private void computeSec(){
+        if(step == 0){
+            sec = (int) (milliLeft/1000 - 20);
+        }
+        else if(step == 1){
+            sec = (int) (milliLeft/1000 - 10);
+        }
+        else {
+            sec = (int)(milliLeft/1000);
         }
     }
 
