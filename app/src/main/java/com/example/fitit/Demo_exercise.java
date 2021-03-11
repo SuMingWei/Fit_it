@@ -125,6 +125,7 @@ public class Demo_exercise extends AppCompatActivity {
     }
 
     private void showPopUpWindow(View v){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup1, null, false);
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -134,6 +135,7 @@ public class Demo_exercise extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                backgroundAlpha(1);
                 popWindow.dismiss();
                 countDown(45000);
                 clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
@@ -143,6 +145,7 @@ public class Demo_exercise extends AppCompatActivity {
     }
 
     public void showPopUp_IntroExe1(){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup2, null, false);
         IntroExe1 = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -177,6 +180,7 @@ public class Demo_exercise extends AppCompatActivity {
                 if(start_btn.getText().equals("開始")){
                     showPopUpWindow(v);
                     start_btn.setText("暫停");
+                    exercise_txt.setText("即將開始運動");
                     clock_txt.setText("0:30");
                     pause = false;
                 }
@@ -186,7 +190,7 @@ public class Demo_exercise extends AppCompatActivity {
                     num = 0;
                     sec = 30;
                     timeLengthMilli = 45000;
-                    exercise_txt.setText("準備開始運動");
+                    exercise_txt.setText("即將開始運動");
                     clock_txt.setText("0:30");
                     showPopUpWindow(v);
                     start_btn.setText("暫停");
@@ -243,6 +247,7 @@ public class Demo_exercise extends AppCompatActivity {
                 intro_next_btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        backgroundAlpha(1);
                         IntroExe1.dismiss();
                         intro1 = false;
                         timerPause();
@@ -259,6 +264,7 @@ public class Demo_exercise extends AppCompatActivity {
                 num = 0;
                 intro1 = false;
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
             }
         }
         else if(milliLeft >= 25500 && milliLeft <= 30000 ){
@@ -274,6 +280,7 @@ public class Demo_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         intro1 = false;
                         num = 2;
                         sec = 20;
@@ -287,6 +294,7 @@ public class Demo_exercise extends AppCompatActivity {
         }
         else if(milliLeft >= 24500 && milliLeft < 25500){
             if(intro1){
+                backgroundAlpha(1);
                 IntroExe1.dismiss();
                 num = 2;
                 sec = 20;
@@ -308,6 +316,7 @@ public class Demo_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         intro1 = false;
                         sec = 10;
                         num = 4;
@@ -322,6 +331,7 @@ public class Demo_exercise extends AppCompatActivity {
         else if(milliLeft >= 9500 && milliLeft < 10500){
             if(intro1){
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
                 sec = 10;
                 num = 4;
                 clock_txt.setText("0:10");
@@ -330,7 +340,15 @@ public class Demo_exercise extends AppCompatActivity {
         else{
             sec-=1;
             //set Clock Text and check if need to hint
-            String clockText = "0:"+String.valueOf(sec);
+            String secStr = String.valueOf(sec%60);
+            if(sec <= 0 ){
+                sec = 0;
+            }
+            if(secStr.length()==1){
+                secStr = "0"+String.valueOf(sec%60);
+            }
+
+            String clockText =0+":"+secStr;
             clock_txt.setText(clockText);
             //change pic
             changePicture();

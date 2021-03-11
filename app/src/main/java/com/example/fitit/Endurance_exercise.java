@@ -167,6 +167,7 @@ public class Endurance_exercise extends AppCompatActivity {
     }
 
     private void showPopUpWindow(View v){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.endurance_popup1, null, false);
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -174,6 +175,7 @@ public class Endurance_exercise extends AppCompatActivity {
         popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
             public void onDismiss() {
+                backgroundAlpha(1);
                 countDown(190000);
                 clock_txt.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 40);
                 clock_txt.setPadding(0,0,0,0);
@@ -188,6 +190,7 @@ public class Endurance_exercise extends AppCompatActivity {
         });
     }
     public void showPopUp_IntroExe1(){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.endurance_popup2, null, false);
         IntroExe1 = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -246,6 +249,7 @@ public class Endurance_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         timerPause();
                         milliLeft = 180000;
                         timerResume();
@@ -261,6 +265,7 @@ public class Endurance_exercise extends AppCompatActivity {
                 num = 0;
                 intro1 = false;
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
             }
         }
         else{

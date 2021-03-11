@@ -123,6 +123,7 @@ public class Upper1_exercise extends AppCompatActivity {
     }
 
     private void showPopUpWindow(View v){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup1, null, false);
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -145,6 +146,7 @@ public class Upper1_exercise extends AppCompatActivity {
     }
 
     public void showPopUp_IntroExe1(){
+        backgroundAlpha(0.5f);
         View view = LayoutInflater.from(this).inflate(R.layout.upperlimb_popup2, null, false);
         IntroExe1 = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -252,6 +254,7 @@ public class Upper1_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         timerPause();
                         milliLeft = 200000;
                         timerResume();
@@ -267,6 +270,7 @@ public class Upper1_exercise extends AppCompatActivity {
                 num = 0;
                 intro1 = false;
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
             }
         }
         else if(milliLeft >= 130500 && milliLeft <= 140000 ){
@@ -282,6 +286,7 @@ public class Upper1_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         num = 2;
                         sec = 120;
                         clock_txt.setText("2:00");
@@ -297,6 +302,7 @@ public class Upper1_exercise extends AppCompatActivity {
         else if(milliLeft >= 129500 && milliLeft < 130500){
             if(intro1){
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
                 num = 2;
                 sec = 120;
                 clock_txt.setText("2:00");
@@ -316,6 +322,7 @@ public class Upper1_exercise extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         IntroExe1.dismiss();
+                        backgroundAlpha(1);
                         sec = 60;
                         clock_txt.setText("1:00");
                         timerPause();
@@ -330,6 +337,7 @@ public class Upper1_exercise extends AppCompatActivity {
         else if(milliLeft >= 59500 && milliLeft < 60500){
             if(intro1){
                 IntroExe1.dismiss();
+                backgroundAlpha(1);
                 sec = 60;
                 num = 4;
                 clock_txt.setText("1:00");
