@@ -61,14 +61,6 @@
                 android:text="接下來進行一項運動，將持續三分鐘"
                 android:textSize="23dp"
                 android:textColor="@color/green_txt"/>
-            <TextView
-                android:layout_width="280dp"
-                android:layout_marginTop="3dp"
-                android:layout_height="wrap_content"
-                android:text="點選圖示查看運動說明"
-                android:gravity="center"
-                android:textSize="23dp"
-                android:textColor="@color/brown_text"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
