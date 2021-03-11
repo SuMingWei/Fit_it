@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ import java.util.Calendar;
 public class ExerciseFragment extends Fragment {
     private LinearLayout upperlimb_btn, lowerlimb_btn, softness_btn, endurance_btn, upperRope_btn, lowerRope_btn, Demo_btn;
     private TextView upperlimbNum_tv, lowerlimbNum_tv, softnessNum_tv, enduranceNum_tv, upperRopeNum_tv, lowerRopeNum_tv;
+    private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img,upperRope_img,lowerRope_img;
     private DBHelper myDBHelper;
     private LinearLayout testbtn;
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
@@ -73,6 +75,38 @@ public class ExerciseFragment extends Fragment {
         changeColor(endurance_btn, enduranceNum);
         changeColor(upperRope_btn, upperropeNum);
         changeColor(lowerRope_btn, lowerropeNum);
+
+        // change icon color
+        if(upperlimbNum >= 3){
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.upper1));
+        }else{
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_upper1));
+        }
+        if(lowerlimbNum >= 3){
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.lower1));
+        }else{
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_lower1));
+        }
+        if(softnessNum >= 3){
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.softness1));
+        }else{
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_softness1));
+        }
+        if(enduranceNum >= 3){
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.indurance1));
+        }else{
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_endurance1));
+        }
+        if(upperropeNum >= 3){
+            upperRope_img.setImageDrawable(getResources().getDrawable(R.drawable.upper3));
+        }else{
+            upperRope_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_upper3));
+        }
+        if(lowerropeNum >= 3){
+            lowerRope_img.setImageDrawable(getResources().getDrawable(R.drawable.lower2));
+        }else{
+            lowerRope_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_lower2));
+        }
     }
 
     private void changeColor(LinearLayout btn, int num){
@@ -178,6 +212,13 @@ public class ExerciseFragment extends Fragment {
         enduranceNum_tv = this.getView().findViewById(R.id.enduranceNum_tv);
         upperRopeNum_tv = this.getView().findViewById(R.id.upperRopeNum_tv);
         lowerRopeNum_tv = this.getView().findViewById(R.id.lowerRopeNum_tv);
+
+        upperlimb_img = this.getView().findViewById(R.id.upperlimb_img);
+        lowerlimb_img = this.getView().findViewById(R.id.lowerlimb_img);
+        softness_img = this.getView().findViewById(R.id.softness_img);
+        endurance_img = this.getView().findViewById(R.id.endurance_img);
+        upperRope_img = this.getView().findViewById(R.id.upperRope_img);
+        lowerRope_img = this.getView().findViewById(R.id.lowerRope_img);
     }
 
 }
