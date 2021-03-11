@@ -478,7 +478,12 @@ public class ReportFragment extends Fragment {
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
-
+        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                backgroundAlpha(1);
+            }
+        });
         LinearLayout report_info_background = (LinearLayout)view.findViewById(R.id.report_info_background);
         ImageView report_info_img = (ImageView)view.findViewById(R.id.report_info_img);
         TextView report_info_time = (TextView)view.findViewById(R.id.report_info_time);
@@ -511,7 +516,6 @@ public class ReportFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 popWindow.dismiss();
-                backgroundAlpha(1);
             }
         });
 
