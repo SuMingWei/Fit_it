@@ -302,13 +302,7 @@ public class Endurance_exercise extends AppCompatActivity {
 
     private void computeSec(){
         if(step == 0){
-            sec = (int) (milliLeft/1000 - 20);
-        }
-        else if(step == 1){
-            sec = (int) (milliLeft/1000 - 10);
-        }
-        else {
-            sec = (int)(milliLeft/1000);
+            sec = (int) (milliLeft/1000);
         }
     }
 

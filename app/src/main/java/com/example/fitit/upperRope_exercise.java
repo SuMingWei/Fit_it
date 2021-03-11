@@ -290,6 +290,7 @@ public class upperRope_exercise extends AppCompatActivity {
             }
         }
         else if(milliLeft >= 130500 && milliLeft <= 140000 ){
+            step = 1;
             if(!intro1) {
                 showPopUp_IntroExe1();
                 countNumber = 10;
@@ -315,6 +316,7 @@ public class upperRope_exercise extends AppCompatActivity {
             }
         }
         else if(milliLeft >= 60500 && milliLeft <= 70000){
+            step = 2;
             if(!intro1) {
                 intro1 = true;
                 countNumber = 10;

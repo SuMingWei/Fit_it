@@ -234,7 +234,6 @@ public class Softness_exercise extends AppCompatActivity {
     }
 
     public void timerPause() {
-        sec+=1;
         cdt.cancel();
         counting = false;
     }
@@ -263,6 +262,7 @@ public class Softness_exercise extends AppCompatActivity {
 
     private void countDownEvent(){
         if(milliLeft >= 200500 && milliLeft <= 210000){
+            step = 0;
             //show the exe intr
             if(!intro1) {
                 showPopUp_IntroExe1();
@@ -291,6 +291,7 @@ public class Softness_exercise extends AppCompatActivity {
             }
         }
         else if(milliLeft >= 130500 && milliLeft <= 140000 ){
+            step = 1;
             if(!intro1) {
                 showPopUp_IntroExe1();
                 countNumber = 10;
@@ -316,6 +317,7 @@ public class Softness_exercise extends AppCompatActivity {
             }
         }
         else if(milliLeft >= 60500 && milliLeft <= 70000){
+            step = 2;
             if(!intro1) {
                 intro1 = true;
                 countNumber = 10;
