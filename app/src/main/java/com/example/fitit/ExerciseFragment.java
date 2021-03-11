@@ -21,6 +21,7 @@ import java.util.Calendar;
 public class ExerciseFragment extends Fragment {
     private LinearLayout upperlimb_btn, lowerlimb_btn, softness_btn, endurance_btn, upperRope_btn, lowerRope_btn, Demo_btn;
     private TextView upperlimbNum_tv, lowerlimbNum_tv, softnessNum_tv, enduranceNum_tv, upperRopeNum_tv, lowerRopeNum_tv;
+    private TextView upperlimb_title, lowerlimb_title, softness_title, endurance_title, upperRope_title, lowerRope_title;
     private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img,upperRope_img,lowerRope_img;
     private DBHelper myDBHelper;
     private LinearLayout testbtn;
@@ -69,12 +70,12 @@ public class ExerciseFragment extends Fragment {
         lowerRopeNum_tv.setText(String.valueOf(lowerropeNum)+"/3");
 
 
-        changeColor(upperlimb_btn, upperlimbNum);
-        changeColor(lowerlimb_btn, lowerlimbNum);
-        changeColor(softness_btn, softnessNum);
-        changeColor(endurance_btn, enduranceNum);
-        changeColor(upperRope_btn, upperropeNum);
-        changeColor(lowerRope_btn, lowerropeNum);
+        changeColor(upperlimb_btn, upperlimbNum,upperlimb_title,upperlimbNum_tv);
+        changeColor(lowerlimb_btn, lowerlimbNum,lowerlimb_title,lowerlimbNum_tv);
+        changeColor(softness_btn, softnessNum,softness_title,softnessNum_tv);
+        changeColor(endurance_btn, enduranceNum,endurance_title,enduranceNum_tv);
+        changeColor(upperRope_btn, upperropeNum,upperRope_title,upperRopeNum_tv);
+        changeColor(lowerRope_btn, lowerropeNum,lowerRope_title,lowerRopeNum_tv);
 
         // change icon color
         if(upperlimbNum >= 3){
@@ -109,12 +110,16 @@ public class ExerciseFragment extends Fragment {
         }
     }
 
-    private void changeColor(LinearLayout btn, int num){
+    private void changeColor(LinearLayout btn, int num, TextView title, TextView times){
         if(num >= 3){
             btn.setBackground(getResources().getDrawable(R.drawable.complete_exercise_background));
+            title.setTextColor(getResources().getColor(R.color.whitesmoke));
+            times.setTextColor(getResources().getColor(R.color.whitesmoke));
         }
         else{
             btn.setBackground(getResources().getDrawable(R.drawable.title_form));
+            title.setTextColor(getResources().getColor(R.color.exercise_card));
+            times.setTextColor(getResources().getColor(R.color.exercise_card));
         }
     }
 
@@ -219,6 +224,13 @@ public class ExerciseFragment extends Fragment {
         endurance_img = this.getView().findViewById(R.id.endurance_img);
         upperRope_img = this.getView().findViewById(R.id.upperRope_img);
         lowerRope_img = this.getView().findViewById(R.id.lowerRope_img);
+
+        upperlimb_title = this.getView().findViewById(R.id.upperlimb_title);
+        lowerlimb_title = this.getView().findViewById(R.id.lowerlimb_title);
+        softness_title = this.getView().findViewById(R.id.softness_title);
+        endurance_title = this.getView().findViewById(R.id.endurance_title);
+        upperRope_title = this.getView().findViewById(R.id.upperRope_title);
+        lowerRope_title = this.getView().findViewById(R.id.lowerRope_title);
     }
 
 }

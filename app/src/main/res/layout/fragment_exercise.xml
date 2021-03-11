@@ -179,6 +179,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/upper1"/>
                 <TextView
+                    android:id="@+id/upperlimb_title"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -216,6 +217,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/lower1"/>
                 <TextView
+                    android:id="@+id/lowerlimb_title"
                     android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -252,6 +254,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/softness1"/>
                 <TextView
+                    android:id="@+id/softness_title"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="3"
                     android:layout_width="wrap_content"
@@ -289,6 +292,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/indurance1"/>
                 <TextView
+                    android:id="@+id/endurance_title"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="3"
                     android:layout_width="wrap_content"
@@ -325,6 +329,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/upper3"/>
                 <TextView
+                    android:id="@+id/upperRope_title"
                     android:layout_weight="3"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
@@ -362,6 +367,7 @@
                     android:layout_height="90dp"
                     android:src="@drawable/lower2"/>
                 <TextView
+                    android:id="@+id/lowerRope_title"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="3"
                     android:layout_width="wrap_content"
