@@ -94,7 +94,7 @@ public class ExerciseFragment extends Fragment {
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_softness1));
         }
         if(enduranceNum >= 3){
-            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.indurance1));
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.endurance1));
         }else{
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.fin_endurance1));
         }

@@ -290,7 +290,7 @@
                     android:id="@+id/endurance_img"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-                    android:src="@drawable/indurance1"/>
+                    android:src="@drawable/endurance1"/>
                 <TextView
                     android:id="@+id/endurance_title"
                     android:layout_marginLeft="10dp"
