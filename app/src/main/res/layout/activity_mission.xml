@@ -176,7 +176,7 @@
                 android:drawablePadding="-50dp"
                 android:paddingLeft="8dp"
                 android:gravity="left|center_vertical"
-                android:drawableLeft="@drawable/indurance1"
+                android:drawableLeft="@drawable/endurance1"
                 android:text="心肺訓練"
                 android:textSize="18dp"/>
             <Button
