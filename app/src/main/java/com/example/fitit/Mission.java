@@ -22,7 +22,7 @@ public class Mission extends AppCompatActivity {
             @Override
             public void onClick(View v) { finish(); }
         });
-
+        /*
         upperlimb_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +78,7 @@ public class Mission extends AppCompatActivity {
                 intent.setClass(Mission.this, Demo_exercise.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
     public void findObject(){
         back_btn = findViewById(R.id.back_btn);

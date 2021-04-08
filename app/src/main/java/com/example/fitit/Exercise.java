@@ -263,6 +263,7 @@ public class Exercise extends AppCompatActivity {
                     top_background.setVisibility(View.VISIBLE);
                     bottom_background.setBackgroundColor(getResources().getColor(R.color.tan));
                     exe_tv1.setText("即將開始");
+                    exe_tv1.setTextColor(getResources().getColor(R.color.tablayout_dark));
                     exe_tv2.setText(exe_hint_set[3*type]);
                     exe_tv2.setTextColor(getResources().getColor(R.color.white));
                     step = 0;
@@ -278,6 +279,7 @@ public class Exercise extends AppCompatActivity {
                     counter.setText("");
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3 * type]);
+                    exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
                 }
                 setClock();
                 countNumber = 11;
@@ -292,6 +294,7 @@ public class Exercise extends AppCompatActivity {
                     top_background.setVisibility(View.VISIBLE);
                     bottom_background.setBackgroundColor(getResources().getColor(R.color.tan));
                     exe_tv1.setText("即將開始");
+                    exe_tv1.setTextColor(getResources().getColor(R.color.tablayout_dark));
                     exe_tv2.setText(exe_hint_set[3*type]);
                     exe_tv2.setTextColor(getResources().getColor(R.color.white));
                     step = 0;
@@ -307,6 +310,7 @@ public class Exercise extends AppCompatActivity {
                     counter.setText("");
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3 * type]);
+                    exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
                 }
                 setClock();
                 countNumber = 11;
@@ -320,6 +324,7 @@ public class Exercise extends AppCompatActivity {
                     top_background.setVisibility(View.VISIBLE);
                     bottom_background.setBackgroundColor(getResources().getColor(R.color.tan));
                     exe_tv1.setText("即將開始");
+                    exe_tv1.setTextColor(getResources().getColor(R.color.tablayout_dark));
                     exe_tv2.setTextColor(getResources().getColor(R.color.white));
                     exe_tv2.setText(exe_hint_set[3*type+1]);
                     step = 1;
@@ -335,6 +340,7 @@ public class Exercise extends AppCompatActivity {
                     counter.setText("");
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3*type+1]);
+                    exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
                 }
                 setClock();
                 countNumber = 11;
