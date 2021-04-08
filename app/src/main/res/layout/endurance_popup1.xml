@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/background_without_text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -22,7 +23,12 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1"/>
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_15"
         android:layout_width="match_parent"
@@ -41,57 +47,120 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@id/horizontal_15"
+        app:layout_constraintTop_toTopOf="@id/horizontal_5"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_90"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90">
-
+        <ImageView
+            android:id="@+id/top_dog_pic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/exercise_upper1"/>
         <LinearLayout
             android:orientation="vertical"
-            android:background="@drawable/white_form"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:gravity="center"
-            >
-            <TextView
-                android:layout_width="280dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="接下來進行一項運動，將持續三分鐘"
-                android:textSize="23dp"
-                android:textColor="@color/green_txt"/>
+            android:gravity="center" >
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/exe1_btn"
-                    android:layout_width="250dp"
-                    android:layout_height="120dp"
-                    android:background="@drawable/pop_endurance"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                android:background="@drawable/white_form"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:orientation="horizontal">
+                android:padding="10dp"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/exe_type"
+                    android:layout_width="280dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="上肢運動"
+                    android:textSize="40dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/green_button"/>
+                <TextView
+                    android:id="@+id/tool_hint"
+                    android:layout_width="280dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="*不須準備道具"
+                    android:textColor="@color/orange"
+                    android:textSize="25dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/gray"
+                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/exe_gifimg1"
+                        android:layout_width="100dp"
+                        android:layout_height="90dp"
+                        android:src="@drawable/upper_move1"/>
+                    <TextView
+                        android:id="@+id/exe_hint1"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:gravity="center"
+                        android:text="擺動雙臂"
+                        android:textColor="@color/tan"
+                        android:textSize="23dp" />
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:text="1分鐘"
+                        android:gravity="center"
+                        android:textSize="25dp"
+                        android:textColor="@color/tan"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="270dp"
+                    android:layout_height="0.5dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/gray"
+                    />
+
                 <Button
                     android:id="@+id/next_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="略過介紹>>"
+                    android:text="開始運動"
+                    android:padding="15dp"
                     android:textSize="25dp"
-                    android:textColor="@color/green_txt"
-                    android:gravity="right"
-                    android:background="#00000000"/>
+                    android:textColor="@color/white"
+
+                    android:background="@drawable/green_start_button"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"/>
         </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="@id/horizontal_90"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-
+        <Button
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="30dp"
+            android:background="@drawable/title_form"
+            android:textColor="@color/whitesmoke"
+            android:text="返回"/>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

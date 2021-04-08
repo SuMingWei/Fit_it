@@ -233,14 +233,14 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        mission_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(Home.this,Mission.class);
-                startActivity(intent);
-            }
-        });
+//        mission_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setClass(Home.this,Mission.class);
+//                startActivity(intent);
+//            }
+//        });
 
         diary_btn.setOnClickListener(new View.OnClickListener() {
             @Override

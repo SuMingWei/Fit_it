@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ExerciseFragment extends Fragment {
-    private LinearLayout upperlimb_btn, lowerlimb_btn, softness_btn, endurance_btn, upperRope_btn, lowerRope_btn, Demo_btn;
+    private LinearLayout upperlimb_btn, lowerlimb_btn, softness_btn, endurance_btn, upperRope_btn, lowerRope_btn;
     private TextView upperlimbNum_tv, lowerlimbNum_tv, softnessNum_tv, enduranceNum_tv, upperRopeNum_tv, lowerRopeNum_tv;
     private TextView upperlimb_title, lowerlimb_title, softness_title, endurance_title, upperRope_title, lowerRope_title;
     private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img,upperRope_img,lowerRope_img;
@@ -139,20 +139,12 @@ public class ExerciseFragment extends Fragment {
         return String.valueOf(year) + monthstr + daystr;
     }
     private void clickBtnEvent() {
-        testbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), Demo_exercise.class);
-                startActivity(intent);
-            }
-        });
-        
         upperlimb_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), Upper1_exercise.class);
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 0);
                 startActivity(intent);
             }
         });
@@ -160,15 +152,8 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), Lower_exercise.class);
-                startActivity(intent);
-            }
-        });
-        endurance_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), Endurance_exercise.class);
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 1);
                 startActivity(intent);
             }
         });
@@ -176,15 +161,27 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), Softness_exercise.class);
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 2);
                 startActivity(intent);
             }
         });
+        endurance_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 3);
+                startActivity(intent);
+            }
+        });
+
         upperRope_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), upperRope_exercise.class);
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 4);
                 startActivity(intent);
             }
         });
@@ -192,7 +189,8 @@ public class ExerciseFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(getActivity(), lowerRope_exercise.class);
+                intent.setClass(getActivity(), Exercise.class);
+                intent.putExtra("type", 5);
                 startActivity(intent);
             }
         });
@@ -201,7 +199,6 @@ public class ExerciseFragment extends Fragment {
 
     private void findObject() {
         //Linearlayout
-        testbtn= this.getView().findViewById(R.id.testbtn);
         upperlimb_btn = this.getView().findViewById(R.id.upperlimb_btn);
         lowerlimb_btn = this.getView().findViewById(R.id.lowerlimb_btn);
         softness_btn = this.getView().findViewById(R.id.softness_btn);
