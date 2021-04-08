@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class ReportFragment extends Fragment {
     private Button left_btn, right_btn;
     private TextView choose_date_tv,total_time_tv;
     private TextView upperlimb_time,lowerlimb_time,softness_time,endurance_time;
+    private TextView upperlimb_suggest,lowerlimb_suggest,softness_suggest,endurance_suggest;
     private LinearLayout upperlimb_background,lowerlimb_background,softness_background,endurance_background;
     private ImageView upperlimb_img,lowerlimb_img,softness_img,endurance_img;
 
@@ -69,7 +71,7 @@ public class ReportFragment extends Fragment {
         findObject(view);
         setInit();
         buttonClickEvent();
-        popupWindow();
+        //popupWindow();
 
         return view;
     }
@@ -86,15 +88,19 @@ public class ReportFragment extends Fragment {
         choose_date_tv = view.findViewById(R.id.choose_date_tv);
         total_time_tv = view.findViewById(R.id.total_time_tv);
         upperlimb_img = view.findViewById(R.id.upperlimb_img);
+        upperlimb_suggest = view.findViewById(R.id.upperlimb_suggest);
         upperlimb_time = view.findViewById(R.id.upperlimb_time);
         upperlimb_background = view.findViewById(R.id.upperlimb_background);
         lowerlimb_img = view.findViewById(R.id.lowerlimb_img);
+        lowerlimb_suggest = view.findViewById(R.id.lowerlimb_suggest);
         lowerlimb_time = view.findViewById(R.id.lowerlimb_time);
         lowerlimb_background = view.findViewById(R.id.lowerlimb_background);
         softness_img = view.findViewById(R.id.softness_img);
+        softness_suggest = view.findViewById(R.id.softness_suggest);
         softness_time = view.findViewById(R.id.softness_time);
         softness_background = view.findViewById(R.id.softness_background);
         endurance_img = view.findViewById(R.id.endurance_img);
+        endurance_suggest = view.findViewById(R.id.endurance_suggest);
         endurance_time = view.findViewById(R.id.endurance_time);
         endurance_background = view.findViewById(R.id.endurance_background);
         barChart = view.findViewById(R.id.bar_chart);
@@ -138,6 +144,9 @@ public class ReportFragment extends Fragment {
                     DiaryInfo diaryInfo = this.diaryList.get(i*7+j);
                     if(j==0){
                         dateStart = diaryInfo.getDate();
+                        if(this.diaryList.size() == 1){
+                            dateEnd = diaryInfo.getDate();
+                        }
                     }else if(j==(this.diaryList.size()%7-1)){
                         dateEnd = diaryInfo.getDate();
                     }
@@ -176,7 +185,7 @@ public class ReportFragment extends Fragment {
 
         for(int i=0;i<this.weekList.size();i++){
             WeekInfo weekInfo = this.weekList.get(i);
-            String reportDateInfo = getDateFormat(weekInfo.getDateStart()) + "~" + getDateFormat(weekInfo.getDateEnd());
+            String reportDateInfo = getDateFormat(weekInfo.getDateStart()) + " ~ " + getDateFormat(weekInfo.getDateEnd());
             totalReportDateData.add(reportDateInfo);
         }
         return totalReportDateData;
@@ -241,74 +250,110 @@ public class ReportFragment extends Fragment {
 
         //upperlimb
         if(upperlimb < 20){
-            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
-            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
-            upperlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
-            upperlimb_info = "您的上肢肌力訓練有些不足，可以多加強這項！";
+            upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.greenbadface));
+            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_time.setTextColor(getResources().getColor(R.color.green_txt));
+            //upperlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            upperlimb_info = "上肢訓練\n上肢肌力訓練有些不足，可以多加強這項！";
+            upperlimb_suggest.setText(upperlimb_info);
+            upperlimb_suggest.setTextColor(getResources().getColor(R.color.green_txt));
         }else if(upperlimb >= 20 && upperlimb < 45){
             upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
-            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
-            upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            upperlimb_info = "快達到上肢肌力訓練量，加油！";
+            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            upperlimb_info = "上肢訓練\n快達到上肢肌力訓練量，加油！";
+            upperlimb_suggest.setText(upperlimb_info);
+            upperlimb_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }else{
             upperlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
-            upperlimb_time.setText("上肢肌力\n"+ upperlimb + " 分鐘");
-            upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            upperlimb_info = "已達到上肢肌力訓練量，讚！";
+            upperlimb_time.setText(upperlimb + " 分鐘");
+            upperlimb_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //upperlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            upperlimb_info = "上肢訓練\n已達到上肢肌力訓練量，讚！";
+            upperlimb_suggest.setText(upperlimb_info);
+            upperlimb_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }
 
         // lowerlimb
         if(lowerlimb < 20){
-            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
-            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
-            lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
-            lowerlimb_info = "您的下肢肌力訓練有些不足，可以多加強這項！";
+            lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.greenbadface));
+            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_time.setTextColor(getResources().getColor(R.color.green_txt));
+            //lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            lowerlimb_info = "下肢訓練\n下肢肌力訓練有些不足，可以多加強這項！";
+            lowerlimb_suggest.setText(lowerlimb_info);
+            lowerlimb_suggest.setTextColor(getResources().getColor(R.color.green_txt));
         }else if(lowerlimb >= 20 && lowerlimb < 45){
             lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
-            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
-            lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            lowerlimb_info = "快達到下肢肌力訓練量，加油！";
+            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            lowerlimb_info = "下肢訓練\n快達到下肢肌力訓練量，加油！";
+            lowerlimb_suggest.setText(lowerlimb_info);
+            lowerlimb_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }else{
             lowerlimb_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
-            lowerlimb_time.setText("下肢肌力\n"+ lowerlimb + " 分鐘");
-            lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            lowerlimb_info = "已達到下肢肌力訓練量，讚！";
+            lowerlimb_time.setText(lowerlimb + " 分鐘");
+            lowerlimb_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //lowerlimb_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            lowerlimb_info = "下肢訓練\n已達到下肢肌力訓練量，讚！";
+            lowerlimb_suggest.setText(lowerlimb_info);
+            lowerlimb_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }
 
         // softness
         if(softness < 20){
-            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
-            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
-            softness_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
-            softness_info = "您的柔軟訓練有些不足，可以多加強這項！";
+            softness_img.setImageDrawable(getResources().getDrawable(R.drawable.greenbadface));
+            softness_time.setText(softness + " 分鐘");
+            softness_time.setTextColor(getResources().getColor(R.color.green_txt));
+            //softness_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            softness_info = "柔軟訓練\n柔軟訓練有些不足，可以多加強這項！";
+            softness_suggest.setText(softness_info);
+            softness_suggest.setTextColor(getResources().getColor(R.color.green_txt));
         }else if(softness >= 20 && softness < 45){
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
-            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
-            softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            softness_info = "快達到柔軟訓練量，加油！";
+            softness_time.setText(softness + " 分鐘");
+            softness_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            softness_info = "柔軟訓練\n快達到柔軟訓練量，加油！";
+            softness_suggest.setText(softness_info);
+            softness_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }else{
             softness_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
-            softness_time.setText("柔軟訓練\n"+ softness + " 分鐘");
-            softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-           softness_info = "已達到柔軟訓練量，讚！";
+            softness_time.setText(softness + " 分鐘");
+            softness_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //softness_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            softness_info = "柔軟訓練\n已達到柔軟訓練量，讚！";
+            softness_suggest.setText(softness_info);
+            softness_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }
 
         // endurance
         if(endurance < 20){
-            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_none));
-            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
-            endurance_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
-            endurance_info = "您的耐力訓練有些不足，可以多加強這項！";
+            endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.greenbadface));
+            endurance_time.setText(endurance + " 分鐘");
+            endurance_time.setTextColor(getResources().getColor(R.color.green_txt));
+            //endurance_background.setBackground(getResources().getDrawable(R.drawable.failed_card_form));
+            endurance_info = "耐力訓練\n耐力訓練有些不足，可以多加強這項！";
+            endurance_suggest.setText(endurance_info);
+            endurance_suggest.setTextColor(getResources().getColor(R.color.green_txt));
         }else if(endurance >= 20 && endurance < 45){
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_smile));
-            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
-            endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            endurance_info = "快達到耐力訓練量，加油！";
+            endurance_time.setText(endurance + " 分鐘");
+            endurance_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            endurance_info = "耐力訓練\n快達到耐力訓練量，加油！";
+            endurance_suggest.setText(endurance_info);
+            endurance_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }else{
             endurance_img.setImageDrawable(getResources().getDrawable(R.drawable.facial_laugh));
-            endurance_time.setText("耐力訓練\n"+ endurance + " 分鐘");
-            endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
-            endurance_info = "已達到耐力訓練量，讚！";
+            endurance_time.setText(endurance + " 分鐘");
+            endurance_time.setTextColor(getResources().getColor(R.color.tablayout_dark));
+            //endurance_background.setBackground(getResources().getDrawable(R.drawable.complete_card_form));
+            endurance_info = "耐力訓練\n已達到耐力訓練量，讚！";
+            endurance_suggest.setText(endurance_info);
+            endurance_suggest.setTextColor(getResources().getColor(R.color.tablayout_dark));
         }
 
     }
@@ -333,10 +378,10 @@ public class ReportFragment extends Fragment {
 
         leftAxis.setGranularity(30);
         leftAxis.setAxisMinimum(0);
-        leftAxis.setAxisMaximum(140);
-        leftAxis.setTextSize(12);
+        leftAxis.setAxisMaximum(100);
+        leftAxis.setTextSize(14);
         leftAxis.setTextColor(getResources().getColor(R.color.dark_tan));
-        leftAxis.setLabelCount(5, false);
+        leftAxis.setLabelCount(4, false);
         leftAxis.enableGridDashedLine(10f, 10f, 0f);
         leftAxis.setValueFormatter(new YLabelFormat());
 

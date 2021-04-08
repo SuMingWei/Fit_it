@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_90"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_85"
         android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:background="@drawable/talk_form">
@@ -156,11 +156,12 @@
 
             <Button
                 android:id="@+id/left_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/title_form"
+                android:textSize="26dp"
+                android:textColor="@color/dark_tan"
                 android:text="◀"/>
 
             <TextView
@@ -174,11 +175,13 @@
 
             <Button
                 android:id="@+id/right_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_gravity="bottom"
                 android:layout_marginRight="10dp"
-                android:background="@drawable/title_form"
+                android:textSize="26dp"
+                android:textColor="@color/dark_tan"
                 android:text="▶"/>
 
         </LinearLayout>
