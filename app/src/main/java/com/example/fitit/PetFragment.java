@@ -160,8 +160,8 @@ public class PetFragment extends Fragment {
     public void getDiaryList(){
         diaryList = myDBHelper.getDiaryInfo();
         if(diaryList.size() == 0){
-            //insert();
-            myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,0,0);
+            insert();
+            //myDBHelper.insertToDiary(getCurrentDate(),0,0,0,0,0,0);
             diaryList = myDBHelper.getDiaryInfo();
         }
     }

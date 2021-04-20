@@ -105,14 +105,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:textSize="@dimen/_25sdp"
             android:textColor="@color/dark_tan"
             android:text="週報"
             android:background="@drawable/report_title_form"
-            android:elevation="10dp"
+            android:elevation="@dimen/_10sdp"
             android:gravity="center"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp" />
+            android:layout_marginLeft="@dimen/_60sdp"
+            android:layout_marginRight="@dimen/_60sdp" />
     </LinearLayout>
 
     <LinearLayout
@@ -128,7 +128,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="7">
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="26dp"
+                android:textSize="@dimen/_18sdp"
                 android:textColor="@color/dark_tan"
                 android:text="◀" />
 
@@ -152,7 +152,7 @@
                 android:gravity="center"
                 android:text="2021/12/12 ~ 2021/12/31"
                 android:textColor="@color/tablayout_dark"
-                android:textSize="20dp" />
+                android:textSize="@dimen/_14sdp" />
 
             <Button
                 android:id="@+id/right_btn"
@@ -161,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="26dp"
+                android:textSize="@dimen/_18sdp"
                 android:textColor="@color/dark_tan"
                 android:text="▶"/>
 
@@ -171,30 +171,30 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginRight="10dp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:src="@drawable/conversation"/>
 
             <LinearLayout
-                android:layout_width="230dp"
-                android:layout_height="70dp"
+                android:layout_width="@dimen/_170sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:orientation="vertical"
-                android:paddingLeft="15dp"
+                android:paddingLeft="@dimen/_15sdp"
                 android:gravity="center"
                 android:background="@drawable/talkbar3">
 
                 <TextView
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_200sdp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="您這週的活動時長為"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_14sdp" />
 
                 <TextView
                     android:id="@+id/total_time_tv"
@@ -208,7 +208,7 @@
                     android:paddingBottom="5dp"
                     android:text="10 分鐘"
                     android:textColor="@color/white"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_14sdp" />
 
             </LinearLayout>
 
@@ -216,11 +216,11 @@
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart"
-            android:layout_width="340dp"
+            android:layout_width="@dimen/_220sdp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:layout_gravity="center">
         </com.github.mikephil.charting.charts.BarChart>
 
@@ -233,7 +233,7 @@
         android:layout_height="0dp"
         android:scrollbars = "vertical"
         android:scrollbarAlwaysDrawVerticalTrack="true"
-        android:scrollbarSize="5dp"
+        android:scrollbarSize="@dimen/_5sdp"
         app:layout_constraintLeft_toLeftOf="@id/vertical_5"
         app:layout_constraintRight_toRightOf="@id/vertical_95"
         app:layout_constraintTop_toTopOf="@id/horizontal_62"
@@ -249,22 +249,22 @@
             <LinearLayout
                 android:id="@+id/upperlimb_background"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_70sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/upperlimb_img"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:src="@drawable/facial_smile" />
 
                 <TextView
                     android:id="@+id/upperlimb_suggest"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_150sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@color/tablayout_dark"
                     android:text="上肢運動\n上肢運動訓練不足，可以多加強這項！"/>
 
@@ -280,12 +280,12 @@
 
                 <TextView
                     android:id="@+id/upperlimb_time"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:text="30 分鐘"
                     android:textColor="@color/tablayout_dark"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -293,29 +293,29 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:src="@drawable/horizontal_line"/>
 
             <LinearLayout
                 android:id="@+id/lowerlimb_background"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_70sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/lowerlimb_img"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:src="@drawable/greenbadface"/>
 
                 <TextView
                     android:id="@+id/lowerlimb_suggest"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_150sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@color/green_txt"
                     android:text="下肢運動\n下肢運動不足，可以多加強這項！"/>
 
@@ -330,10 +330,10 @@
 
                 <TextView
                     android:id="@+id/lowerlimb_time"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     android:textColor="@color/green_txt"
                     android:text="20 分鐘"/>
@@ -343,29 +343,29 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:src="@drawable/horizontal_line"/>
 
             <LinearLayout
                 android:id="@+id/softness_background"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_70sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/softness_img"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:src="@drawable/greenbadface"/>
 
                 <TextView
                     android:id="@+id/softness_suggest"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_150sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@color/green_txt"
                     android:text="柔軟訓練\n柔軟度訓練不足，可以多加強這項！"/>
 
@@ -380,12 +380,12 @@
 
                 <TextView
                     android:id="@+id/softness_time"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:text="0 分鐘"
                     android:textColor="@color/green_txt"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -393,29 +393,29 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:src="@drawable/horizontal_line"/>
 
             <LinearLayout
                 android:id="@+id/endurance_background"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/_70sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/endurance_img"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:src="@drawable/greenbadface"/>
 
                 <TextView
                     android:id="@+id/endurance_suggest"
-                    android:layout_width="200dp"
+                    android:layout_width="@dimen/_150sdp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:textSize="@dimen/_12sdp"
                     android:textColor="@color/green_txt"
                     android:text="耐力訓練\n耐力訓練不足，可以多加強這項！"/>
 
@@ -430,10 +430,10 @@
 
                 <TextView
                     android:id="@+id/endurance_time"
-                    android:layout_width="80dp"
+                    android:layout_width="@dimen/_50sdp"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
                     android:textColor="@color/green_txt"
                     android:text="15 分鐘" />
@@ -443,13 +443,13 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:src="@drawable/horizontal_line"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="@dimen/_50sdp"
                 android:orientation="vertical">
             </LinearLayout>
 

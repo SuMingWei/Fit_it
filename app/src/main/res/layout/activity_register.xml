@@ -53,13 +53,13 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="@dimen/_25sdp"
         android:textColor="@color/black"
         android:text="註冊"
         android:background="@drawable/title_form"
         android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_30sdp"
         app:layout_constraintTop_toTopOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_20"
         app:layout_constraintRight_toRightOf="@id/vertical_80"/>
@@ -77,9 +77,9 @@
             android:id="@+id/enter_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
-            android:textSize="24dp"
+            android:textSize="@dimen/_20sdp"
             android:text="請輸入英文名字" />
 
         <EditText
@@ -88,16 +88,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/edit_form"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="24dp"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"/>
 
         <TextView
             android:id="@+id/enter_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="24dp"
+            android:textSize="@dimen/_20sdp"
             android:text="請輸入一組密碼" />
 
         <EditText
@@ -106,14 +106,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/edit_form"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:textSize="24dp"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:orientation="vertical" >
             <Button
                 android:id="@+id/register_btn"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/title_form"
-                android:textSize="24dp"
+                android:textSize="@dimen/_20sdp"
                 android:textColor="@color/white"
                 android:text="確定" />
 
@@ -130,10 +130,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@drawable/title_form"
-                android:textSize="24dp"
+                android:textSize="@dimen/_20sdp"
                 android:textColor="@color/white"
                 android:text="返回登入"/>
 

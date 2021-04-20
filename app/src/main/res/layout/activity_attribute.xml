@@ -95,26 +95,25 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="@dimen/_25sdp"
         android:textColor="@color/black"
         android:text="寵物資訊"
         android:background="@drawable/title_form"
         android:gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/vertical_20"
         app:layout_constraintRight_toRightOf="@id/vertical_80"/>
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_85"
-        android:layout_marginBottom="10dp"
         android:orientation="vertical"
         android:background="@drawable/talk_form">
 
@@ -132,7 +131,7 @@
                 android:paddingRight="10dp"
                 android:gravity="center"
                 android:background="@drawable/title_form"
-                android:textSize="22dp"
+                android:textSize="@dimen/_18sdp"
                 android:text="型態：型態一"/>
 
         </LinearLayout>
@@ -140,9 +139,9 @@
         <ImageView
             android:id="@+id/dog_img"
             android:src="@drawable/dog_walk1"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="30dp"
+            android:layout_width="@dimen/_180sdp"
+            android:layout_height="@dimen/_180sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -150,17 +149,16 @@
             android:layout_height="wrap_content"
             android:weightSum="5"
             android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/left_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="26dp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:textSize="@dimen/_20sdp"
                 android:textColor="@color/dark_tan"
                 android:text="◀"/>
 
@@ -170,17 +168,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:gravity="center"
-                android:textSize="18dp"
+                android:textSize="@dimen/_18sdp"
                 android:text="型態一"/>
 
             <Button
                 android:id="@+id/right_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:layout_gravity="bottom"
-                android:layout_marginRight="10dp"
-                android:textSize="26dp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:textSize="@dimen/_20sdp"
                 android:textColor="@color/dark_tan"
                 android:text="▶"/>
 
@@ -189,9 +187,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginTop="30dp"
+            android:paddingLeft="@dimen/_20sdp"
+            android:paddingRight="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -201,8 +200,8 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
                 android:progressBackgroundTint="@color/white"
                 android:progressDrawable="@drawable/progressbar_form"
                 android:max="150"/>
@@ -217,13 +216,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="總分鐘數"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/_12sdp"/>
 
                 <TextView
                     android:id="@+id/total_minute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16dp"
+                    android:textSize="@dimen/_12sdp"
                     android:text="0999/1500"/>
 
             </LinearLayout>
@@ -246,10 +245,10 @@
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:background="@drawable/title_form"
             android:textColor="@color/white"
-            android:textSize="30dp"
+            android:textSize="@dimen/_25sdp"
             android:text="返回"/>
 
     </LinearLayout>
