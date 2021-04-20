@@ -36,39 +36,149 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15"/>
     <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_20"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20"/>
+    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_90"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintGuide_percent="0.9"
         />
+    <ImageView
+        android:id="@+id/top_dog_pic"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:src="@drawable/exercise_upper1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_20"
+        app:layout_constraintRight_toRightOf="@id/vertical_90"
+        app:layout_constraintLeft_toLeftOf="@id/vertical_10"/>
     <LinearLayout
         android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="@id/horizontal_5"
+        android:background="@drawable/white_form"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/horizontal_20"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_90"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90">
-        <ImageView
-            android:id="@+id/top_dog_pic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/exercise_upper1"/>
+        <TextView
+            android:id="@+id/exe_type"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:text="上肢運動"
+            android:textSize="@dimen/_30sdp"
+            android:textStyle="bold"
+            android:textColor="@color/green_button"/>
+        <TextView
+            android:id="@+id/tool_hint"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:text="*不須準備道具"
+            android:textStyle="bold"
+            android:textColor="@color/chocolate"
+            android:textSize="@dimen/_20sdp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_margin="5dp"
+            android:background="@color/gray"
+            />
         <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center" >
-            <LinearLayout
-                android:orientation="vertical"
-                android:background="@drawable/white_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/exe_gifimg1"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/upper_move1"/>
+            <TextView
+                android:id="@+id/exe_hint1"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:gravity="center"
+                android:text="擺動雙臂"
+                android:textStyle="bold"
+                android:textColor="@color/dark_tan"
+                android:textSize="@dimen/_20sdp" />
+            <TextView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:text="1分鐘"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/dark_tan"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@color/gray"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/exe_gifimg2"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/upper_move2"/>
+            <TextView
+                android:id="@+id/exe_hint2"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:gravity="center"
+                android:text="手臂上舉"
+                android:textStyle="bold"
+                android:textColor="@color/dark_tan"
+                android:textSize="@dimen/_20sdp" />
+            <TextView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:text="1分鐘"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/dark_tan"/>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@color/gray"
+            />
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_60sdp"
+            android:orientation="horizontal">
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/exe_gifimg3"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:src="@drawable/upper_move3"/>
+            <TextView
+                android:id="@+id/exe_hint3"
+                android:layout_width="@dimen/_90sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:gravity="center"
+<<<<<<< HEAD
                 >
                 <TextView
                     android:id="@+id/exe_type"
@@ -202,10 +312,32 @@
 
                     android:background="@drawable/green_start_button"/>
             </LinearLayout>
+=======
+                android:text="手臂外舉"
+                android:textStyle="bold"
+                android:textColor="@color/dark_tan"
+                android:textSize="@dimen/_20sdp" />
+>>>>>>> 71985517336b6127234be79acc530f942a786062
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="70dp"/>
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_60sdp"
+                android:text="1分鐘"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="@dimen/_20sdp"
+                android:textColor="@color/dark_tan"/>
         </LinearLayout>
+        <Button
+            android:id="@+id/next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="開始運動"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:padding="@dimen/_10sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/green_start_button"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -219,8 +351,8 @@
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textSize="30dp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:textSize="@dimen/_25sdp"
             android:background="@drawable/title_form"
             android:textColor="@color/whitesmoke"
             android:text="返回"/>
