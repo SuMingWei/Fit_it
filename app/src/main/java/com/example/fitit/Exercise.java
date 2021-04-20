@@ -52,6 +52,12 @@ public class Exercise extends AppCompatActivity {
             "原地快走", " ", " ",
             "彈力繩向外拉", "彈力繩向上拉", "彈力繩向前拉",
             "彈力繩向後拉", "彈力繩向後勾", "彈力繩向外拉"};
+    private String[] getExe_hint_set_withNewline = {"手臂擺動", "手臂上舉", "手臂外舉",
+            "小腿上舉", "小腿後抬", "踮起腳尖",
+            "弓箭步", "轉動肩膀", "轉腰拉筋",
+            "原地快走", " ", " ",
+            "彈力繩\n向外拉", "彈力繩\n向上拉", "彈力繩\n向前拉",
+            "彈力繩\n向後拉", "彈力繩\n向後勾", "彈力繩\n向外拉"};
     private CountDownTimer cdt;
     private long milliLeft, timeLengthMilli=210000;
     private int sec, countNumber = 11, step;
@@ -179,9 +185,9 @@ public class Exercise extends AppCompatActivity {
             exe_gifimg1.setImageResource(gif_set[3*type]);
             exe_gifimg2.setImageResource(gif_set[3*type+1]);
             exe_gifimg3.setImageResource(gif_set[3*type+2]);
-            exe_hint1.setText(exe_hint_set[3*type]);
-            exe_hint2.setText(exe_hint_set[3*type+1]);
-            exe_hint3.setText(exe_hint_set[3*type+2]);
+            exe_hint1.setText(getExe_hint_set_withNewline[3*type]);
+            exe_hint2.setText(getExe_hint_set_withNewline[3*type+1]);
+            exe_hint3.setText(getExe_hint_set_withNewline[3*type+2]);
         }
         else{   //for endurance
             setContentView(R.layout.endurance_popup1);
@@ -217,7 +223,7 @@ public class Exercise extends AppCompatActivity {
             exe_type.setText(exe_type_set[type]);
             top_dog_pic.setImageResource(top_dog_img_set[type]);
             exe_gifimg1.setImageResource(gif_set[3*type]);
-            exe_hint1.setText(exe_hint_set[3*type]);
+            exe_hint1.setText(getExe_hint_set_withNewline[3*type]);
         }
 
     }
