@@ -2,42 +2,33 @@
 
 ###### tags: `android` 
 
-## Introduction
-<center>
-<img height="200" src="https://i.imgur.com/Hm7DhKm.png">
-</center>
+## Introduction <img height="50" src="https://i.imgur.com/Hm7DhKm.png">
 
 * An android application features **pet keeping** and **fitness**.
 * The app is desinged for **the elderly**.
 * Aim to develop the function of **promoting social interaction** in the future.
 
 
-| <img src="https://i.imgur.com/d3XWoJ6.jpg "> | <img src="https://i.imgur.com/dv6xvg3.jpg"> | <img src="https://i.imgur.com/wjsHQQu.jpg"> |
-| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
-
-| <img src="https://i.imgur.com/FkjrJ11.jpg"> | <img src="https://i.imgur.com/8pJIDKC.jpg"> | <img src="https://i.imgur.com/8pwRvNc.jpg"> |
-| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+| <img src="https://i.imgur.com/d3XWoJ6.jpg "> | <img src="https://i.imgur.com/dv6xvg3.jpg"> | <img src="https://i.imgur.com/wjsHQQu.jpg"> |<img src="https://i.imgur.com/FkjrJ11.jpg"> | <img src="https://i.imgur.com/8pJIDKC.jpg"> | <img src="https://i.imgur.com/8pwRvNc.jpg"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 
 ---
-
-## Download 
-<div style="text-align":"center">
-
-<img src="https://i.imgur.com/rla29AH.png">
+ 
+## :iphone: Download 
+<img src="https://i.imgur.com/rla29AH.png" >
 
 **`current APK`：`v1.20`**
-</div>
 
 ---
 
-## Develop Environment
+## :hammer_and_wrench: Develop Environment
 * Android Studio 4.1.1
 * Build #AI-201.8743.12.41.6953283, built on November 5, 2020
 * Runtime version: 1.8.0_242-release-1644-b3-6915495 x86_64
 
 ---
 
-## Configuration
+## :pushpin: Configuration
 ### Architecture
 * Feature:
     ![](https://i.imgur.com/zL0CCPU.png)
@@ -167,11 +158,11 @@
    
 
 ---
-
-## Release APK
+ 
+## :clipboard: Release APK
 APK version：[v1.20](https://drive.google.com/file/d/16f7JtEMNh8ebQh1cDulOO7-CLBmGnEXB/view?usp=sharing) | [v1.13](https://drive.google.com/file/d/1A8tu5XD8YOCGx4vqX-321naIeR-8RF8L/view?usp=sharing) | [v1.12](https://drive.google.com/file/d/1wyP16nUEpGKAprCsWNtp81e7WUQ_89tv/view?usp=sharing) | [v1.11](https://drive.google.com/file/d/1ZL_WONqEytPwCZU0J0CeNN4YGvFC5lGH/view?usp=sharing) | [v1.02](https://drive.google.com/file/d/1dKHy-yDFTvp73qgls_bgxlXCxnMNGoby/view?usp=sharing) | [v1.01](https://drive.google.com/file/d/1TUvKwZMFu0NKjmIGRJHOCriUb2u_sYeP/view?usp=sharing)
 
-:::spoiler **change log**
+#### change log
 * `v1.20` ( `2021.4.9` )：
     * 週報介面更改，修改運動建議
     * 寵物資訊更改，進化進度條為總分鐘數
@@ -190,7 +181,7 @@ APK version：[v1.20](https://drive.google.com/file/d/16f7JtEMNh8ebQh1cDulOO7-CL
     * 週報呈現長條圖
 * `v1.01` ( `2021.2.1` )
     * 初步設計
-:::
+
 ---
 
 
