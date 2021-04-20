@@ -21,12 +21,12 @@
 ---
 
 ## Download 
-<center>
+<div style="text-align":"center">
 
 <img src="https://i.imgur.com/rla29AH.png">
 
 **`current APK`：`v1.20`**
-</center>
+</div>
 
 ---
 
