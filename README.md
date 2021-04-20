@@ -4,24 +4,27 @@
 
 ## Introduction
 <center>
-
-![](https://i.imgur.com/Hm7DhKm.png =300x200)
+<img height="200" src="https://i.imgur.com/Hm7DhKm.png">
 </center>
 
 * An android application features **pet keeping** and **fitness**.
 * The app is desinged for **the elderly**.
 * Aim to develop the function of **promoting social interaction** in the future.
 
-![](https://i.imgur.com/d3XWoJ6.jpg =200x) ![](https://i.imgur.com/dv6xvg3.jpg =200x) ![](https://i.imgur.com/wjsHQQu.jpg =200x)
 
-![](https://i.imgur.com/FkjrJ11.jpg =200x) ![](https://i.imgur.com/8pJIDKC.jpg =200x) ![](https://i.imgur.com/8pwRvNc.jpg =200x)
+| <img src="https://i.imgur.com/d3XWoJ6.jpg "> | <img src="https://i.imgur.com/dv6xvg3.jpg"> | <img src="https://i.imgur.com/wjsHQQu.jpg"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
+
+| <img src="https://i.imgur.com/FkjrJ11.jpg"> | <img src="https://i.imgur.com/8pJIDKC.jpg"> | <img src="https://i.imgur.com/8pwRvNc.jpg"> |
+| ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
 
 ---
 
 ## Download 
 <center>
 
-![](https://i.imgur.com/rla29AH.png)
+<img src="https://i.imgur.com/rla29AH.png">
+
 **`current APK`：`v1.20`**
 </center>
 
@@ -168,7 +171,7 @@
 ## Release APK
 APK version：[v1.20](https://drive.google.com/file/d/16f7JtEMNh8ebQh1cDulOO7-CLBmGnEXB/view?usp=sharing) | [v1.13](https://drive.google.com/file/d/1A8tu5XD8YOCGx4vqX-321naIeR-8RF8L/view?usp=sharing) | [v1.12](https://drive.google.com/file/d/1wyP16nUEpGKAprCsWNtp81e7WUQ_89tv/view?usp=sharing) | [v1.11](https://drive.google.com/file/d/1ZL_WONqEytPwCZU0J0CeNN4YGvFC5lGH/view?usp=sharing) | [v1.02](https://drive.google.com/file/d/1dKHy-yDFTvp73qgls_bgxlXCxnMNGoby/view?usp=sharing) | [v1.01](https://drive.google.com/file/d/1TUvKwZMFu0NKjmIGRJHOCriUb2u_sYeP/view?usp=sharing)
 
-:::spoiler {state = "close"} **change log**
+:::spoiler **change log**
 * `v1.20` ( `2021.4.9` )：
     * 週報介面更改，修改運動建議
     * 寵物資訊更改，進化進度條為總分鐘數
