@@ -86,7 +86,8 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="*不須準備道具"
-                    android:textColor="@color/orange"
+                    android:textStyle="bold"
+                    android:textColor="@color/chocolate"
                     android:textSize="25dp" />
                 <View
                     android:layout_width="match_parent"
@@ -110,15 +111,17 @@
                         android:layout_height="90dp"
                         android:gravity="center"
                         android:text="擺動雙臂"
-                        android:textColor="@color/tan"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_tan"
                         android:textSize="23dp" />
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="90dp"
                         android:text="1分鐘"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:textSize="25dp"
-                        android:textColor="@color/tan"/>
+                        android:textColor="@color/dark_tan"/>
                 </LinearLayout>
                 <View
                     android:layout_width="270dp"
@@ -142,15 +145,17 @@
                         android:layout_height="90dp"
                         android:gravity="center"
                         android:text="手臂上舉"
-                        android:textColor="@color/tan"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_tan"
                         android:textSize="23dp" />
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="90dp"
                         android:text="1分鐘"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:textSize="25dp"
-                        android:textColor="@color/tan"/>
+                        android:textColor="@color/dark_tan"/>
                 </LinearLayout>
                 <View
                     android:layout_width="270dp"
@@ -174,15 +179,17 @@
                         android:layout_height="90dp"
                         android:gravity="center"
                         android:text="手臂外舉"
-                        android:textColor="@color/tan"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_tan"
                         android:textSize="23dp" />
                     <TextView
                         android:layout_width="80dp"
                         android:layout_height="90dp"
                         android:text="1分鐘"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:textSize="25dp"
-                        android:textColor="@color/tan"/>
+                        android:textColor="@color/dark_tan"/>
                 </LinearLayout>
                 <Button
                     android:id="@+id/next_btn"
