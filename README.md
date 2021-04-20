@@ -9,7 +9,7 @@
 * Aim to develop the function of **promoting social interaction** in the future.
 
 
-| <img src="https://i.imgur.com/d3XWoJ6.jpg "> | <img src="https://i.imgur.com/dv6xvg3.jpg"> | <img src="https://i.imgur.com/wjsHQQu.jpg"> |<img src="https://i.imgur.com/FkjrJ11.jpg"> | <img src="https://i.imgur.com/8pJIDKC.jpg"> | <img src="https://i.imgur.com/8pwRvNc.jpg"> |
+| <img src="https://i.imgur.com/d3XWoJ6.jpg "> | <img src="https://i.imgur.com/dv6xvg3.jpg"> | <img src="https://i.imgur.com/wjsHQQu.jpg"> | <img src="https://i.imgur.com/FkjrJ11.jpg"> | <img src="https://i.imgur.com/8pJIDKC.jpg"> | <img src="https://i.imgur.com/8pwRvNc.jpg"> |
 | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- | ---------------------------------------------- | -------------------------------------------- | ------------------------------------------- |
  
 ## :iphone: Download 
@@ -101,7 +101,7 @@
     | `updateExerciseNum` | 更新今日各項運動次數（從`DiaryInfo`讀取） |
     | `changeColor` | 變換按鈕顏色（依不同完成次數） |
     | `getCurrentDate` | 獲得當前的日期 | 
-    | `ClickBtnEvent` | 控制進入運動畫面 |
+    | `ClickBtnEvent` | 控制進入運動畫面，並且傳送運動`type`給`Exercise page` |
     
 * `ReportFragment`：
     | Function | Description |
@@ -134,21 +134,21 @@
 * `Exercise`：
     | Function | Description |
     | :--------: | -------- | 
-    | `findObject` |  |
-    | `onKeyDown` |  |
-    | `clickEvent` |  |
-    | `setLayout` |  | 
-    | `timerPause` |  |
-    | `timerResume` |  |
-    | `countDown` |  |
-    | `countDownEvent` |  |
-    | `setClock` |  | 
-    | `changeCountDownTv` |  |
-    | `getPetInfo` |  |
+    | `findObject` | 找尋物件 |
+    | `onKeyDown` | 按下手機返回鍵時，關閉`timer` |
+    | `clickEvent` | 設定按鈕事件（暫停鍵與返回鍵） |
+    | `setLayout` | 根據`exercise fragment`傳送的運動`type`，設定`layout` | 
+    | `timerPause` | 關閉`timer`並紀錄剩餘秒數 |
+    | `timerResume` | 重新開啟`timer` |
+    | `countDown` | 設定`timer`（每秒`Task`與結束`Task`） |
+    | `countDownEvent` | 運動圖示、按鈕、背景設定 |
+    | `setClock` | 運動剩餘秒數`Text View`顯示 | 
+    | `changeCountDownTv` | 介紹運動的倒數`Text View`顯示 |
+    | `getPetInfo` | 獲取`PetInfo`，若為空則插入一筆空資料 |
     | `getDiaryList` | 獲取`DiaryInfo`，若為空則插入一筆空資料 |
     | `getCurrentDate` | 獲得當前的日期 | 
-    | `updatePetInfo` | 獲取`PetInfo`，若為空則插入一筆空資料 |
-    | `updateDiaryInfo` |  |
+    | `updatePetInfo` | 根據運動`type`，更新`PetInfo` |
+    | `updateDiaryInfo` | 根據運動`type`，更新`DiaryInfo` |
    
 ## :clipboard: Release APK
 APK version：[v1.20](https://drive.google.com/file/d/16f7JtEMNh8ebQh1cDulOO7-CLBmGnEXB/view?usp=sharing) | [v1.13](https://drive.google.com/file/d/1A8tu5XD8YOCGx4vqX-321naIeR-8RF8L/view?usp=sharing) | [v1.12](https://drive.google.com/file/d/1wyP16nUEpGKAprCsWNtp81e7WUQ_89tv/view?usp=sharing) | [v1.11](https://drive.google.com/file/d/1ZL_WONqEytPwCZU0J0CeNN4YGvFC5lGH/view?usp=sharing) | [v1.02](https://drive.google.com/file/d/1dKHy-yDFTvp73qgls_bgxlXCxnMNGoby/view?usp=sharing) | [v1.01](https://drive.google.com/file/d/1TUvKwZMFu0NKjmIGRJHOCriUb2u_sYeP/view?usp=sharing)
@@ -172,4 +172,3 @@ APK version：[v1.20](https://drive.google.com/file/d/16f7JtEMNh8ebQh1cDulOO7-CL
     * 週報呈現長條圖
 * `v1.01` ( `2021.2.1` )
     * 初步設計
-
