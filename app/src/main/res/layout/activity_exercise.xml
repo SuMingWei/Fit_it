@@ -82,6 +82,7 @@
         android:id="@+id/exe_main_gif"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="centerInside"
         app:layout_constraintTop_toTopOf="@id/horizontal_10"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_60"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
