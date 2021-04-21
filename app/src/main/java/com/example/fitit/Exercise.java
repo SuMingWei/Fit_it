@@ -295,10 +295,11 @@ public class Exercise extends AppCompatActivity {
             if(milliLeft > 200000 && milliLeft <= 210000){
                 if(!init){
                     init = true;
-                    counter.setEnabled(false);
-                    exe_main_gif.setImageResource(gif_set[3*type]);
-                    top_background.setVisibility(View.VISIBLE);
-                    bottom_background.setBackgroundColor(getResources().getColor(R.color.tan));
+                    counter.setEnabled(false);  //pause btn set enable
+                    exe_main_gif.setImageResource(gif_set[3*type]); //change the gif pic
+                    top_background.setVisibility(View.VISIBLE); // up backbround visible
+                    bottom_background.setBackgroundColor(getResources().getColor(R.color.tan)); // bottom background visible
+                    // text hint set
                     exe_tv1.setText("即將開始");
                     exe_tv1.setTextColor(getResources().getColor(R.color.tablayout_dark));
                     exe_tv2.setText(exe_hint_set[3*type]);
@@ -360,6 +361,7 @@ public class Exercise extends AppCompatActivity {
                     bottom_background.setBackgroundColor(getResources().getColor(R.color.tan));
                     exe_main_gif.setImageResource(gif_set[3*type+2]);
                     exe_tv1.setText("即將開始");
+                    exe_tv1.setTextColor(getResources().getColor(R.color.tablayout_dark));
                     exe_tv2.setTextColor(getResources().getColor(R.color.white));
                     exe_tv2.setText(exe_hint_set[3*type+2]);
                     step = 2;

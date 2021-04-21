@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.60"/>
+        app:layout_constraintGuide_percent="0.6"/>
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_70"
         android:layout_width="match_parent"
@@ -137,7 +137,7 @@
             android:id="@+id/counter"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
-            android:textSize="@dimen/_40sdp"
+            android:textSize="@dimen/_35sdp"
             android:textColor="@color/white"
             android:background="@drawable/counter0"/>
     </LinearLayout>

@@ -6,8 +6,8 @@
             <solid android:color="@color/tan" /><!--填充色-->
             <padding android:top="@dimen/_5sdp"/>
             <padding android:bottom="@dimen/_5sdp"/>
-            <padding android:left="@dimen/_5sdp"/>
-            <padding android:right="@dimen/_5sdp"/>
+            <padding android:left="@dimen/_10sdp"/>
+            <padding android:right="@dimen/_10sdp"/>
             <corners android:radius="10dp" />
         </shape>
     </item>
