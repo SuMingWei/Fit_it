@@ -22,12 +22,15 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:tabGravity="fill"
+        app:tabMaxWidth="0dp"
+        app:tabMode="fixed"
         android:background="@drawable/navigation_form"
         app:layout_constraintTop_toTopOf="@id/horizontal_90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabTextAppearance="@style/TabLayoutTextStyle"
         app:tabTextColor="@color/white"
-        app:tabIndicatorHeight="5dp"
+        app:tabIndicatorHeight="@dimen/_5sdp"
         app:tabIndicatorColor="@color/tablayout_dark"
         app:tabSelectedTextColor="@color/tablayout_dark"/>
 
