@@ -83,20 +83,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="@id/horizontal_10"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_60"
-        app:layout_constraintLeft_toLeftOf="@id/vertical_10"
-        app:layout_constraintRight_toRightOf="@id/vertical_90"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:src="@drawable/upper_move1" />
     <TextView
         android:id="@+id/change_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="準備換動作！"
-        android:textSize="30dp"
+        android:textSize="@dimen/_25sdp"
         android:textColor="@color/whitesmoke"
-        android:padding="10dp"
+        android:padding="@dimen/_5sdp"
         android:background="@drawable/brown_form"
+        android:layout_marginBottom="@dimen/_10sdp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/horizontal_60"
@@ -119,21 +120,24 @@
             android:layout_height="wrap_content"
             android:text="即將開始"
             android:textColor="@color/tablayout_dark"
+            android:textSize="@dimen/_35sdp"
             android:textStyle="bold"
-            android:textSize="40dp"/>
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="122dp" />
         <TextView
             android:id="@+id/exe_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
             android:text="上肢運動"
-            android:textSize="25dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/_25sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/exe_tv1" />
         <Button
             android:id="@+id/counter"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:textSize="40dp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:textSize="@dimen/_40sdp"
             android:textColor="@color/white"
             android:background="@drawable/counter0"/>
     </LinearLayout>
@@ -156,6 +160,8 @@
             android:text="返回"/>
 
     </LinearLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
