@@ -9,14 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitit">
-        <activity android:name=".Exercise"></activity>
-        <activity android:name=".NewHome" />
-        <activity android:name=".Attribute" />
-        <activity android:name=".Mail" />
-        <activity android:name=".Diary" />
-        <activity android:name=".Home" />
-        <activity android:name=".Register" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Exercise"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".NewHome"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Attribute"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Mail"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Diary"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Home"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Register"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
