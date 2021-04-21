@@ -55,7 +55,7 @@
             android:orientation="vertical">
             <ImageView
                 android:id="@+id/pet_front"
-                android:layout_width="90dp"
+                android:layout_width="@dimen/_90sdp"
                 android:layout_height="90dp"
                 android:layout_gravity="center"
                 android:src="@drawable/conversation"/>
