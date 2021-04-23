@@ -120,24 +120,22 @@
             android:layout_height="wrap_content"
             android:text="即將開始"
             android:textColor="@color/tablayout_dark"
-            android:textSize="@dimen/_35sdp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="90dp"
-            tools:layout_editor_absoluteY="122dp" />
+            android:textSize="@dimen/_30sdp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/exe_tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上肢運動"
             android:textColor="@color/white"
-            android:textSize="@dimen/_25sdp"
+            android:textSize="@dimen/_20sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/exe_tv1" />
         <Button
             android:id="@+id/counter"
-            android:layout_width="@dimen/_60sdp"
-            android:layout_height="@dimen/_60sdp"
-            android:textSize="@dimen/_35sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:textSize="@dimen/_30sdp"
             android:textColor="@color/white"
             android:background="@drawable/counter0"/>
     </LinearLayout>
@@ -153,8 +151,8 @@
             android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:textSize="30dp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:textSize="@dimen/_25sdp"
             android:background="@drawable/title_form"
             android:textColor="@color/whitesmoke"
             android:text="返回"/>
