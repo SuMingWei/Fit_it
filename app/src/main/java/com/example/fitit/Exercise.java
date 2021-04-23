@@ -135,13 +135,13 @@ public class Exercise extends AppCompatActivity {
     private void setLayout(){
         if(type != 3){
             setContentView(R.layout.upperlimb_popup1);
-            ImageView top_dog_pic;
+//            ImageView top_dog_pic;
             GifImageView exe_gifimg1, exe_gifimg2, exe_gifimg3;
             TextView exe_hint1, exe_hint2, exe_hint3, exe_type, tool_hint;
             //find object & set on listener
             exe_type = findViewById(R.id.exe_type);
             tool_hint = findViewById(R.id.tool_hint);
-            top_dog_pic = findViewById(R.id.top_dog_pic);
+//            top_dog_pic = findViewById(R.id.top_dog_pic);
             exe_gifimg1 = findViewById(R.id.exe_gifimg1);
             exe_gifimg2 = findViewById(R.id.exe_gifimg2);
             exe_gifimg3 = findViewById(R.id.exe_gifimg3);
@@ -149,6 +149,7 @@ public class Exercise extends AppCompatActivity {
             exe_hint2 = findViewById(R.id.exe_hint2);
             exe_hint3 = findViewById(R.id.exe_hint3);
             Button next_btn = findViewById(R.id.next_btn);
+//            top_dog_pic.setVisibility(View.INVISIBLE);
             next_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -181,7 +182,7 @@ public class Exercise extends AppCompatActivity {
                 tool_hint.setText("請準備彈力繩");
             }
             exe_type.setText(exe_type_set[type]);
-            top_dog_pic.setImageResource(top_dog_img_set[type]);
+//            top_dog_pic.setImageResource(top_dog_img_set[type]);
             exe_gifimg1.setImageResource(gif_set[3*type]);
             exe_gifimg2.setImageResource(gif_set[3*type+1]);
             exe_gifimg3.setImageResource(gif_set[3*type+2]);
@@ -191,16 +192,17 @@ public class Exercise extends AppCompatActivity {
         }
         else{   //for endurance
             setContentView(R.layout.endurance_popup1);
-            ImageView top_dog_pic;
+//            ImageView top_dog_pic;
             GifImageView exe_gifimg1;
             TextView exe_hint1, exe_type, tool_hint;
             //find object & set on listener
             exe_type = findViewById(R.id.exe_type);
             tool_hint = findViewById(R.id.tool_hint);
-            top_dog_pic = findViewById(R.id.top_dog_pic);
+//            top_dog_pic = findViewById(R.id.top_dog_pic);
             exe_gifimg1 = findViewById(R.id.exe_gifimg1);
             exe_hint1 = findViewById(R.id.exe_hint1);
             Button next_btn = findViewById(R.id.next_btn);
+//            top_dog_pic.setVisibility(View.INVISIBLE);
             next_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -221,7 +223,7 @@ public class Exercise extends AppCompatActivity {
                 }
             });
             exe_type.setText(exe_type_set[type]);
-            top_dog_pic.setImageResource(top_dog_img_set[type]);
+//            top_dog_pic.setImageResource(top_dog_img_set[type]);
             exe_gifimg1.setImageResource(gif_set[3*type]);
             exe_hint1.setText(getExe_hint_set_withNewline[3*type]);
         }

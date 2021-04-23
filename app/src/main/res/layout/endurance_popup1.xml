@@ -43,14 +43,14 @@
         app:layout_constraintGuide_percent="0.9"
         />
 
-    <ImageView
-        android:id="@+id/top_dog_pic"
-        android:layout_width="@dimen/_90sdp"
-        android:layout_height="@dimen/_90sdp"
-        android:src="@drawable/exercise_upper1"
-        app:layout_constraintBottom_toTopOf="@+id/linear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/top_dog_pic"-->
+<!--        android:layout_width="@dimen/_90sdp"-->
+<!--        android:layout_height="@dimen/_90sdp"-->
+<!--        android:src="@drawable/exercise_upper1"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/linear"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
     <LinearLayout
         android:id="@+id/linear"
@@ -59,7 +59,7 @@
         android:background="@drawable/white_form"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/_5sdp"
+        android:padding="@dimen/_5sdp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal_90"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
