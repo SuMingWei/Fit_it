@@ -139,9 +139,8 @@
         <ImageView
             android:id="@+id/dog_img"
             android:src="@drawable/dog_walk1"
-            android:layout_width="@dimen/_180sdp"
-            android:layout_height="@dimen/_180sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
             android:layout_gravity="center"/>
 
         <LinearLayout
@@ -149,14 +148,13 @@
             android:layout_height="wrap_content"
             android:weightSum="5"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/left_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:textSize="@dimen/_20sdp"
                 android:textColor="@color/dark_tan"
@@ -174,8 +172,8 @@
             <Button
                 android:id="@+id/right_btn"
                 style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_gravity="bottom"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:textSize="@dimen/_20sdp"
@@ -190,7 +188,7 @@
             android:paddingLeft="@dimen/_20sdp"
             android:paddingRight="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:gravity="center"
             android:orientation="horizontal">
 
