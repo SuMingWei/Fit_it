@@ -54,13 +54,13 @@
         app:layout_constraintRight_toRightOf="@id/vertical_80">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_160sdp"
             android:layout_height="@dimen/_100sdp"
             android:src="@drawable/logo"/>
 
         <ImageView
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_120sdp"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_140sdp"
             android:src="@drawable/dog_yoga"/>
 
         <Button
