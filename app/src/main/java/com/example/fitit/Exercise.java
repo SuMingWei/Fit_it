@@ -379,6 +379,7 @@ public class Exercise extends AppCompatActivity {
                     counter.setText("");
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3*type+2]);
+                    exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
                 }
                 setClock();
                 countNumber = 11;
