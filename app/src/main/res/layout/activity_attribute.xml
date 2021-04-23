@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@id/horizontal_15"
         app:layout_constraintLeft_toLeftOf="@id/vertical_10"
         app:layout_constraintRight_toRightOf="@id/vertical_90"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal_85"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal_90"
         android:orientation="vertical"
         android:background="@drawable/talk_form">
 
