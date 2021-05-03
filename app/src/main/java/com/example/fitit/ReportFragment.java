@@ -144,7 +144,7 @@ public class ReportFragment extends Fragment {
                     DiaryInfo diaryInfo = this.diaryList.get(i*7+j);
                     if(j==0){
                         dateStart = diaryInfo.getDate();
-                        if(this.diaryList.size() == 1){
+                        if(this.diaryList.size()%7 == 1){
                             dateEnd = diaryInfo.getDate();
                         }
                     }else if(j==(this.diaryList.size()%7-1)){
