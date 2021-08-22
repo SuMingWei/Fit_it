@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -49,19 +51,20 @@ public class Exercise extends AppCompatActivity {
     private String[] exe_hint_set = {"手臂擺動", "手臂上舉", "手臂外舉",
             "小腿上舉", "小腿後抬", "踮起腳尖",
             "弓箭步", "轉動肩膀", "轉腰拉筋",
-            "原地快走", " ", " ",
+            "原地踏步", " ", " ",
             "彈力繩向外拉", "彈力繩向上拉", "彈力繩向前拉",
             "彈力繩向後拉", "彈力繩向後勾", "彈力繩向外拉"};
     private String[] getExe_hint_set_withNewline = {"手臂擺動", "手臂上舉", "手臂外舉",
             "小腿上舉", "小腿後抬", "踮起腳尖",
             "弓箭步", "轉動肩膀", "轉腰拉筋",
-            "原地快走", " ", " ",
+            "原地踏步", " ", " ",
             "彈力繩\n向外拉", "彈力繩\n向上拉", "彈力繩\n向前拉",
             "彈力繩\n向後拉", "彈力繩\n向後勾", "彈力繩\n向外拉"};
     private CountDownTimer cdt;
-    private long milliLeft, timeLengthMilli=210000;
-    private int sec, countNumber = 11, step;
+    private long milliLeft, timeLengthMilli = 210000;
+    private int sec, countNumber = 11, step, is_playing = 0, is_played_1, is_played_2, is_played_3, flag = 1;
     private boolean pause = false, init = false, finish = false;
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +79,11 @@ public class Exercise extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if(!pause){
                 cdt.cancel();
+            }
+            try{
+                mp.stop();
+            }catch (Exception e){
+                System.out.println("Error " + e.getMessage());
             }
         }
         return super.onKeyDown(keyCode, event);
@@ -107,18 +115,20 @@ public class Exercise extends AppCompatActivity {
                         countDown(210000);
                     }
                     else{
-                        countDown(190000);
+                        countDown(70000);
                     }
                 }
                 else{
                     if(!pause){
                         pause = true;
                         timerPause();
+                        mp.pause();
                         counter.setBackground(getResources().getDrawable(R.drawable.continue_btn));
                     }
                     else{
                         pause = false;
                         timerResume();
+                        mp.start();
                         counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     }
                 }
@@ -128,6 +138,7 @@ public class Exercise extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mp.stop();
                 finish();
             }
         });
@@ -166,20 +177,92 @@ public class Exercise extends AppCompatActivity {
             back_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(is_playing == 1){
+                        mp.stop();
+                        is_playing = 0;
+                    }
                     finish();
                 }
             });
-            if(type == 0 || type == 3){
+            if(type == 0){
                 tool_hint.setText("不須準備道具");
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.upper_limb_muscle_strength_choosed);
+                mp.start();
+                is_playing = 1;
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        is_playing = 0;
+                    }
+                });
             }
-            if(type == 1 || type == 2){
+            if(type == 1){
                 tool_hint.setText("請準備椅子");
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.muscle_strength_of_lower_limbs_choosed);
+                mp.start();
+                is_playing = 1;
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        is_playing = 0;
+                    }
+                });
+            }
+            if(type == 2){
+                tool_hint.setText("請準備椅子");
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.soft_training_choosed);
+                mp.start();
+                is_playing = 1;
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        is_playing = 0;
+                    }
+                });
             }
             if(type == 4){
                 tool_hint.setText("請準備椅子、彈力繩");
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.elastic_rope_upper_limb_training_choosed);
+                mp.start();
+                is_playing = 1;
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        is_playing = 0;
+                    }
+                });
             }
             if(type == 5){
                 tool_hint.setText("請準備彈力繩");
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.elastic_rope_lower_limb_training_choosed);
+                mp.start();
+                is_playing = 1;
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        is_playing = 0;
+                    }
+                });
             }
             exe_type.setText(exe_type_set[type]);
 //            top_dog_pic.setImageResource(top_dog_img_set[type]);
@@ -211,7 +294,7 @@ public class Exercise extends AppCompatActivity {
                     exe_main_gif.setImageResource(gif_set[3*type]);
                     change_hint.setVisibility(View.INVISIBLE);
                     exe_tv2.setText(exe_type_set[type]);
-                    countDown(190000);
+                    countDown(70000);
                     pause = false;
                 }
             });
@@ -220,6 +303,20 @@ public class Exercise extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     finish();
+                }
+            });
+
+            if(is_playing == 1){
+                mp.stop();
+                is_playing = 0;
+            }
+            mp=MediaPlayer.create(this, R.raw.cardio_training_choosed);
+            mp.start();
+            is_playing = 1;
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    is_playing = 0;
                 }
             });
             exe_type.setText(exe_type_set[type]);
@@ -263,7 +360,7 @@ public class Exercise extends AppCompatActivity {
 
     private void countDownEvent(){
         if(type == 3){
-            if(milliLeft > 180000 && milliLeft <= 210000){
+            if(milliLeft > 60000 && milliLeft <= 70000){
                 if(!init){
                     init = true;
                     counter.setEnabled(false);
@@ -280,6 +377,8 @@ public class Exercise extends AppCompatActivity {
             }
             else{
                 if(init) {
+                    //mp=MediaPlayer.create(this, R.raw.jhoncena);
+                    //mp.start();
                     init = false;
                     counter.setEnabled(true);
                     top_background.setVisibility(View.INVISIBLE);
@@ -288,6 +387,13 @@ public class Exercise extends AppCompatActivity {
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3 * type]);
                     exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
+
+                    mp.stop();
+                    mp=MediaPlayer.create(this, R.raw.walk_in_place_1m);
+                    mp.start();
+                    is_played_1 = 0;
+                    is_played_2 = 0;
+                    is_played_3 = 0;
                 }
                 setClock();
                 countNumber = 11;
@@ -320,6 +426,35 @@ public class Exercise extends AppCompatActivity {
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3 * type]);
                     exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
+
+                    if(type == 0){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.swing_arms);
+                        mp.start();
+                    }
+                    if(type == 1){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.calf_lift);
+                        mp.start();
+                    }
+                    if(type == 2){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.lunge);
+                        mp.start();
+                    }
+                    if(type == 4){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.pull_out_elastic_rope_upper_limb);
+                        mp.start();
+                    }
+                    if(type == 5){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.pull_back_elastic_rope);
+                        mp.start();
+                    }
+                    is_played_1 = 0;
+                    is_played_2 = 0;
+                    is_played_3 = 0;
                 }
                 setClock();
                 countNumber = 11;
@@ -350,6 +485,35 @@ public class Exercise extends AppCompatActivity {
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3*type+1]);
                     exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
+
+                    if(type == 0){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.arms_up);
+                        mp.start();
+                    }
+                    if(type == 1){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.calf_back_lift);
+                        mp.start();
+                    }
+                    if(type == 2){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.turn_shoulders);
+                        mp.start();
+                    }
+                    if(type == 4){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.pull_up_elastic_rope);
+                        mp.start();
+                    }
+                    if(type == 5){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.elastic_rope_back_hook);
+                        mp.start();
+                    }
+                    is_played_1 = 0;
+                    is_played_2 = 0;
+                    is_played_3 = 0;
                 }
                 setClock();
                 countNumber = 11;
@@ -380,6 +544,35 @@ public class Exercise extends AppCompatActivity {
                     counter.setBackground(getResources().getDrawable(R.drawable.stop));
                     exe_tv1.setText(exe_hint_set[3*type+2]);
                     exe_tv1.setTextColor(getResources().getColor(R.color.green_button));
+
+                    if(type == 0){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.arms_out);
+                        mp.start();
+                    }
+                    if(type == 1){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.tiptoe);
+                        mp.start();
+                    }
+                    if(type == 2){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.waist_stretch);
+                        mp.start();
+                    }
+                    if(type == 4){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.pull_forward_elastic_rope);
+                        mp.start();
+                    }
+                    if(type == 5){
+                        mp.stop();
+                        mp=MediaPlayer.create(this, R.raw.pull_out_elastic_rope_lower_limb);
+                        mp.start();
+                    }
+                    is_played_1 = 0;
+                    is_played_2 = 0;
+                    is_played_3 = 0;
                 }
                 setClock();
                 countNumber = 11;
@@ -414,14 +607,100 @@ public class Exercise extends AppCompatActivity {
     }
     private void changeCountDownTv(){
         counter.setText(String.valueOf(countNumber));
+        Log.d("Exercise", "step:" + String.valueOf(step) + " is_played_1:" + String.valueOf(is_played_1) + " is_played_2:" + String.valueOf(is_played_2) + " is_played_3:" + String.valueOf(is_played_3));
         if(countNumber > 5 && countNumber <= 10){
             counter.setBackground(getResources().getDrawable(R.drawable.counter0));
+            if(type == 0 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                if(step == 0)
+                    mp=MediaPlayer.create(this, R.raw.upper_limb_muscle_strength_ready);
+                if(step == 1)
+                    mp=MediaPlayer.create(this, R.raw.next_arms_up);
+                if(step == 2)
+                    mp=MediaPlayer.create(this, R.raw.next_arms_out);
+                mp.start();
+                is_played_1 = 1;
+            }
+            if(type == 1 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                if(step == 0)
+                    mp=MediaPlayer.create(this, R.raw.muscle_strength_of_lower_limbs_ready);
+                if(step == 1)
+                    mp=MediaPlayer.create(this, R.raw.next_calf_back_lift);
+                if(step == 2)
+                    mp=MediaPlayer.create(this, R.raw.next_tiptoe);
+                mp.start();
+                is_played_1 = 1;
+            }
+            if(type == 2 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                if(step == 0)
+                    mp=MediaPlayer.create(this, R.raw.soft_training_ready);
+                if(step == 1)
+                    mp=MediaPlayer.create(this, R.raw.next_turn_shoulders);
+                if(step == 2)
+                    mp=MediaPlayer.create(this, R.raw.next_waist_stretch);
+                mp.start();
+                is_played_1 = 1;
+            }
+            if(type == 3 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                mp=MediaPlayer.create(this, R.raw.cardio_training_ready);
+                mp.start();
+                is_played_1 = 1;
+            }
+            if(type == 4 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                if(step == 0)
+                    mp=MediaPlayer.create(this, R.raw.elastic_rope_upper_limb_training_ready);
+                if(step == 1)
+                    mp=MediaPlayer.create(this, R.raw.next_pull_up_elastic_rope);
+                if(step == 2)
+                    mp=MediaPlayer.create(this, R.raw.next_pull_forward_elastic_rope);
+                mp.start();
+                is_played_1 = 1;
+            }
+            if(type == 5 && is_played_1 == 0){
+                if(is_playing == 1){
+                    mp.stop();
+                    is_playing = 0;
+                }
+                if(step == 0)
+                    mp=MediaPlayer.create(this, R.raw.elastic_rope_lower_limb_training_ready);
+                if(step == 1)
+                    mp=MediaPlayer.create(this, R.raw.next_elastic_rope_back_hook);
+                if(step == 2)
+                    mp=MediaPlayer.create(this, R.raw.next_pull_out_elastic_rope_lower_limb);
+                mp.start();
+                is_played_1 = 1;
+            }
         }
         else if(countNumber > 3 && countNumber <= 5){
             counter.setBackground(getResources().getDrawable(R.drawable.counter1));
         }
         else {
             counter.setBackground(getResources().getDrawable(R.drawable.counter2));
+            if(is_played_3 == 0){
+                mp.stop();
+                mp=MediaPlayer.create(this, R.raw.three_two_one);
+                mp.start();
+                is_played_3 = 1;
+            }
         }
     }
 
@@ -475,6 +754,40 @@ public class Exercise extends AppCompatActivity {
     }
 
     public void updateDiaryInfo(){
+        /*if(flag == 1){
+        myDBHelper.insertToDiary("20210531",3,10,7,3,0,0);
+        myDBHelper.insertToDiary("20210601",3,3,3,3,0,0);
+        myDBHelper.insertToDiary("20210602",7,0,3,3,0,0);
+        myDBHelper.insertToDiary("20210603",10,0,7,3,0,0);
+        myDBHelper.insertToDiary("20210604",3,10,7,3,0,0);
+        myDBHelper.insertToDiary("20210605",3,0,3,3,0,0);
+        myDBHelper.insertToDiary("20210606",7,0,3,3,0,0);
+        flag = 0;}*/
+        if(type == 0){
+            mp.stop();
+            mp=MediaPlayer.create(this, R.raw.upper_limb_muscle_strength_done);
+            mp.start();
+        }
+        if(type == 1){
+            mp.stop();
+            mp=MediaPlayer.create(this, R.raw.muscle_strength_of_lower_limbs_done);
+            mp.start();
+        }
+        if(type == 2){
+            mp.stop();
+            mp=MediaPlayer.create(this, R.raw.soft_training_done);
+            mp.start();
+        }
+        if(type == 3){
+            mp.stop();
+            mp=MediaPlayer.create(this, R.raw.cardio_training_done);
+            mp.start();
+        }
+        if(type == 4){
+            mp.stop();
+            mp=MediaPlayer.create(this, R.raw.elastic_rope_upper_limb_training_done);
+            mp.start();
+        }
         getDiaryList();
         int[] update = {0, 0, 0, 0, 0, 0};
         update[type] = 1;
