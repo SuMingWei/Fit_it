@@ -1,6 +1,8 @@
 package com.example.fitit;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -30,6 +32,8 @@ public class PetFragment extends Fragment {
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,13 @@ public class PetFragment extends Fragment {
         newDiaryInfo();
         setCloseness();
         buttonClickEvent();
+
+        // guide
+        sharedPreferences = this.getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("guide",false) == true){
+            Toast.makeText(this.getActivity(),"hahhahaahah",Toast.LENGTH_SHORT).show();
+            sharedPreferences.edit().putBoolean("guide",false).commit();
+        }
 
         return view;
     }
