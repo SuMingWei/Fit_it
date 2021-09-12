@@ -38,19 +38,30 @@
         app:layout_constraintRight_toRightOf="@id/vertical_90"
         android:background="@drawable/title_form"
         android:gravity="top"
+
         android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:gravity="center_vertical"
+            android:weightSum="6"
             android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上肢運動"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_25sdp"/>
             <ImageView
                 android:layout_width="@dimen/_25sdp"
                 android:layout_height="@dimen/_25sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:layout_gravity="right"
                 android:src="@drawable/close_btn"/>
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
