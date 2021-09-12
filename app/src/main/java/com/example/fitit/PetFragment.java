@@ -1,23 +1,32 @@
 package com.example.fitit;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.Guideline;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import static android.content.Intent.getIntent;
 
@@ -29,6 +38,8 @@ public class PetFragment extends Fragment {
     private DBHelper myDBHelper;
     private ArrayList<PetInfo> petInfo = new ArrayList<>();
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,6 +59,14 @@ public class PetFragment extends Fragment {
         newDiaryInfo();
         setCloseness();
         buttonClickEvent();
+
+        // guide
+        sharedPreferences = this.getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("guide",false) == true){
+            //Toast.makeText(this.getActivity(),"hahhahaahah",Toast.LENGTH_SHORT).show();
+            showDialog(view);
+            sharedPreferences.edit().putBoolean("guide",false).commit();
+        }
 
         return view;
     }
@@ -254,7 +273,43 @@ public class PetFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        pet_front.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog(v);
+            }
+        });
     }
+
+    public void showDialog(View view){
+        Dialog dialog = new Dialog(this.getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        dialog.setContentView(R.layout.pager_layout);
+
+        List<PagerModel> pagerArr = new ArrayList<>();
+        pagerArr.add(new PagerModel("1",R.drawable.guide_pic1));
+        pagerArr.add(new PagerModel("2",R.drawable.guide_pic2));
+        pagerArr.add(new PagerModel("3",R.drawable.guide_pic3));
+        pagerArr.add(new PagerModel("4",R.drawable.guide_pic4));
+        pagerArr.add(new PagerModel("5",R.drawable.guide_pic5));
+        pagerArr.add(new PagerModel("6",R.drawable.guide_pic6));
+        pagerArr.add(new PagerModel("7",R.drawable.guide_pic7));
+        pagerArr.add(new PagerModel("8",R.drawable.guide_pic8));
+        pagerArr.add(new PagerModel("9",R.drawable.guide_pic9));
+
+        GuidePagerAdapter adapter = new GuidePagerAdapter(this.getActivity(),pagerArr);
+        ViewPager pager = dialog.findViewById(R.id.pager);
+        pager.setAdapter(adapter);
+
+        DotsIndicator indicator = (DotsIndicator) dialog.findViewById(R.id.dots_indicator);
+        indicator.setViewPager(pager);
+
+        dialog.show();
+
+    }
+
     // test data
     public void insert(){
         myDBHelper.insertToDiary("20201205",1,3,2,1,0,0);

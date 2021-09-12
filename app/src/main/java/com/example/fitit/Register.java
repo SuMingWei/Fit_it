@@ -2,6 +2,7 @@ package com.example.fitit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,8 @@ public class Register extends AppCompatActivity {
 
     private ArrayList<AccountInfo> accountInfo = new ArrayList<>();
     private DBHelper myDBHelper = new DBHelper(Register.this);
+
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,12 @@ public class Register extends AppCompatActivity {
         String user_password = password_ed.getText().toString();
 
         if(user_name.length() != 0 && user_password.length() != 0){
+            // write into DB
             this.myDBHelper.insertToAccount(user_name,user_password);
+            // set global variable
+            sharedPreferences = getSharedPreferences("User",MODE_PRIVATE);
+            sharedPreferences.edit().putBoolean("guide",true).apply();
+
             finish();
         }else {
             Toast.makeText(Register.this,"您的資料不完整，請重新再試",Toast.LENGTH_SHORT).show();

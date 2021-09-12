@@ -38,4 +38,5 @@
     <color name="tablayout_dark">#78664b</color>
     <color name="transparent_tan">#ddd2b48c</color>
     <color name="exercise_card">#a0886a</color>
+    <color name="transparent">#00000000</color>
 </resources>
