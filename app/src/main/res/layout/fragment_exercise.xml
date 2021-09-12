@@ -103,7 +103,7 @@
             android:layout_height="@dimen/_50sdp"
             android:background="@drawable/talk_form"
             android:textSize="@dimen/_14sdp"
-            android:text="下滑看更多運動唷！"
+            android:text="點我看運動教學影片"
             android:gravity="center"/>
 
     </LinearLayout>

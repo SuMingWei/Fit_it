@@ -296,8 +296,10 @@ public class PetFragment extends Fragment {
         pagerArr.add(new PagerModel("5",R.drawable.guide_pic5));
         pagerArr.add(new PagerModel("6",R.drawable.guide_pic6));
         pagerArr.add(new PagerModel("7",R.drawable.guide_pic7));
-        pagerArr.add(new PagerModel("8",R.drawable.guide_pic8));
-        pagerArr.add(new PagerModel("9",R.drawable.guide_pic9));
+        pagerArr.add(new PagerModel("8",R.drawable.guide_pic10));
+        pagerArr.add(new PagerModel("9",R.drawable.guide_pic11));
+        pagerArr.add(new PagerModel("10",R.drawable.guide_pic8));
+        pagerArr.add(new PagerModel("11",R.drawable.guide_pic9));
 
         GuidePagerAdapter adapter = new GuidePagerAdapter(this.getActivity(),pagerArr);
         ViewPager pager = dialog.findViewById(R.id.pager);

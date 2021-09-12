@@ -1,22 +1,28 @@
 package com.example.fitit;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.tbuonomo.viewpagerdotsindicator.DotsIndicator;
+
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class ExerciseFragment extends Fragment {
     private LinearLayout upperlimb_btn, lowerlimb_btn, softness_btn, endurance_btn, upperRope_btn, lowerRope_btn;
@@ -26,6 +32,7 @@ public class ExerciseFragment extends Fragment {
     private DBHelper myDBHelper;
     private LinearLayout testbtn;
     private ArrayList<DiaryInfo> diaryList = new ArrayList<>();
+    private ImageView dog_pic;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,6 +146,13 @@ public class ExerciseFragment extends Fragment {
         return String.valueOf(year) + monthstr + daystr;
     }
     private void clickBtnEvent() {
+        dog_pic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTeaching(v);
+            }
+        });
+
         upperlimb_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -197,7 +211,33 @@ public class ExerciseFragment extends Fragment {
     }
 
 
+    public void showTeaching(View view){
+        Dialog dialog = new Dialog(this.getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent);
+        dialog.setContentView(R.layout.pager_layout);
+
+        List<PagerModel> pagerArr = new ArrayList<>();
+        pagerArr.add(new PagerModel("1",R.drawable.upper_move1));
+        pagerArr.add(new PagerModel("2",R.drawable.lower_move1));
+        pagerArr.add(new PagerModel("3",R.drawable.softness_move1));
+        pagerArr.add(new PagerModel("4",R.drawable.endurance_move1));
+        pagerArr.add(new PagerModel("5",R.drawable.uprope_move1));
+
+        TeachPagerAdapter adapter = new TeachPagerAdapter(this.getActivity(),pagerArr);
+        ViewPager pager = dialog.findViewById(R.id.pager);
+        pager.setAdapter(adapter);
+
+        DotsIndicator indicator = (DotsIndicator) dialog.findViewById(R.id.dots_indicator);
+        indicator.setViewPager(pager);
+
+        dialog.show();
+
+    }
+
+
     private void findObject() {
+        dog_pic = this.getView().findViewById(R.id.dog_pic);
         //Linearlayout
         upperlimb_btn = this.getView().findViewById(R.id.upperlimb_btn);
         lowerlimb_btn = this.getView().findViewById(R.id.lowerlimb_btn);

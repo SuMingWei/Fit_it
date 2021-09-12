@@ -484,92 +484,92 @@ public class ReportFragment extends Fragment {
         }
     }
 
-    public void popupWindow(){
-        upperlimb_background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popInfo(v,1);
-                backgroundAlpha(0.3f);
-            }
-        });
+//    public void popupWindow(){
+//        upperlimb_background.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popInfo(v,1);
+//                backgroundAlpha(0.3f);
+//            }
+//        });
+//
+//        lowerlimb_background.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popInfo(v,2);
+//                backgroundAlpha(0.3f);
+//            }
+//        });
+//
+//        softness_background.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popInfo(v,3);
+//                backgroundAlpha(0.3f);
+//            }
+//        });
+//
+//        endurance_background.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popInfo(v,4);
+//                backgroundAlpha(0.3f);
+//            }
+//        });
+//    }
 
-        lowerlimb_background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popInfo(v,2);
-                backgroundAlpha(0.3f);
-            }
-        });
+//    public void popInfo(View v,int index){
+//        View view = LayoutInflater.from(this.getContext()).inflate(R.layout.report_popup, null, false);
+//        final PopupWindow popWindow = new PopupWindow(view,
+//                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+//        popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
+//        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+//            @Override
+//            public void onDismiss() {
+//                backgroundAlpha(1);
+//            }
+//        });
+//        LinearLayout report_info_background = (LinearLayout)view.findViewById(R.id.report_info_background);
+//        ImageView report_info_img = (ImageView)view.findViewById(R.id.report_info_img);
+//        TextView report_info_time = (TextView)view.findViewById(R.id.report_info_time);
+//        TextView report_info_tv = (TextView)view.findViewById(R.id.report_info_tv);
+//        Button close_btn = (Button)view.findViewById(R.id.close_btn);
+//
+//        if(index == 1){
+//            report_info_background.setBackground(upperlimb_background.getBackground());
+//            report_info_img.setImageDrawable(upperlimb_img.getDrawable());
+//            report_info_time.setText(upperlimb_time.getText());
+//            report_info_tv.setText(upperlimb_info);
+//        }else if(index == 2){
+//            report_info_background.setBackground(lowerlimb_background.getBackground());
+//            report_info_img.setImageDrawable(lowerlimb_img.getDrawable());
+//            report_info_time.setText(lowerlimb_time.getText());
+//            report_info_tv.setText(lowerlimb_info);
+//        }else if(index == 3){
+//            report_info_background.setBackground(softness_background.getBackground());
+//            report_info_img.setImageDrawable(softness_img.getDrawable());
+//            report_info_time.setText(softness_time.getText());
+//            report_info_tv.setText(softness_info);
+//        }else if(index == 4){
+//            report_info_background.setBackground(endurance_background.getBackground());
+//            report_info_img.setImageDrawable(endurance_img.getDrawable());
+//            report_info_time.setText(endurance_time.getText());
+//            report_info_tv.setText(endurance_info);
+//        }
+//
+//        close_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                popWindow.dismiss();
+//            }
+//        });
+//
+//    }
 
-        softness_background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popInfo(v,3);
-                backgroundAlpha(0.3f);
-            }
-        });
-
-        endurance_background.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popInfo(v,4);
-                backgroundAlpha(0.3f);
-            }
-        });
-    }
-
-    public void popInfo(View v,int index){
-        View view = LayoutInflater.from(this.getContext()).inflate(R.layout.report_popup, null, false);
-        final PopupWindow popWindow = new PopupWindow(view,
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
-        popWindow.showAtLocation(view, Gravity.CENTER_HORIZONTAL,0,0);
-        popWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                backgroundAlpha(1);
-            }
-        });
-        LinearLayout report_info_background = (LinearLayout)view.findViewById(R.id.report_info_background);
-        ImageView report_info_img = (ImageView)view.findViewById(R.id.report_info_img);
-        TextView report_info_time = (TextView)view.findViewById(R.id.report_info_time);
-        TextView report_info_tv = (TextView)view.findViewById(R.id.report_info_tv);
-        Button close_btn = (Button)view.findViewById(R.id.close_btn);
-
-        if(index == 1){
-            report_info_background.setBackground(upperlimb_background.getBackground());
-            report_info_img.setImageDrawable(upperlimb_img.getDrawable());
-            report_info_time.setText(upperlimb_time.getText());
-            report_info_tv.setText(upperlimb_info);
-        }else if(index == 2){
-            report_info_background.setBackground(lowerlimb_background.getBackground());
-            report_info_img.setImageDrawable(lowerlimb_img.getDrawable());
-            report_info_time.setText(lowerlimb_time.getText());
-            report_info_tv.setText(lowerlimb_info);
-        }else if(index == 3){
-            report_info_background.setBackground(softness_background.getBackground());
-            report_info_img.setImageDrawable(softness_img.getDrawable());
-            report_info_time.setText(softness_time.getText());
-            report_info_tv.setText(softness_info);
-        }else if(index == 4){
-            report_info_background.setBackground(endurance_background.getBackground());
-            report_info_img.setImageDrawable(endurance_img.getDrawable());
-            report_info_time.setText(endurance_time.getText());
-            report_info_tv.setText(endurance_info);
-        }
-
-        close_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popWindow.dismiss();
-            }
-        });
-
-    }
-
-    public void backgroundAlpha(float bgAlpha) {
-        WindowManager.LayoutParams lp = this.getActivity().getWindow().getAttributes();
-        lp.alpha = bgAlpha; // 0.0~1.0
-        this.getActivity().getWindow().setAttributes(lp); //act 是上下文context
-    }
+//    public void backgroundAlpha(float bgAlpha) {
+//        WindowManager.LayoutParams lp = this.getActivity().getWindow().getAttributes();
+//        lp.alpha = bgAlpha; // 0.0~1.0
+//        this.getActivity().getWindow().setAttributes(lp); //act 是上下文context
+//    }
 
 }
